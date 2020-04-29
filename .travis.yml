@@ -1,0 +1,91 @@
+os: linux
+dist: xenial
+
+branches:
+  only:
+    - master
+  except:
+    - /temp\/.*/
+
+language: node_js
+node_js:
+  - '10'
+  - '11'
+  - '12'
+  - '13'
+
+before_install:
+  # Configure signed git commits from within Travis CI, see:
+  # https://github.com/semantic-release/git/tree/905f113a577c55cd9bb0a37ea3504d9e8ee2dfa2#gpg-signature
+  # Decrypt git_gpg_keys.asc.enc key into /tmp/git_gpg_keys.asc
+  - openssl aes-256-cbc -K $encrypted_44fd1061a48b_key -iv $encrypted_44fd1061a48b_iv -in ./config/travis-ci/git_gpg_keys.asc.enc -out /tmp/git_gpg_keys.asc -d
+  # Make sure only the current user can read the keys
+  - chmod 600 /tmp/git_gpg_keys.asc
+  # Import the gpg key
+  - gpg --batch --yes --import /tmp/git_gpg_keys.asc
+  # Create a script that pass the passphrase to the gpg CLI called by git
+  - echo '/usr/bin/gpg --passphrase ${GPG_PASSPHRASE} --batch --no-tty "$@"' > /tmp/gpg-with-passphrase && chmod +x /tmp/gpg-with-passphrase
+  # Configure git to use the script that passes the passphrase
+  - git config gpg.program "/tmp/gpg-with-passphrase"
+  # Configure git to sign the commits and tags
+  - git config commit.gpgsign true
+  # Configure git to use your GPG key
+  - git config --global user.signingkey ${GPG_KEY_ID}
+install:
+  - npm install
+  # Remove installation side effects (like updated package-lock.json)
+  - git reset --hard HEAD
+before_script:
+  - npm run setup
+script:
+  - commitlint-travis
+  - npm run validate
+
+jobs:
+  include:
+    - stage: codecov
+      node_js: lts/*
+      script:
+        - npm run test:cov
+
+    - stage: update CHANGELOG.md
+      if: type = pull_request
+      node_js: lts/*
+      script: npx semantic-release # runs with PR-specific config
+
+    - stage: release
+      node_js: lts/*
+      script: ':' # noop, skips tests
+      deploy:
+        edge: true
+        provider: script
+        script: npx semantic-release
+        on:
+          # Branch selection is managed by semantic-release in .releaserc.yml
+          all_branches: true
+          repo: JuroOravec/mini-extract-plugin
+
+notifications:
+  email:
+    on_success: never
+
+env:
+  global:
+    # GH_TOKEN - semantic-release/github
+    - secure: KIPQwPgasmVJUfNVl8Zj3QpTjNFFDk9JwgkSRJxwtcZh27xn14XXZ1BAr6p5H2+iiSzMyzPcSXPubWOudl4/cBnkOeGveqq6aZHZzv0LMGRd7fd7NXrJkCoeOfnOirZDAMKLM58HB0ClvgwK2lVBJpFqP9dQsQI61g6MtsiF0Qmsf+WVpivawrxMO8kTLxqvVP2fCHLQVwayC/E/GBfjoJAWI63gRn3Vno4xJDAMqF99+RQfuoTw+9I+3+O/skqoRM2h2Q/HulKvhJHH53GLdIah2l0DCpcCLCcCQvOiQw+GwFkRkrLgaSgbS2ygE4MqoVV485+st1TjVL6r3UAVkuubFhzBhs4RR1D+5bsVFolc4kbNfvLKd3eKu6vGb1AYiTwQmpklmNoq1xlM8ErVCAZ2PrEcdyUb0utpamCfF72QAJT1s3vQFeeZGLdTd1lQ6Q9CLaDQskSeURRqKCRmjnE4qMyTtrBmzMuGbJaOw1SwZ8gqAFjOXXJ5DcTeFqrRvBhONEvYx5cCTwAirneoKAR/xUAQqupGEPqf5v/FZLgzUk9TBZlqA2gjO7YiWXSsHe0BSa8E3bBZu+eF5kfonut+ET24Q+m/rgS0QidajRMF/Q07i4T31OWJBevDxdCH5VZkbCxxyn8CGp3hCoc1lPTXzxRFlcDSHjoX1Cyzymg=
+    # NPM_TOKEN - semantic-release/npm
+    - secure: OGd8nVbg3hFsu+caO2eylZmVx3NNHE5hNlOIBokYQ58SidLUgeARpC6Fh24oXH9WV+S3l5M/0h0ez/Wvv4iJosbWueX59BXR1b2zjCLn5GzCCbRd86gXRw38Ru5al5IQBObwHJJZm2+XBuN6hpyBRvMbXiX7gVmkuHrAYqR82rQbE5jsTv5jeuSn5H09jRkwKnbs11KII0NKlzjY5T5IOgE+rX9UuEzsSGyzJ51tionyd452aaOIn+TlwQ8EoHSjxTYlxgRmlM+9AM56ztpW/8aX/RbCwCtb8L9Met2CvDyiRWm+7ItK4L/WwKt4C7mw3uqX0RzRVYTiJy1YCOnW5k0iHUy8dI/uVKvimAc1khAw/WGkS6k6u4DaIr+LhHpdbVv/3o9ZmkSqNwUUR7b3XbkBdxkMSXmbcW082AlKqC8SSG92PkU61yh7SANTaR0s8K8ovC9vDjRMzPPkd7HmvNtDMMHrWjInuPpckHRL/z1LQAhhBaLaO+bAKN5Ws6nkvfpRbW0JqZdjv4msbwv7BniFsoMJD+0EKXfe7e6DQVhfGdV6Mdf858ok9cbGxChP+TXcA5/flKnhsqiH2yrGF3bPIOzsJVBvYeaCR46nCY8bAoOVIQBKgo6XCzOVxjc7ukWf7XvXuVfNMoF920CF3kd9x/+SWbTzqEMvOAkDwm4=
+    # GPG signature env vars
+    # https://github.com/semantic-release/git/tree/905f113a577c55cd9bb0a37ea3504d9e8ee2dfa2#gpg-signature
+    # GPG_PASSPHRASE
+    - secure: vIbRrk5zOXNiMM3CUXRW3EehXMX5BP3mZASELQ17RgiW9q7XQVRUDEAPdzK8+HieOKqlq4zk/w/rFsCDLxSps3C4z9FvDOBoj2n2cDqlocDfK80Rfk1xeCmTxz7VtR6VnWIZkDeUL/EMe//DcSy6XeNIeva8J+8GS+OGQEf4Bvj0L/5sMOfEKdNokavy1s/W28l3x7Vi07YjCx8XhsU0aENy62xkdcm3gxDkyFZcylIL7UbfN1IDIRke7VvEjvNpnKhRF40KJZKT0ki9w7tGpinhCTaHCueW90VRjWOCEwTXhCbck6XZNkzwBMGR17T4R05MnIdoZRffNTaSUWxry/DOF1CoxpWrEc0ORosJrmb0Qn/BHBvHyHodHZWJ7a5ZDEDLPmqhT6s7JiZPpfPVmDV4H2WjevRItiKOlmzH7dEgYhShK4aRPaEA/te28opxsWk/hx82QoykHWqIxnNStki3sVTjd7+jcN0ZWbi5EXPhRf6DrWC6N5y+u+HghPPVOXHh6atuerdkgBHebIiOid2tDYOjVGweaQT6Gajytl0FzqA2Of0G+TH35U7Dt6yvesnuXQL9pvO7v+5bR8n0KjoWmsF+53HbORHOCT4s5angA/V400RN3IOgH9V2/CSyecAfERxsUB4MiKp/z3eoWtXXBaJY/kFabgr8wVuTEBQ=
+    # GPG_KEY_ID
+    - secure: awSXs2i8Z9oCwm/GTOsYlePDeEO9/SOP3ROt6gQS0psZVdmh8hY+mn/9lw+zRyPxVjVuk+82XQZJzLK21PQ18G8Qw24Pue2h/6zmFW93EetR1eEA3xfQQITgk65u+gsPVg0EzBrwh70QcFRVdkSjtl3t7Eh9ADVYlysNOnv7I7xrEDh+uLsYeaxMLJTQUlM5BDIu4rrCy8H2DDvXWgBW22B+hiJC5VjW2lJkLIRqOlp4JwzaoMnMuFVWf2h/2dwEQKA2YFF4y5aEEh9cE1ZEQ8uUEmLkf0/D1QzlCi9pmocoogAgvgc0voGqC14GrVCEynwstYL47a1BrdZC0TjCzgqF/2tGdBO3lMpSRqJJYD7AP/oXQMTjrboGJtEfuelN1M8M0gwyrFIK9YGEttNR04sQaFR64QCdP2mg5drU2L9Kj07naovNH1N5dskxAfOLKBFWXzr9t7y2/UmQJnoe2BrQLweCrbL+KiYdUyv2cpxMLoWaQUsbzKSiA0xFZlZWc1WahbkJ8EpFvVQ2BxTP+mOZKA/0XmAO1qN4qQ/tiCSln0Vs0Izvy9SUlLNLfRC9dbvrTnEvt2vQB6nI3pbG3atmcYl8VtAACfzIilQs/v1PLqfKHAU5OKEPw6KGTbdIqBtSLTtP1OocsFyLLoahzBMt0yGe6GxOP/ZQRktk/Aw=
+    # GIT_EMAIL
+    - secure: mYPI9jJ1Ox6mIdVoAHdG3EQ+rg0+0TsaYDSoitpFS+mI9Q/6Nf73M61fv0gVfiQ95Jk3AaYfLzZ8tfhXcagESShO8nbJRfIjTmTgdW9zWWdxNKkYeB8Ay5ekfI7rPs4qbtkdqd3PrMfitB4LzzP2FTdLooKLt1bOcDPJk3ta+WHjvnmGJ4npCjfE3qwAA1nTbsie/1oI4xC0c6C+aapGQafgGF1DooprzD+at8jBUz2/6oUyHmkHAOOStAMERmb1TswTNunpWfOK9rVIhytC13cp5MT54Oe+4yDmYG9bomZ3t+OudjjwgRpH+rQYUPPF2oKslefobOwLsu5LIqz7KsAaWmSlO+6/2/+jBrxyJPML8OKlcNMhul6ygZMhUSjo2f2eelp+fEv8J1s0EB2fx40GDq4aLi4Qqn5etjlsrU7pP7arXjENRsiRdIIoNEHRy2eE6zsuiao0yGR6WAFyFfhMvxtpqSQBQbdDkCsFO/syDwy3nvnDbi6NWUHqm3OqqQiHshmyNtc1czgPVKyQIvmBGxqzc/vpsi/JGzTheFxZgVoNDQbl/45DJjviUVkCwd4qMdpkB+UEH1WwaYpsjOWlvsGiGDKCjDKqOGX1KKZuTBUYBhXHPgSXYS+YiF70o28ahmlFZLG2WMtB+nHnKAZ1w+TaDciRXVPiun0E9nQ=
+    # GIT_USERNAME
+    - secure: MnV7yYZIPQLepqxfuqiIhPxCfISgch4rpuKf65wASmn5LmjtpDieQ3Htx9qVHMgDjs6zjaDiSRhGeWi3mGFneLITbk2F37MAnpsAPAj5sKNLibbxMk8NZTmLiA1EybtAk+71JxLrjaGcgqHnaCRkOzQYMx6x8cbQ3pQDuILGIBVKkVf9OnqWLJwlZS5/4XhMuosyZ/sKstFubMdatuX4LMesjceaAU5aESZJdl8U/ePDRDqODQqjff3XefkKFVyupK60AK4KST+0JdSI0M1+4+F8slEFEjlCS2yQpsE2wTzcERVStoelE7mUNDXfV7etyqYVRR0ku/PETHjjrMv8+a4F7RIOqbNGhjGuW0rZ1RaG9eOVdkKZqu1Q7D9v7YVkEuD3kT6D+FnS6skolzlOw+vQAW9PzRIH4ajjgTsgxjM5mDRWxPqqjjns+/L3A/1tnptMrt1EhSyzXpKAgAUhUbJ8bzYA5sr/cZgm9mIwcFAgPRoHEHC+9ozDc4KE+LThiJln7UJyDOmG5PSgVLZXFMp5tIRWq3i8F9DBHBl0a+DdDy82SmUYYMu/t97AWIrYYHznhvcygYMYmHmz1lBTJ+nQcKXIf+KndALlbNrfL8fllrkKo2eXhYhiaej1MJxFAZ6KR8mdqGWPHpKFvCQNFuCD6TmtxTIsVkH+OUOE3PQ=
+    # GIT_COMMITTER_NAME (to have signed commits from semantic-release)
+    - secure: eBiJr20JxMZZVmwBDH5/Bv4+dcrKQZNWmmxKvHzbXSewk3PNhwfiWo+JTOd7hiHsaEWpFrIl4GVxzh5seU7hJod5OI1TCcKsVO+SvuVOF/FDZkctbtq4PiDn27evdMhnYN5FOP9LyTZ2UGL1IjIAcPcLY/+AHY5Feqe1XVRbJmJVDJDJfy5BiCXIlT2lI+0zYQbNK0erVgysw3Roh51aX/A3I3pvedWJs+8B0RKHJ6Cbcn7Q8w+beeBSiGG/J3oqLjWYve5aK3VYtEtvYACSZ0n8vsI0M/7yccz4OTAeYf0WOyRVpEKNCB9ZF9Jwh0YnnzlMakTPllD6n/7fs5kOlN/l3zzoHnL+Lmhqc5brFfx877VaCBGA6ozoxfkCBUt3EkrmUbJOLo/5XDys7zhsOA5cDeT2oe+EdioZJE1Z0GG0HSntTKs424NwU1RCqdOi+VWgJTz1lvea+LY/aIy8icl5dIwQcdY8LYW3WL5XOnzGueXElZjbccLzX2+YvgWm8w+MY+JnLUvaF4Bm1ujEOPS0VNzOniVoYpSqfUxbktEQIyVIz/p92esuKHVczj1PDhp0/S4c/yv9jOa8UN9Tr2d4TsjK4T/1XSLW4sdEbn5eBy3FbJ4RiTVgV87RMkUoewKx3mnrb8XlbrFDdLOsQHPs16+Abot4JgYGg0fYwZ0=
+    # GIT_COMMITTER_EMAIL (to have signed commits from semantic-release)
+    - secure: oGm+ANOoqP4ZnnXk+wmNg8FbAxyueO/MD+dr3mGKOl4Y/0S3sRDHmXZlj1wpCh44tg5AWTyxVOI4oe4FFI601ChLSXqQTTWtnDW/TsxEZ0nzzStF2rLP5gieZ9gok0exVXTIuXSmjlo8PeeTuB83aLYqCbo1Qv/P20aqRdYR3aaCJnTGSjloWlN4QuIhhlJmlk7hiJdUbRzm50a/DDtKZ8Kam+b/8w/LZZ8H/Dv0q1Ce4Immvgekbryq27G9jE0hGnIEKTpTyYpLsgJ6YEdz1JjiB9pf5yGU1UQ0XfWMFr+kqumIPV01XI6Wg6rt3COjznVu3ygS+Nze1JXBqIeB1SMd94ioeyOwsSUWbK5tAuLC6HfYkdgGoKC5WWXRzPvupyGQV1HIFWhqz1hwCvrO7InEn/aOJuZpjXdhqdKDcNV7MLaZb99+8iAS01BnAXaXSCpORZRT1ZD9p7McWLXA7zDDDoLppNz/KoTB6HHEWoRYh5c964czQuNCMUYSAtVlp9e6bNzftsMwp1ORd+LpfbmhNU4MnbVL9wpbTmCaI7XXKIV96CktcRCSJrHWzecrAbMs9gQIOC+OX2HVAMLgIl9dR4icynoI4/cY/aZbNK8U1aqkHvSGKSu+ZbXOs15Hso+cUlM4XiGO4B9EU6MkhYv9xT+SctDplwdN1ZIL+Jw=
