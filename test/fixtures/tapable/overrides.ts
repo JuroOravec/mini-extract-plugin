@@ -12,6 +12,7 @@ import {
   ActiveHookNames,
   Taps,
 } from '../../../src/types/hook';
+import flat from '../../lib/flat';
 import { HookState } from './types';
 import { recorder } from './state';
 import { activeHooks } from './constants';
@@ -32,10 +33,9 @@ export function recordAll(
     const updateState = recordHookState(key as ActiveHookNames);
     // Find functions that should be called for this hook and call them
     // before we record that the
-    const hookOverrides = overrides
-      .filter(({ name }) => name === key)
-      .map(({ hooks }) => hooks)
-      .flat();
+    const hookOverrides = flat(
+      overrides.filter(({ name }) => name === key).map(({ hooks }) => hooks),
+    );
     // Wrap the updating of state and sequential calling of tapped functions
     // so the hooks that may need a value to be returned can be introspected
     function hookFn(...args: any[]) {
