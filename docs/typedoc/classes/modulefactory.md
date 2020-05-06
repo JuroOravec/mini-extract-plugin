@@ -1,0 +1,46 @@
+[mini-extract-plugin](../README.md) › [ModuleFactory](modulefactory.md)
+
+# Class: ModuleFactory
+
+## Hierarchy
+
+* **ModuleFactory**
+
+## Implements
+
+* [ModuleFactory](modulefactory.md)
+
+## Implemented by
+
+* [ModuleFactory](modulefactory.md)
+
+## Index
+
+### Methods
+
+* [create](modulefactory.md#create)
+
+## Methods
+
+###  create
+
+▸ **create**(`data`: [ModuleFactoryData](../README.md#modulefactorydata), `callback`: function): *void*
+
+*Defined in [src/types/subclassing.ts:40](https://github.com/JuroOravec/mini-extract-plugin/blob/4b5288b/src/types/subclassing.ts#L40)*
+
+**Parameters:**
+
+▪ **data**: *[ModuleFactoryData](../README.md#modulefactorydata)*
+
+▪ **callback**: *function*
+
+▸ (`error`: Error | null, `result`: Module): *void*
+
+**Parameters:**
+
+Name | Type |
+------ | ------ |
+`error` | Error &#124; null |
+`result` | Module |
+
+**Returns:** *void*

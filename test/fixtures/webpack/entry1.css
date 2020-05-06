@@ -1,0 +1,9 @@
+body {
+  background-color: blue;
+}
+
+h2 {
+  color: purple;
+}
+
+@import './common.css';
