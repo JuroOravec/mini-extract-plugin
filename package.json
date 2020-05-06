@@ -84,7 +84,7 @@
     "github-label-sync": "^1.4.6",
     "husky": "^4.2.5",
     "inquirer": "^7.1.0",
-    "jest": "^25.3.0",
+    "jest": "^25.5.4",
     "js-yaml": "^3.13.1",
     "lodash.partition": "^4.6.0",
     "lodash.pick": "^4.4.0",
