@@ -1,4 +1,5 @@
 import WebpackModule from 'webpack/lib/Module';
+import webpack from 'webpack';
 
 import { Module as IModule, ModuleClass } from '../types/subclassing';
 import { Hash, RequestShortener } from '../types/webpack';
@@ -6,7 +7,9 @@ import { Dependency } from './dependency';
 import capitalize from 'lodash.capitalize';
 import { renameClass } from '../lib/util';
 
-export class Module extends WebpackModule implements IModule {
+const TypedWebpackModule = WebpackModule as typeof webpack.compilation.Module;
+
+export class Module extends TypedWebpackModule implements IModule {
   id: string;
   content: Dependency['content'];
   private _identifier: Dependency['identifier'];
