@@ -7,6 +7,7 @@ import {
   ModuleFactoryClass,
   ModuleClass,
 } from '../types/subclassing';
+import { Constructor } from '../types/util';
 
 type ModuleFactoryCreateArgs = Parameters<IModuleFactory['create']>;
 type ModuleFactoryData = ModuleFactoryCreateArgs[0];
@@ -25,7 +26,7 @@ export class ModuleFactory implements IModuleFactory {
 
 interface SubclassOptions {
   type: string;
-  moduleClass?: ModuleClass;
+  moduleClass?: ModuleClass | Constructor<Module>;
 }
 
 export function subclass({ moduleClass = Module, type }: SubclassOptions) {
