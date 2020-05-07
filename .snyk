@@ -1,0 +1,13 @@
+# Snyk (https://snyk.io) policy file, patches or ignores known vulnerabilities.
+version: v1.13.5
+# ignores vulnerabilities until expiry date; change duration by modifying expiry date
+ignore:
+  SNYK-JS-YARGSPARSER-560381:
+    - git-raw-commits > meow > yargs-parser:
+        reason: no patch available
+        expires: '2020-06-06T06:09:06.774Z'
+# patches apply the minimum changes required to fix a vulnerability
+patch:
+  SNYK-JS-LODASH-567746:
+    - conventional-changelog-conventionalcommits > lodash:
+        patched: '2020-05-07T06:04:11.091Z'

@@ -64,6 +64,8 @@ jobs:
           # Branch selection is managed by semantic-release in .releaserc.yml
           all_branches: true
           repo: JuroOravec/mini-extract-plugin
+      after_deploy:
+        - npx snyk monitor
 
 notifications:
   email:
@@ -75,6 +77,8 @@ env:
     - secure: KIPQwPgasmVJUfNVl8Zj3QpTjNFFDk9JwgkSRJxwtcZh27xn14XXZ1BAr6p5H2+iiSzMyzPcSXPubWOudl4/cBnkOeGveqq6aZHZzv0LMGRd7fd7NXrJkCoeOfnOirZDAMKLM58HB0ClvgwK2lVBJpFqP9dQsQI61g6MtsiF0Qmsf+WVpivawrxMO8kTLxqvVP2fCHLQVwayC/E/GBfjoJAWI63gRn3Vno4xJDAMqF99+RQfuoTw+9I+3+O/skqoRM2h2Q/HulKvhJHH53GLdIah2l0DCpcCLCcCQvOiQw+GwFkRkrLgaSgbS2ygE4MqoVV485+st1TjVL6r3UAVkuubFhzBhs4RR1D+5bsVFolc4kbNfvLKd3eKu6vGb1AYiTwQmpklmNoq1xlM8ErVCAZ2PrEcdyUb0utpamCfF72QAJT1s3vQFeeZGLdTd1lQ6Q9CLaDQskSeURRqKCRmjnE4qMyTtrBmzMuGbJaOw1SwZ8gqAFjOXXJ5DcTeFqrRvBhONEvYx5cCTwAirneoKAR/xUAQqupGEPqf5v/FZLgzUk9TBZlqA2gjO7YiWXSsHe0BSa8E3bBZu+eF5kfonut+ET24Q+m/rgS0QidajRMF/Q07i4T31OWJBevDxdCH5VZkbCxxyn8CGp3hCoc1lPTXzxRFlcDSHjoX1Cyzymg=
     # NPM_TOKEN - semantic-release/npm
     - secure: OGd8nVbg3hFsu+caO2eylZmVx3NNHE5hNlOIBokYQ58SidLUgeARpC6Fh24oXH9WV+S3l5M/0h0ez/Wvv4iJosbWueX59BXR1b2zjCLn5GzCCbRd86gXRw38Ru5al5IQBObwHJJZm2+XBuN6hpyBRvMbXiX7gVmkuHrAYqR82rQbE5jsTv5jeuSn5H09jRkwKnbs11KII0NKlzjY5T5IOgE+rX9UuEzsSGyzJ51tionyd452aaOIn+TlwQ8EoHSjxTYlxgRmlM+9AM56ztpW/8aX/RbCwCtb8L9Met2CvDyiRWm+7ItK4L/WwKt4C7mw3uqX0RzRVYTiJy1YCOnW5k0iHUy8dI/uVKvimAc1khAw/WGkS6k6u4DaIr+LhHpdbVv/3o9ZmkSqNwUUR7b3XbkBdxkMSXmbcW082AlKqC8SSG92PkU61yh7SANTaR0s8K8ovC9vDjRMzPPkd7HmvNtDMMHrWjInuPpckHRL/z1LQAhhBaLaO+bAKN5Ws6nkvfpRbW0JqZdjv4msbwv7BniFsoMJD+0EKXfe7e6DQVhfGdV6Mdf858ok9cbGxChP+TXcA5/flKnhsqiH2yrGF3bPIOzsJVBvYeaCR46nCY8bAoOVIQBKgo6XCzOVxjc7ukWf7XvXuVfNMoF920CF3kd9x/+SWbTzqEMvOAkDwm4=
+    # SNYK_TOKEN
+    - secure: KDo1fEPYCmgGA+17xGDz18qECU/I7TWJdD/+aKDFMsOFweTZTRe05TaLReMr7whwfniVQg4AQIOL4V0VtkN5tFa51H1/mhFKuBncik+JzvljXGGRB92a+aYm550BPDV5eMhXqTHjhnIoPSl5GsoIAvCjNG7o2YvOZlRmGqOOleUZL8SY+CC0gjCmvzCXhU4vs0ldO3UHi+3S1EYzngaYrQxtiuWWdKWEP4hreGDRFXDiifte1uOqkB9QcT/gEE8nK2U5g8pumBAs8cgBo1NRiZYk5f1PFGsogMWEyfppw4KhY+VW5jwZjrGBIFAYEeJhpL2vcCE2L2H7bapFU5Qjfo8xEYnZ1F6oor8w9mNK2lKbuKaXd8LQycV8GKy5V+ZZdgDxhwvKjduc4TOpirpcSlOydd4rlK7Z07I/LkN68EU+pOY2ynxaisWc/+wvGyezz8IV7Be1gUmGUh4fPiUUTvcFKJWuE/wAgUWhhQeegsWxbWmbTDINN/H/BRudOsb6oem6dacD3sabmnBpjf4ks9bppy4cvKGLPmty2t3xZOZbuCbW0FA9H0ceEBHH3JkdQ4bM5yiGhgkLtVEbkd8JVcxADpYxcUSY7WqAoJt7qoruhTSJyWhkx7/uve8h/aqJOLGLahXnuWULgHbmfGs7UZzchABl2/kMLrETCA2fAlo=
     # GPG signature env vars
     # https://github.com/semantic-release/git/tree/905f113a577c55cd9bb0a37ea3504d9e8ee2dfa2#gpg-signature
     # GPG_PASSPHRASE
