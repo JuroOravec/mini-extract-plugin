@@ -1,3 +1,10 @@
+## [1.0.2](https://github.com/JuroOravec/mini-extract-plugin/compare/v1.0.1...v1.0.2) (2020-05-07)
+
+
+### Bug Fixes
+
+* **typing:** fix typing 2nd attempt ([e07acc0](https://github.com/JuroOravec/mini-extract-plugin/commit/e07acc05c9934e0fe47e2b827506b41e9e604959))
+
 ## [1.0.1](https://github.com/JuroOravec/mini-extract-plugin/compare/v1.0.0...v1.0.1) (2020-05-07)
 
 
