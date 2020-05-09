@@ -64,7 +64,7 @@ Name | Type |
 
 • **_hookID**: *5*
 
-*Defined in [src/types/hooks-definition.ts:65](https://github.com/JuroOravec/mini-extract-plugin/blob/b97da5f/src/types/hooks-definition.ts#L65)*
+*Defined in [src/types/hooks-definition.ts:65](https://github.com/JuroOravec/mini-extract-plugin/blob/63bec1c/src/types/hooks-definition.ts#L65)*
 
 ___
 

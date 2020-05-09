@@ -21,7 +21,7 @@ Interface for the Hash object used in Webpack.
 
 ▸ **digest**(`encoding`: string): *string*
 
-*Defined in [src/types/webpack.ts:29](https://github.com/JuroOravec/mini-extract-plugin/blob/b97da5f/src/types/webpack.ts#L29)*
+*Defined in [src/types/webpack.ts:29](https://github.com/JuroOravec/mini-extract-plugin/blob/63bec1c/src/types/webpack.ts#L29)*
 
 **Parameters:**
 
@@ -37,7 +37,7 @@ ___
 
 ▸ **update**(`data`: string | Buffer, `inputEncoding?`: undefined | string): *this*
 
-*Defined in [src/types/webpack.ts:28](https://github.com/JuroOravec/mini-extract-plugin/blob/b97da5f/src/types/webpack.ts#L28)*
+*Defined in [src/types/webpack.ts:28](https://github.com/JuroOravec/mini-extract-plugin/blob/63bec1c/src/types/webpack.ts#L28)*
 
 **Parameters:**
 
