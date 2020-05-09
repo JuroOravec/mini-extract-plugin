@@ -67,6 +67,12 @@ export default function pluginFactory(classOptions: Required<ClassOptions>) {
 
       this.hooks = hooks.create();
       hooks.tapMany(pluginName, this.hooks, hookOverrides);
+
+      hooks.callTap({
+        name: 'initialize',
+        hooks: this.hooks,
+        args: [this, options, undefined],
+      });
     }
 
     apply(this: MiniExtractPlugin, compiler: webpack.Compiler) {
