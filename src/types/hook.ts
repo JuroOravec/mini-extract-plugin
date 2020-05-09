@@ -2,7 +2,7 @@ import type tapable from 'tapable';
 
 import { definitions, hooksFromDefinitions } from '../lib/hooks-definitions';
 import type { FirstNRequiredVariadicTuple, AnyFunc, OmitType } from './util';
-import {
+import type {
   HookDefinitions,
   HookDefinition,
   AsyncSeriesWaterfallHookClass,
