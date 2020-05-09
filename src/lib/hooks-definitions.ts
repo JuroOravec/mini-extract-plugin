@@ -18,6 +18,7 @@ import type {
   RenderContext,
 } from '../types/context';
 import type { Module, RenderManifestEntry } from '../types/webpack';
+import type { MiniExtractPlugin } from '../types/subclassing';
 import { castTuple, castStrLit } from '../types/helper';
 import {
   castHookDefinitions,
@@ -28,6 +29,21 @@ import {
 } from '../types/hooks-definition';
 
 export const definitions = castHookDefinitions({
+  initialize: {
+    hook: SyncHook as SyncHookClass,
+    args: castTuple(
+      {
+        name: castStrLit('instance'),
+        type: {} as MiniExtractPlugin,
+      },
+      {
+        name: castStrLit('options'),
+        type: {} as object,
+      },
+    ),
+    return: { name: null, type: undefined as void },
+  },
+
   compiler: {
     hook: SyncHook as SyncHookClass,
     args: castTuple({

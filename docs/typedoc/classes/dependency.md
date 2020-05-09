@@ -68,9 +68,9 @@ Defined in node_modules/@types/webpack/index.d.ts:966
 
 *Inherited from [DependencyBase](../interfaces/dependencybase.md).[content](../interfaces/dependencybase.md#content)*
 
-*Defined in [src/types/base.ts:22](https://github.com/JuroOravec/mini-extract-plugin/blob/b97da5f/src/types/base.ts#L22)*
+*Defined in [src/types/base.ts:22](https://github.com/JuroOravec/mini-extract-plugin/blob/63bec1c/src/types/base.ts#L22)*
 
-*Defined in [src/models/dependency.ts:18](https://github.com/JuroOravec/mini-extract-plugin/blob/b97da5f/src/models/dependency.ts#L18)*
+*Defined in [src/models/dependency.ts:18](https://github.com/JuroOravec/mini-extract-plugin/blob/63bec1c/src/models/dependency.ts#L18)*
 
 ___
 
@@ -80,9 +80,9 @@ ___
 
 *Inherited from [DependencyBase](../interfaces/dependencybase.md).[context](../interfaces/dependencybase.md#context)*
 
-*Defined in [src/types/base.ts:21](https://github.com/JuroOravec/mini-extract-plugin/blob/b97da5f/src/types/base.ts#L21)*
+*Defined in [src/types/base.ts:21](https://github.com/JuroOravec/mini-extract-plugin/blob/63bec1c/src/types/base.ts#L21)*
 
-*Defined in [src/models/dependency.ts:17](https://github.com/JuroOravec/mini-extract-plugin/blob/b97da5f/src/models/dependency.ts#L17)*
+*Defined in [src/models/dependency.ts:17](https://github.com/JuroOravec/mini-extract-plugin/blob/63bec1c/src/models/dependency.ts#L17)*
 
 ___
 
@@ -92,9 +92,9 @@ ___
 
 *Inherited from [DependencyBase](../interfaces/dependencybase.md).[identifier](../interfaces/dependencybase.md#identifier)*
 
-*Defined in [src/types/base.ts:20](https://github.com/JuroOravec/mini-extract-plugin/blob/b97da5f/src/types/base.ts#L20)*
+*Defined in [src/types/base.ts:20](https://github.com/JuroOravec/mini-extract-plugin/blob/63bec1c/src/types/base.ts#L20)*
 
-*Defined in [src/models/dependency.ts:16](https://github.com/JuroOravec/mini-extract-plugin/blob/b97da5f/src/models/dependency.ts#L16)*
+*Defined in [src/models/dependency.ts:16](https://github.com/JuroOravec/mini-extract-plugin/blob/63bec1c/src/models/dependency.ts#L16)*
 
 ___
 
@@ -102,9 +102,9 @@ ___
 
 • **identifierIndex**: *IDependency["identifierIndex"]*
 
-*Defined in [src/types/subclassing.ts:23](https://github.com/JuroOravec/mini-extract-plugin/blob/b97da5f/src/types/subclassing.ts#L23)*
+*Defined in [src/types/subclassing.ts:23](https://github.com/JuroOravec/mini-extract-plugin/blob/63bec1c/src/types/subclassing.ts#L23)*
 
-*Defined in [src/models/dependency.ts:19](https://github.com/JuroOravec/mini-extract-plugin/blob/b97da5f/src/models/dependency.ts#L19)*
+*Defined in [src/models/dependency.ts:19](https://github.com/JuroOravec/mini-extract-plugin/blob/63bec1c/src/models/dependency.ts#L19)*
 
 ___
 
@@ -114,9 +114,9 @@ ___
 
 *Inherited from [DependencyBase](../interfaces/dependencybase.md).[miniExtractType](../interfaces/dependencybase.md#miniextracttype)*
 
-*Defined in [src/types/base.ts:18](https://github.com/JuroOravec/mini-extract-plugin/blob/b97da5f/src/types/base.ts#L18)*
+*Defined in [src/types/base.ts:18](https://github.com/JuroOravec/mini-extract-plugin/blob/63bec1c/src/types/base.ts#L18)*
 
-*Defined in [src/models/dependency.ts:21](https://github.com/JuroOravec/mini-extract-plugin/blob/b97da5f/src/models/dependency.ts#L21)*
+*Defined in [src/models/dependency.ts:21](https://github.com/JuroOravec/mini-extract-plugin/blob/63bec1c/src/models/dependency.ts#L21)*
 
 ___
 
@@ -126,9 +126,9 @@ ___
 
 *Inherited from [DependencyBase](../interfaces/dependencybase.md).[moduleType](../interfaces/dependencybase.md#moduletype)*
 
-*Defined in [src/types/base.ts:19](https://github.com/JuroOravec/mini-extract-plugin/blob/b97da5f/src/types/base.ts#L19)*
+*Defined in [src/types/base.ts:19](https://github.com/JuroOravec/mini-extract-plugin/blob/63bec1c/src/types/base.ts#L19)*
 
-*Defined in [src/models/dependency.ts:20](https://github.com/JuroOravec/mini-extract-plugin/blob/b97da5f/src/models/dependency.ts#L20)*
+*Defined in [src/models/dependency.ts:20](https://github.com/JuroOravec/mini-extract-plugin/blob/63bec1c/src/models/dependency.ts#L20)*
 
 ## Methods
 

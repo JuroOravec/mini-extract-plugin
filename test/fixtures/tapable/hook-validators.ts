@@ -203,6 +203,12 @@ function validateOutputOptions(outputOptions: webpack.Output) {
  * functions
  */
 const validators: Taps = {
+  initialize: (instance, options) => {
+    validatePlugin(instance);
+    expect(options).toBeDefined();
+    expect(typeof options).toBe('object');
+  },
+
   dependency: (context, dependency) => {
     validatePitchCompilationContext(context);
     validateOutputOptions(context.childCompiler.options.output!);
