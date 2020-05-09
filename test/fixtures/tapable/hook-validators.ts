@@ -217,6 +217,13 @@ const validators: Taps = {
     return undefined as any;
   },
 
+  extracted: (context, source) => {
+    validatePitchCompilationContext(context);
+    validateDefinedString(source);
+
+    return undefined as any;
+  },
+
   source: (context) => {
     validatePitchCompilationContext(context);
     validateOutputOptions(context.childCompiler.options.output!);

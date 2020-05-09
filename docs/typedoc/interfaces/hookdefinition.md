@@ -24,7 +24,7 @@
 
 • **args**: *[HookDefinitionArg](hookdefinitionarg.md)[]*
 
-*Defined in [src/types/hooks-definition.ts:135](https://github.com/JuroOravec/mini-extract-plugin/blob/4b5288b/src/types/hooks-definition.ts#L135)*
+*Defined in [src/types/hooks-definition.ts:135](https://github.com/JuroOravec/mini-extract-plugin/blob/b97da5f/src/types/hooks-definition.ts#L135)*
 
 ___
 
@@ -32,7 +32,7 @@ ___
 
 • **hook**: *H*
 
-*Defined in [src/types/hooks-definition.ts:134](https://github.com/JuroOravec/mini-extract-plugin/blob/4b5288b/src/types/hooks-definition.ts#L134)*
+*Defined in [src/types/hooks-definition.ts:134](https://github.com/JuroOravec/mini-extract-plugin/blob/b97da5f/src/types/hooks-definition.ts#L134)*
 
 ___
 
@@ -40,4 +40,4 @@ ___
 
 • **return**: *[HookDefinitionReturn](hookdefinitionreturn.md)*
 
-*Defined in [src/types/hooks-definition.ts:136](https://github.com/JuroOravec/mini-extract-plugin/blob/4b5288b/src/types/hooks-definition.ts#L136)*
+*Defined in [src/types/hooks-definition.ts:136](https://github.com/JuroOravec/mini-extract-plugin/blob/b97da5f/src/types/hooks-definition.ts#L136)*

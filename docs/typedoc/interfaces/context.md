@@ -26,7 +26,7 @@
 
 • **classOptions**: *MiniExtractPlugin["classOptions"]*
 
-*Defined in [src/types/context.ts:15](https://github.com/JuroOravec/mini-extract-plugin/blob/4b5288b/src/types/context.ts#L15)*
+*Defined in [src/types/context.ts:15](https://github.com/JuroOravec/mini-extract-plugin/blob/b97da5f/src/types/context.ts#L15)*
 
 ___
 
@@ -34,7 +34,7 @@ ___
 
 • **options**: *[ConstructorOptions](../README.md#constructoroptions)*
 
-*Defined in [src/types/context.ts:16](https://github.com/JuroOravec/mini-extract-plugin/blob/4b5288b/src/types/context.ts#L16)*
+*Defined in [src/types/context.ts:16](https://github.com/JuroOravec/mini-extract-plugin/blob/b97da5f/src/types/context.ts#L16)*
 
 ___
 
@@ -42,4 +42,4 @@ ___
 
 • **plugin**: *[MiniExtractPlugin](miniextractplugin.md)*
 
-*Defined in [src/types/context.ts:14](https://github.com/JuroOravec/mini-extract-plugin/blob/4b5288b/src/types/context.ts#L14)*
+*Defined in [src/types/context.ts:14](https://github.com/JuroOravec/mini-extract-plugin/blob/b97da5f/src/types/context.ts#L14)*

@@ -133,6 +133,7 @@ const hookFunctions: Partial<types.hook.Taps> = {
     const result = new ConcatSource(source);
     return result;
   },
+  extracted: (context, source) => source,
 };
 
 export default hookFunctions;

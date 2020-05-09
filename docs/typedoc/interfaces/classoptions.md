@@ -29,7 +29,7 @@
 
 • **className**? : *undefined | string*
 
-*Defined in [src/types/subclassing.ts:53](https://github.com/JuroOravec/mini-extract-plugin/blob/4b5288b/src/types/subclassing.ts#L53)*
+*Defined in [src/types/subclassing.ts:53](https://github.com/JuroOravec/mini-extract-plugin/blob/b97da5f/src/types/subclassing.ts#L53)*
 
 ___
 
@@ -37,7 +37,7 @@ ___
 
 • **dependencyClass**? : *[DependencyClass](../README.md#dependencyclass)*
 
-*Defined in [src/types/subclassing.ts:57](https://github.com/JuroOravec/mini-extract-plugin/blob/4b5288b/src/types/subclassing.ts#L57)*
+*Defined in [src/types/subclassing.ts:57](https://github.com/JuroOravec/mini-extract-plugin/blob/b97da5f/src/types/subclassing.ts#L57)*
 
 ___
 
@@ -45,7 +45,7 @@ ___
 
 • **dependencyTemplateClass**? : *[DependencyTemplateClass](../README.md#dependencytemplateclass)*
 
-*Defined in [src/types/subclassing.ts:60](https://github.com/JuroOravec/mini-extract-plugin/blob/4b5288b/src/types/subclassing.ts#L60)*
+*Defined in [src/types/subclassing.ts:60](https://github.com/JuroOravec/mini-extract-plugin/blob/b97da5f/src/types/subclassing.ts#L60)*
 
 ___
 
@@ -53,7 +53,7 @@ ___
 
 • **displayName**? : *undefined | string*
 
-*Defined in [src/types/subclassing.ts:52](https://github.com/JuroOravec/mini-extract-plugin/blob/4b5288b/src/types/subclassing.ts#L52)*
+*Defined in [src/types/subclassing.ts:52](https://github.com/JuroOravec/mini-extract-plugin/blob/b97da5f/src/types/subclassing.ts#L52)*
 
 ___
 
@@ -61,7 +61,7 @@ ___
 
 • **hooks**? : *[Overrides](../README.md#overrides)*
 
-*Defined in [src/types/subclassing.ts:54](https://github.com/JuroOravec/mini-extract-plugin/blob/4b5288b/src/types/subclassing.ts#L54)*
+*Defined in [src/types/subclassing.ts:54](https://github.com/JuroOravec/mini-extract-plugin/blob/b97da5f/src/types/subclassing.ts#L54)*
 
 ___
 
@@ -69,7 +69,7 @@ ___
 
 • **loaderOptionsSchema**? : *any*
 
-*Defined in [src/types/subclassing.ts:56](https://github.com/JuroOravec/mini-extract-plugin/blob/4b5288b/src/types/subclassing.ts#L56)*
+*Defined in [src/types/subclassing.ts:56](https://github.com/JuroOravec/mini-extract-plugin/blob/b97da5f/src/types/subclassing.ts#L56)*
 
 ___
 
@@ -77,7 +77,7 @@ ___
 
 • **moduleClass**? : *[ModuleClass](../README.md#moduleclass)*
 
-*Defined in [src/types/subclassing.ts:59](https://github.com/JuroOravec/mini-extract-plugin/blob/4b5288b/src/types/subclassing.ts#L59)*
+*Defined in [src/types/subclassing.ts:59](https://github.com/JuroOravec/mini-extract-plugin/blob/b97da5f/src/types/subclassing.ts#L59)*
 
 ___
 
@@ -85,7 +85,7 @@ ___
 
 • **moduleFactoryClass**? : *[ModuleFactoryClass](../README.md#modulefactoryclass)*
 
-*Defined in [src/types/subclassing.ts:58](https://github.com/JuroOravec/mini-extract-plugin/blob/4b5288b/src/types/subclassing.ts#L58)*
+*Defined in [src/types/subclassing.ts:58](https://github.com/JuroOravec/mini-extract-plugin/blob/b97da5f/src/types/subclassing.ts#L58)*
 
 ___
 
@@ -93,7 +93,7 @@ ___
 
 • **moduleType**? : *undefined | string*
 
-*Defined in [src/types/subclassing.ts:50](https://github.com/JuroOravec/mini-extract-plugin/blob/4b5288b/src/types/subclassing.ts#L50)*
+*Defined in [src/types/subclassing.ts:50](https://github.com/JuroOravec/mini-extract-plugin/blob/b97da5f/src/types/subclassing.ts#L50)*
 
 ___
 
@@ -101,7 +101,7 @@ ___
 
 • **pluginName**? : *undefined | string*
 
-*Defined in [src/types/subclassing.ts:51](https://github.com/JuroOravec/mini-extract-plugin/blob/4b5288b/src/types/subclassing.ts#L51)*
+*Defined in [src/types/subclassing.ts:51](https://github.com/JuroOravec/mini-extract-plugin/blob/b97da5f/src/types/subclassing.ts#L51)*
 
 ___
 
@@ -109,7 +109,7 @@ ___
 
 • **pluginOptionsSchema**? : *any*
 
-*Defined in [src/types/subclassing.ts:55](https://github.com/JuroOravec/mini-extract-plugin/blob/4b5288b/src/types/subclassing.ts#L55)*
+*Defined in [src/types/subclassing.ts:55](https://github.com/JuroOravec/mini-extract-plugin/blob/b97da5f/src/types/subclassing.ts#L55)*
 
 ___
 
@@ -117,4 +117,4 @@ ___
 
 • **type**: *string*
 
-*Defined in [src/types/subclassing.ts:49](https://github.com/JuroOravec/mini-extract-plugin/blob/4b5288b/src/types/subclassing.ts#L49)*
+*Defined in [src/types/subclassing.ts:49](https://github.com/JuroOravec/mini-extract-plugin/blob/b97da5f/src/types/subclassing.ts#L49)*

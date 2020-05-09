@@ -242,6 +242,21 @@ export const definitions = castHookDefinitions({
     ),
     return: { name: null, type: [] as DependencyOptions[] },
   },
+
+  extracted: {
+    hook: SyncWaterfallHook as SyncWaterfallHookClass,
+    args: castTuple(
+      {
+        name: castStrLit('pitchCompilationContext'),
+        type: {} as PitchCompilationContext,
+      },
+      {
+        name: castStrLit('remainingSource'),
+        type: {} as string,
+      },
+    ),
+    return: { name: null, type: '' as string },
+  },
 });
 
 /**

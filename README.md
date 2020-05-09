@@ -55,10 +55,11 @@ awesome when someone starts to use it.
 - State its goals/what problem(s) it solves.
 -->
 
-- Exposes 16 hooks that enable you to:
+- Exposes 17 hooks that enable you to:
 
   - Override how the modules are parsed when passed to the loader
   - Override how the modules are merged into a common file
+  - Override what content is returned instead of the content was extracted.
   - Define if and how the modules should should be split
   - Hook into the compiler / compilation.
 
@@ -393,6 +394,7 @@ Hooks are called in following order:
   - [`source`](#source)
   - [`childCompilation`](#childCompilation)
   - [`dependency`](#dependency)
+  - [`extracted`](#extracted)
 - _If non-entrypoint chunks are emitted: Render and merge chunks' modules_
   - [`beforeRenderChunk`](#beforeRenderChunk)
   - [`renderChunk`](#renderChunk)
@@ -646,6 +648,29 @@ The available hooks in alphabetical order are
 | Returns                         | Description                                                                                                                                                                                                       |
 | ------------------------------- | ----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
 | [`DependencyOptions`](#options) | List of options objects to be passed to the [`dependencyClass`](#options) to create Webpack's [Dependencies](https://github.com/webpack/webpack/blob/a4ad311b909d9a4d68069b3c2283b80613eaa5e7/lib/Dependency.js). |
+
+#### extracted
+
+- Signature: `(`[`PitchCompilationContext`](#PitchCompilationContext)`, string) => string`
+
+- Hook: [`SyncWaterfallHook`](https://github.com/webpack/tapable)
+
+- Modify the source string of the module from which content has been extracted before it is passed to Webpack.
+
+  Use this hook if you need to modify the string so it can conforms to a loader
+  / parser that it will be passed to next.
+
+- Default: Inserts comment `// extracted by` _`plugin-name`_ plus HMR compat.
+
+| Argument                                              | Description                                                                                                                                                                                                                                                                            |
+| ----------------------------------------------------- | -------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| [`PitchCompilationContext`](#PitchCompilationContext) | Context available in loader's [`pitch`](https://webpack.js.org/api/loaders/#pitching-loader) function on child Compiler's [`thisCompilation`](https://webpack.js.org/api/compiler-hooks/#thiscompilation) hook. See [`PitchCompilationContext`](#PitchCompilationContext) for details. |
+| `remainingSource`                                     | String that will be returned to Webpack as the source of the module from which data has been extracted.                                                                                                                                                                                |
+|                                                       |
+
+| Returns  | Description                                                                                             |
+| -------- | ------------------------------------------------------------------------------------------------------- |
+| `string` | String that will be returned to Webpack as the source of the module from which data has been extracted. |
 
 #### merge
 
@@ -920,7 +945,7 @@ Contributions, issues and feature requests are welcome! Thank you ❤️
 Feel free to dive in! See [current issues](https://github.com/JuroOravec/mini-extract-plugin/issues),
 [open an issue](https://github.com/JuroOravec/mini-extract-plugin/issues/new), or [submit PRs](https://github.com/JuroOravec/mini-extract-plugin/compare).
 
-How to report bugs, feature requests, and how to contribute and what conventions we use is all described in the [contributing guide](https://github.com/<username>/<repo>/tree/master/docs/CONTRIBUTING.md).
+How to report bugs, feature requests, and how to contribute and what conventions we use is all described in the [contributing guide](https://github.com/JuroOravec/mini-extract-plugin/tree/master/docs/CONTRIBUTING.md).
 
 When contributing we follow the
 [Contributor Covenant](https://contributor-covenant.org/version/1/3/0/).
@@ -977,7 +1002,9 @@ Give a ⭐️if this project helped you!
 
 ## 🔗 Related Projects
 
-This project is based on [mini-css-extract-plugin](https://github.com/webpack-contrib/mini-css-extract-plugin) and the amazing work of [Tobias Koppers](https://github.com/sokra) (@sokra) and other [Webpack maintainers](https://github.com/orgs/webpack/people).
+This project is based on [mini-css-extract-plugin](https://github.com/webpack-contrib/mini-css-extract-plugin)
+and the amazing work of [Tobias Koppers](https://github.com/sokra) (@sokra)
+and other [Webpack maintainers](https://github.com/orgs/webpack/people).
 
 ## 👨‍🔧 Maintainers
 

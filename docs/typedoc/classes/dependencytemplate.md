@@ -22,6 +22,6 @@
 
 ▸ **apply**(): *void*
 
-*Defined in [src/models/dependency-template.ts:12](https://github.com/JuroOravec/mini-extract-plugin/blob/4b5288b/src/models/dependency-template.ts#L12)*
+*Defined in [src/models/dependency-template.ts:12](https://github.com/JuroOravec/mini-extract-plugin/blob/b97da5f/src/models/dependency-template.ts#L12)*
 
 **Returns:** *void*
