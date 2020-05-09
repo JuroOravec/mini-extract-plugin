@@ -286,6 +286,13 @@ export default async function pitch(
           })
         : result;
 
+      resultSource = callTap({
+        name: 'extracted',
+        hooks: this.hooks,
+        args: [pitchCompilationContext, resultSource, undefined],
+        default: resultSource,
+      });
+
       debug('Done pitch.childCompiler.runAsChild');
 
       debug('Calling loaderContext async callback in pitch');
