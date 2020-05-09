@@ -28,7 +28,7 @@
 
 *Inherited from [Context](context.md).[classOptions](context.md#classoptions)*
 
-*Defined in [src/types/context.ts:15](https://github.com/JuroOravec/mini-extract-plugin/blob/63bec1c/src/types/context.ts#L15)*
+*Defined in [src/types/context.ts:15](https://github.com/JuroOravec/mini-extract-plugin/blob/9e394f3/src/types/context.ts#L15)*
 
 ___
 
@@ -38,7 +38,7 @@ ___
 
 *Inherited from [CompilationContext](compilationcontext.md).[compilation](compilationcontext.md#compilation)*
 
-*Defined in [src/types/context.ts:24](https://github.com/JuroOravec/mini-extract-plugin/blob/63bec1c/src/types/context.ts#L24)*
+*Defined in [src/types/context.ts:24](https://github.com/JuroOravec/mini-extract-plugin/blob/9e394f3/src/types/context.ts#L24)*
 
 ___
 
@@ -48,7 +48,7 @@ ___
 
 *Inherited from [CompilerContext](compilercontext.md).[compiler](compilercontext.md#compiler)*
 
-*Defined in [src/types/context.ts:20](https://github.com/JuroOravec/mini-extract-plugin/blob/63bec1c/src/types/context.ts#L20)*
+*Defined in [src/types/context.ts:20](https://github.com/JuroOravec/mini-extract-plugin/blob/9e394f3/src/types/context.ts#L20)*
 
 ___
 
@@ -58,7 +58,7 @@ ___
 
 *Inherited from [Context](context.md).[options](context.md#options)*
 
-*Defined in [src/types/context.ts:16](https://github.com/JuroOravec/mini-extract-plugin/blob/63bec1c/src/types/context.ts#L16)*
+*Defined in [src/types/context.ts:16](https://github.com/JuroOravec/mini-extract-plugin/blob/9e394f3/src/types/context.ts#L16)*
 
 ___
 
@@ -68,7 +68,7 @@ ___
 
 *Inherited from [Context](context.md).[plugin](context.md#plugin)*
 
-*Defined in [src/types/context.ts:14](https://github.com/JuroOravec/mini-extract-plugin/blob/63bec1c/src/types/context.ts#L14)*
+*Defined in [src/types/context.ts:14](https://github.com/JuroOravec/mini-extract-plugin/blob/9e394f3/src/types/context.ts#L14)*
 
 ___
 
@@ -76,7 +76,7 @@ ___
 
 • **renderEntries**: *[RenderManifestEntry](../README.md#rendermanifestentry)[]*
 
-*Defined in [src/types/context.ts:28](https://github.com/JuroOravec/mini-extract-plugin/blob/63bec1c/src/types/context.ts#L28)*
+*Defined in [src/types/context.ts:28](https://github.com/JuroOravec/mini-extract-plugin/blob/9e394f3/src/types/context.ts#L28)*
 
 ___
 
@@ -84,4 +84,4 @@ ___
 
 • **renderOptions**: *[RenderManifestOptions](../README.md#rendermanifestoptions)*
 
-*Defined in [src/types/context.ts:29](https://github.com/JuroOravec/mini-extract-plugin/blob/63bec1c/src/types/context.ts#L29)*
+*Defined in [src/types/context.ts:29](https://github.com/JuroOravec/mini-extract-plugin/blob/9e394f3/src/types/context.ts#L29)*

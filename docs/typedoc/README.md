@@ -25,6 +25,7 @@
 * [Context](interfaces/context.md)
 * [DependencyBase](interfaces/dependencybase.md)
 * [DependencyOptions](interfaces/dependencyoptions.md)
+* [GetModuleFilenameOptions](interfaces/getmodulefilenameoptions.md)
 * [Hash](interfaces/hash.md)
 * [HookDefinition](interfaces/hookdefinition.md)
 * [HookDefinitionArg](interfaces/hookdefinitionarg.md)
@@ -43,6 +44,7 @@
 * [SyncHook](interfaces/synchook.md)
 * [SyncLoopHook](interfaces/syncloophook.md)
 * [SyncWaterfallHook](interfaces/syncwaterfallhook.md)
+* [TemplateOptions](interfaces/templateoptions.md)
 
 ### Type aliases
 
@@ -73,7 +75,6 @@
 * [FirstNRequiredTuple](README.md#firstnrequiredtuple)
 * [FirstNRequiredVariadicTuple](README.md#firstnrequiredvariadictuple)
 * [FlagExcludedType](README.md#flagexcludedtype)
-* [GetModuleFilenameOptions](README.md#getmodulefilenameoptions)
 * [HookClass](README.md#hookclass)
 * [HookDefinitions](README.md#hookdefinitions)
 * [HookInstanceFromClass](README.md#hookinstancefromclass)
@@ -84,6 +85,8 @@
 * [ModuleFactoryClass](README.md#modulefactoryclass)
 * [ModuleFactoryCreateArgs](README.md#modulefactorycreateargs)
 * [ModuleFactoryData](README.md#modulefactorydata)
+* [ModuleFilename](README.md#modulefilename)
+* [ModuleFilenameFunction](README.md#modulefilenamefunction)
 * [ModuleGraph](README.md#modulegraph)
 * [Omit](README.md#omit)
 * [OmitType](README.md#omittype)
@@ -153,7 +156,7 @@
 
 Ƭ **ActiveAsyncHookNames**: *keyof ActiveAsyncHooks*
 
-*Defined in [src/types/hook.ts:103](https://github.com/JuroOravec/mini-extract-plugin/blob/63bec1c/src/types/hook.ts#L103)*
+*Defined in [src/types/hook.ts:103](https://github.com/JuroOravec/mini-extract-plugin/blob/9e394f3/src/types/hook.ts#L103)*
 
 Union of the names of the defined async hooks.
 
@@ -163,7 +166,7 @@ ___
 
 Ƭ **ActiveAsyncHooks**: *[OmitType](README.md#omittype)‹[ActiveHooks](README.md#activehooks), [SyncHookType](README.md#synchooktype)›*
 
-*Defined in [src/types/hook.ts:99](https://github.com/JuroOravec/mini-extract-plugin/blob/63bec1c/src/types/hook.ts#L99)*
+*Defined in [src/types/hook.ts:99](https://github.com/JuroOravec/mini-extract-plugin/blob/9e394f3/src/types/hook.ts#L99)*
 
 Async hooks of ActiveHooks
 
@@ -173,7 +176,7 @@ ___
 
 Ƭ **ActiveHookDefinitions**: *typeof definitions*
 
-*Defined in [src/types/hook.ts:83](https://github.com/JuroOravec/mini-extract-plugin/blob/63bec1c/src/types/hook.ts#L83)*
+*Defined in [src/types/hook.ts:83](https://github.com/JuroOravec/mini-extract-plugin/blob/9e394f3/src/types/hook.ts#L83)*
 
 ___
 
@@ -181,7 +184,7 @@ ___
 
 Ƭ **ActiveHookNames**: *keyof ActiveHooks*
 
-*Defined in [src/types/hook.ts:94](https://github.com/JuroOravec/mini-extract-plugin/blob/63bec1c/src/types/hook.ts#L94)*
+*Defined in [src/types/hook.ts:94](https://github.com/JuroOravec/mini-extract-plugin/blob/9e394f3/src/types/hook.ts#L94)*
 
 Union of the names of the defined hooks.
 
@@ -191,7 +194,7 @@ ___
 
 Ƭ **ActiveHooks**: *typeof hooks*
 
-*Defined in [src/types/hook.ts:90](https://github.com/JuroOravec/mini-extract-plugin/blob/63bec1c/src/types/hook.ts#L90)*
+*Defined in [src/types/hook.ts:90](https://github.com/JuroOravec/mini-extract-plugin/blob/9e394f3/src/types/hook.ts#L90)*
 
 Hooks type that infers to the defined hooks.
 
@@ -201,7 +204,7 @@ ___
 
 Ƭ **ActiveSyncHookNames**: *keyof ActiveSyncHooks*
 
-*Defined in [src/types/hook.ts:112](https://github.com/JuroOravec/mini-extract-plugin/blob/63bec1c/src/types/hook.ts#L112)*
+*Defined in [src/types/hook.ts:112](https://github.com/JuroOravec/mini-extract-plugin/blob/9e394f3/src/types/hook.ts#L112)*
 
 Union of the names of the defined sync hooks.
 
@@ -211,7 +214,7 @@ ___
 
 Ƭ **ActiveSyncHooks**: *[OmitType](README.md#omittype)‹[ActiveHooks](README.md#activehooks), [AsyncHookType](README.md#asynchooktype)›*
 
-*Defined in [src/types/hook.ts:108](https://github.com/JuroOravec/mini-extract-plugin/blob/63bec1c/src/types/hook.ts#L108)*
+*Defined in [src/types/hook.ts:108](https://github.com/JuroOravec/mini-extract-plugin/blob/9e394f3/src/types/hook.ts#L108)*
 
 Sync hooks of ActiveHooks
 
@@ -221,7 +224,7 @@ ___
 
 Ƭ **AllowedNames**: *FlagExcludedType<Base, Type>[keyof Base]*
 
-*Defined in [src/types/util.ts:28](https://github.com/JuroOravec/mini-extract-plugin/blob/63bec1c/src/types/util.ts#L28)*
+*Defined in [src/types/util.ts:28](https://github.com/JuroOravec/mini-extract-plugin/blob/9e394f3/src/types/util.ts#L28)*
 
 ___
 
@@ -229,7 +232,7 @@ ___
 
 Ƭ **AnyFunc**: *function*
 
-*Defined in [src/types/util.ts:6](https://github.com/JuroOravec/mini-extract-plugin/blob/63bec1c/src/types/util.ts#L6)*
+*Defined in [src/types/util.ts:6](https://github.com/JuroOravec/mini-extract-plugin/blob/9e394f3/src/types/util.ts#L6)*
 
 Generalized function type that can be used anywhere where signature is not
 important. Unlike Function class, this type is compatible with typed
@@ -251,7 +254,7 @@ ___
 
 Ƭ **AsyncHookType**: *[AsyncParallelBailHook](interfaces/asyncparallelbailhook.md) | [AsyncParallelHook](interfaces/asyncparallelhook.md) | [AsyncSeriesBailHook](interfaces/asyncseriesbailhook.md) | [AsyncSeriesHook](interfaces/asyncserieshook.md) | [AsyncSeriesWaterfallHook](interfaces/asyncserieswaterfallhook.md)*
 
-*Defined in [src/types/hook.ts:61](https://github.com/JuroOravec/mini-extract-plugin/blob/63bec1c/src/types/hook.ts#L61)*
+*Defined in [src/types/hook.ts:61](https://github.com/JuroOravec/mini-extract-plugin/blob/9e394f3/src/types/hook.ts#L61)*
 
 ___
 
@@ -259,7 +262,7 @@ ___
 
 Ƭ **AsyncParallelBailHookClass**: *[Constructor](README.md#constructor)‹[AsyncParallelBailHook](interfaces/asyncparallelbailhook.md)‹T1, T2, T3, THookResult››*
 
-*Defined in [src/types/hooks-definition.ts:79](https://github.com/JuroOravec/mini-extract-plugin/blob/63bec1c/src/types/hooks-definition.ts#L79)*
+*Defined in [src/types/hooks-definition.ts:79](https://github.com/JuroOravec/mini-extract-plugin/blob/9e394f3/src/types/hooks-definition.ts#L79)*
 
 ___
 
@@ -267,7 +270,7 @@ ___
 
 Ƭ **AsyncParallelHookClass**: *[Constructor](README.md#constructor)‹[AsyncParallelHook](interfaces/asyncparallelhook.md)‹T1, T2, T3››*
 
-*Defined in [src/types/hooks-definition.ts:67](https://github.com/JuroOravec/mini-extract-plugin/blob/63bec1c/src/types/hooks-definition.ts#L67)*
+*Defined in [src/types/hooks-definition.ts:67](https://github.com/JuroOravec/mini-extract-plugin/blob/9e394f3/src/types/hooks-definition.ts#L67)*
 
 ___
 
@@ -275,7 +278,7 @@ ___
 
 Ƭ **AsyncSeriesBailHookClass**: *[Constructor](README.md#constructor)‹[AsyncSeriesBailHook](interfaces/asyncseriesbailhook.md)‹T1, T2, T3, THookResult››*
 
-*Defined in [src/types/hooks-definition.ts:102](https://github.com/JuroOravec/mini-extract-plugin/blob/63bec1c/src/types/hooks-definition.ts#L102)*
+*Defined in [src/types/hooks-definition.ts:102](https://github.com/JuroOravec/mini-extract-plugin/blob/9e394f3/src/types/hooks-definition.ts#L102)*
 
 ___
 
@@ -283,7 +286,7 @@ ___
 
 Ƭ **AsyncSeriesHookClass**: *[Constructor](README.md#constructor)‹[AsyncSeriesHook](interfaces/asyncserieshook.md)‹T1, T2, T3››*
 
-*Defined in [src/types/hooks-definition.ts:90](https://github.com/JuroOravec/mini-extract-plugin/blob/63bec1c/src/types/hooks-definition.ts#L90)*
+*Defined in [src/types/hooks-definition.ts:90](https://github.com/JuroOravec/mini-extract-plugin/blob/9e394f3/src/types/hooks-definition.ts#L90)*
 
 ___
 
@@ -291,7 +294,7 @@ ___
 
 Ƭ **AsyncSeriesWaterfallHookClass**: *[Constructor](README.md#constructor)‹[AsyncSeriesWaterfallHook](interfaces/asyncserieswaterfallhook.md)‹T1, T2, T3››*
 
-*Defined in [src/types/hooks-definition.ts:113](https://github.com/JuroOravec/mini-extract-plugin/blob/63bec1c/src/types/hooks-definition.ts#L113)*
+*Defined in [src/types/hooks-definition.ts:113](https://github.com/JuroOravec/mini-extract-plugin/blob/9e394f3/src/types/hooks-definition.ts#L113)*
 
 ___
 
@@ -299,7 +302,7 @@ ___
 
 Ƭ **Callback**: *ModuleFactoryCreateArgs[1]*
 
-*Defined in [src/models/module-factory.ts:14](https://github.com/JuroOravec/mini-extract-plugin/blob/63bec1c/src/models/module-factory.ts#L14)*
+*Defined in [src/models/module-factory.ts:14](https://github.com/JuroOravec/mini-extract-plugin/blob/9e394f3/src/models/module-factory.ts#L14)*
 
 ___
 
@@ -307,7 +310,7 @@ ___
 
 Ƭ **ChunkGraph**: *any*
 
-*Defined in [src/types/webpack.ts:61](https://github.com/JuroOravec/mini-extract-plugin/blob/63bec1c/src/types/webpack.ts#L61)*
+*Defined in [src/types/webpack.ts:61](https://github.com/JuroOravec/mini-extract-plugin/blob/9e394f3/src/types/webpack.ts#L61)*
 
 ___
 
@@ -315,7 +318,7 @@ ___
 
 Ƭ **ChunkGroup**: *ChunkGroup & object*
 
-*Defined in [src/types/webpack.ts:43](https://github.com/JuroOravec/mini-extract-plugin/blob/63bec1c/src/types/webpack.ts#L43)*
+*Defined in [src/types/webpack.ts:43](https://github.com/JuroOravec/mini-extract-plugin/blob/9e394f3/src/types/webpack.ts#L43)*
 
 Interface for Webpack's ChunkGroup class with some overrides to match the
 ChunkGroup objects that are encountered in the extraction process.
@@ -326,7 +329,7 @@ ___
 
 Ƭ **CodeGenerationResult**: *any*
 
-*Defined in [src/types/webpack.ts:57](https://github.com/JuroOravec/mini-extract-plugin/blob/63bec1c/src/types/webpack.ts#L57)*
+*Defined in [src/types/webpack.ts:57](https://github.com/JuroOravec/mini-extract-plugin/blob/9e394f3/src/types/webpack.ts#L57)*
 
 ___
 
@@ -334,7 +337,7 @@ ___
 
 Ƭ **Collection**: *object*
 
-*Defined in [src/types/hook.ts:166](https://github.com/JuroOravec/mini-extract-plugin/blob/63bec1c/src/types/hook.ts#L166)*
+*Defined in [src/types/hook.ts:166](https://github.com/JuroOravec/mini-extract-plugin/blob/9e394f3/src/types/hook.ts#L166)*
 
 Collection of hooks. Object where key is hook name and value is a
 tapable.Hook instance
@@ -349,7 +352,7 @@ ___
 
 Ƭ **Constructor**: *object*
 
-*Defined in [src/types/util.ts:32](https://github.com/JuroOravec/mini-extract-plugin/blob/63bec1c/src/types/util.ts#L32)*
+*Defined in [src/types/util.ts:32](https://github.com/JuroOravec/mini-extract-plugin/blob/9e394f3/src/types/util.ts#L32)*
 
 #### Type declaration:
 
@@ -361,7 +364,7 @@ ___
 
 Ƭ **ConstructorOptions**: *object*
 
-*Defined in [src/types/subclassing.ts:63](https://github.com/JuroOravec/mini-extract-plugin/blob/63bec1c/src/types/subclassing.ts#L63)*
+*Defined in [src/types/subclassing.ts:64](https://github.com/JuroOravec/mini-extract-plugin/blob/9e394f3/src/types/subclassing.ts#L64)*
 
 #### Type declaration:
 
@@ -371,7 +374,7 @@ ___
 
 * **ignoreOrder**? : *undefined | false | true*
 
-* **moduleFilename**? : *string | Function*
+* **moduleFilename**? : *[ModuleFilename](README.md#modulefilename)*
 
 ___
 
@@ -379,7 +382,7 @@ ___
 
 Ƭ **DependencyClass**: *[Constructor](README.md#constructor)‹[Dependency](classes/dependency.md)› & object*
 
-*Defined in [src/types/subclassing.ts:26](https://github.com/JuroOravec/mini-extract-plugin/blob/63bec1c/src/types/subclassing.ts#L26)*
+*Defined in [src/types/subclassing.ts:27](https://github.com/JuroOravec/mini-extract-plugin/blob/9e394f3/src/types/subclassing.ts#L27)*
 
 ___
 
@@ -387,7 +390,7 @@ ___
 
 Ƭ **DependencyTemplateClass**: *[Constructor](README.md#constructor)‹DependencyTemplate› & typeof Tapable*
 
-*Defined in [src/types/subclassing.ts:17](https://github.com/JuroOravec/mini-extract-plugin/blob/63bec1c/src/types/subclassing.ts#L17)*
+*Defined in [src/types/subclassing.ts:18](https://github.com/JuroOravec/mini-extract-plugin/blob/9e394f3/src/types/subclassing.ts#L18)*
 
 ___
 
@@ -395,7 +398,7 @@ ___
 
 Ƭ **FirstNRequiredTuple**: *TL extends 1 ? [L extends 1 | 2 | 3 | 4 | 5 ? NonNullable<T[0]> : T[0]] : TL extends 2 ? [L extends 1 | 2 | 3 | 4 | 5 ? NonNullable<T[0]> : T[0], L extends 2 | 3 | 4 | 5 ? NonNullable<T[1]> : T[1]] : TL extends 3 ? [L extends 1 | 2 | 3 | 4 | 5 ? NonNullable<T[0]> : T[0], L extends 2 | 3 | 4 | 5 ? NonNullable<T[1]> : T[1], L extends 3 | 4 | 5 ? NonNullable<T[2]> : T[2]] : TL extends 4 ? [L extends 1 | 2 | 3 | 4 | 5 ? NonNullable<T[0]> : T[0], L extends 2 | 3 | 4 | 5 ? NonNullable<T[1]> : T[1], L extends 3 | 4 | 5 ? NonNullable<T[2]> : T[2], L extends 4 | 5 ? NonNullable<T[3]> : T[3]] : TL extends 5 ? [L extends 1 | 2 | 3 | 4 | 5 ? NonNullable<T[0]> : T[0], L extends 2 | 3 | 4 | 5 ? NonNullable<T[1]> : T[1], L extends 3 | 4 | 5 ? NonNullable<T[2]> : T[2], L extends 4 | 5 ? NonNullable<T[3]> : T[3], L extends 5 ? NonNullable<T[4]> : T[4]] : TL extends number ? L extends 1 ? [NonNullable<T[0]>, any] : L extends 2 ? [NonNullable<T[0]>, NonNullable<T[1]>, any] : L extends 3 ? [NonNullable<T[0]>, NonNullable<T[1]>, NonNullable<T[2]>, any] : L extends 4 ? [NonNullable<T[0]>, NonNullable<T[1]>, NonNullable<T[2]>, NonNullable<T[3]>, any] : L extends 5 ? [NonNullable<T[0]>, NonNullable<T[1]>, NonNullable<T[2]>, NonNullable<T[3]>, NonNullable<T[4]>, any] : never : never*
 
-*Defined in [src/types/util.ts:59](https://github.com/JuroOravec/mini-extract-plugin/blob/63bec1c/src/types/util.ts#L59)*
+*Defined in [src/types/util.ts:59](https://github.com/JuroOravec/mini-extract-plugin/blob/9e394f3/src/types/util.ts#L59)*
 
 ___
 
@@ -403,7 +406,7 @@ ___
 
 Ƭ **FirstNRequiredVariadicTuple**: *L extends 1 ? [NonNullable<T[0]>, any] : L extends 2 ? [NonNullable<T[0]>, NonNullable<T[1]>, any] : L extends 3 ? [NonNullable<T[0]>, NonNullable<T[1]>, NonNullable<T[2]>, any] : L extends 4 ? [NonNullable<T[0]>, NonNullable<T[1]>, NonNullable<T[2]>, NonNullable<T[3]>, any] : L extends 5 ? [NonNullable<T[0]>, NonNullable<T[1]>, NonNullable<T[2]>, NonNullable<T[3]>, NonNullable<T[4]>, any] : never*
 
-*Defined in [src/types/util.ts:118](https://github.com/JuroOravec/mini-extract-plugin/blob/63bec1c/src/types/util.ts#L118)*
+*Defined in [src/types/util.ts:118](https://github.com/JuroOravec/mini-extract-plugin/blob/9e394f3/src/types/util.ts#L118)*
 
 ___
 
@@ -411,7 +414,7 @@ ___
 
 Ƭ **FlagExcludedType**: *object*
 
-*Defined in [src/types/util.ts:24](https://github.com/JuroOravec/mini-extract-plugin/blob/63bec1c/src/types/util.ts#L24)*
+*Defined in [src/types/util.ts:24](https://github.com/JuroOravec/mini-extract-plugin/blob/9e394f3/src/types/util.ts#L24)*
 
 Omit type - exclude object keys based on types. This consists of three steps
 
@@ -419,35 +422,11 @@ Omit type - exclude object keys based on types. This consists of three steps
 
 ___
 
-###  GetModuleFilenameOptions
-
-Ƭ **GetModuleFilenameOptions**: *object*
-
-*Defined in [src/lib/get-module-filename.ts:4](https://github.com/JuroOravec/mini-extract-plugin/blob/63bec1c/src/lib/get-module-filename.ts#L4)*
-
-#### Type declaration:
-
-* **context**: *[RenderContext](interfaces/rendercontext.md)*
-
-* **default**: *string*
-
-* **modules**: *[Module](classes/module.md)[]*
-
-* **templateOptions**(): *object*
-
-  * **chunk**: *[Chunk](interfaces/chunk.md)*
-
-  * **contentHashType**: *string*
-
-  * **hash**: *string*
-
-___
-
 ###  HookClass
 
 Ƭ **HookClass**: *typeof Hook | typeof SyncHook | typeof SyncWaterfallHook | typeof SyncBailHook | typeof SyncLoopHook | typeof AsyncParallelHook | typeof AsyncParallelBailHook | typeof AsyncSeriesHook | typeof AsyncSeriesBailHook | typeof AsyncSeriesWaterfallHook*
 
-*Defined in [src/types/hooks-definition.ts:10](https://github.com/JuroOravec/mini-extract-plugin/blob/63bec1c/src/types/hooks-definition.ts#L10)*
+*Defined in [src/types/hooks-definition.ts:10](https://github.com/JuroOravec/mini-extract-plugin/blob/9e394f3/src/types/hooks-definition.ts#L10)*
 
 ___
 
@@ -455,7 +434,7 @@ ___
 
 Ƭ **HookDefinitions**: *object*
 
-*Defined in [src/types/hooks-definition.ts:139](https://github.com/JuroOravec/mini-extract-plugin/blob/63bec1c/src/types/hooks-definition.ts#L139)*
+*Defined in [src/types/hooks-definition.ts:139](https://github.com/JuroOravec/mini-extract-plugin/blob/9e394f3/src/types/hooks-definition.ts#L139)*
 
 #### Type declaration:
 
@@ -465,7 +444,7 @@ ___
 
 Ƭ **HookInstanceFromClass**: *T extends AsyncSeriesWaterfallHookClass ? AsyncSeriesWaterfallHook<Arg1, Arg2, Arg3> : T extends AsyncSeriesBailHookClass ? AsyncSeriesBailHook<Arg1, Arg2, Arg3> : T extends AsyncSeriesHookClass ? AsyncSeriesHook<Arg1, Arg2, Arg3> : T extends AsyncParallelBailHookClass ? AsyncParallelBailHook<Arg1, Arg2, Arg3> : T extends AsyncParallelHookClass ? AsyncParallelHook<Arg1, Arg2, Arg3> : T extends SyncLoopHookClass ? SyncLoopHook<Arg1, Arg2, Arg3> : T extends SyncBailHookClass ? SyncBailHook<Arg1, Arg2, Arg3> : T extends SyncWaterfallHookClass ? SyncWaterfallHook<Arg1, Arg2, Arg3> : T extends SyncHookClass ? SyncHook<Arg1, Arg2, Arg3> : T extends Hook ? Hook<Arg1, Arg2, Arg3> : never*
 
-*Defined in [src/types/hook.ts:34](https://github.com/JuroOravec/mini-extract-plugin/blob/63bec1c/src/types/hook.ts#L34)*
+*Defined in [src/types/hook.ts:34](https://github.com/JuroOravec/mini-extract-plugin/blob/9e394f3/src/types/hook.ts#L34)*
 
 Infer instance type from class type but allow to pass parameters to the
 hook instance types (using InstanceType doesn't permit that)
@@ -476,7 +455,7 @@ ___
 
 Ƭ **Hooks**: *object*
 
-*Defined in [src/types/hook.ts:74](https://github.com/JuroOravec/mini-extract-plugin/blob/63bec1c/src/types/hook.ts#L74)*
+*Defined in [src/types/hook.ts:74](https://github.com/JuroOravec/mini-extract-plugin/blob/9e394f3/src/types/hook.ts#L74)*
 
 #### Type declaration:
 
@@ -486,7 +465,7 @@ ___
 
 Ƭ **LoaderContext**: *any*
 
-*Defined in [src/types/context.ts:11](https://github.com/JuroOravec/mini-extract-plugin/blob/63bec1c/src/types/context.ts#L11)*
+*Defined in [src/types/context.ts:11](https://github.com/JuroOravec/mini-extract-plugin/blob/9e394f3/src/types/context.ts#L11)*
 
 ___
 
@@ -494,7 +473,7 @@ ___
 
 Ƭ **MiniExtractPluginClass**: *[Constructor](README.md#constructor)‹[MiniExtractPlugin](interfaces/miniextractplugin.md)›*
 
-*Defined in [src/types/subclassing.ts:88](https://github.com/JuroOravec/mini-extract-plugin/blob/63bec1c/src/types/subclassing.ts#L88)*
+*Defined in [src/types/subclassing.ts:89](https://github.com/JuroOravec/mini-extract-plugin/blob/9e394f3/src/types/subclassing.ts#L89)*
 
 ___
 
@@ -502,7 +481,7 @@ ___
 
 Ƭ **ModuleClass**: *[Constructor](README.md#constructor)‹Module›*
 
-*Defined in [src/types/subclassing.ts:33](https://github.com/JuroOravec/mini-extract-plugin/blob/63bec1c/src/types/subclassing.ts#L33)*
+*Defined in [src/types/subclassing.ts:34](https://github.com/JuroOravec/mini-extract-plugin/blob/9e394f3/src/types/subclassing.ts#L34)*
 
 ___
 
@@ -510,7 +489,7 @@ ___
 
 Ƭ **ModuleFactoryClass**: *[Constructor](README.md#constructor)‹[ModuleFactory](classes/modulefactory.md)› & typeof Tapable*
 
-*Defined in [src/types/subclassing.ts:46](https://github.com/JuroOravec/mini-extract-plugin/blob/63bec1c/src/types/subclassing.ts#L46)*
+*Defined in [src/types/subclassing.ts:47](https://github.com/JuroOravec/mini-extract-plugin/blob/9e394f3/src/types/subclassing.ts#L47)*
 
 ___
 
@@ -518,7 +497,7 @@ ___
 
 Ƭ **ModuleFactoryCreateArgs**: *Parameters‹IModuleFactory["create"]›*
 
-*Defined in [src/models/module-factory.ts:12](https://github.com/JuroOravec/mini-extract-plugin/blob/63bec1c/src/models/module-factory.ts#L12)*
+*Defined in [src/models/module-factory.ts:12](https://github.com/JuroOravec/mini-extract-plugin/blob/9e394f3/src/models/module-factory.ts#L12)*
 
 ___
 
@@ -526,9 +505,38 @@ ___
 
 Ƭ **ModuleFactoryData**: *ModuleFactoryCreateArgs[0]*
 
-*Defined in [src/types/subclassing.ts:35](https://github.com/JuroOravec/mini-extract-plugin/blob/63bec1c/src/types/subclassing.ts#L35)*
+*Defined in [src/types/subclassing.ts:36](https://github.com/JuroOravec/mini-extract-plugin/blob/9e394f3/src/types/subclassing.ts#L36)*
 
-*Defined in [src/models/module-factory.ts:13](https://github.com/JuroOravec/mini-extract-plugin/blob/63bec1c/src/models/module-factory.ts#L13)*
+*Defined in [src/models/module-factory.ts:13](https://github.com/JuroOravec/mini-extract-plugin/blob/9e394f3/src/models/module-factory.ts#L13)*
+
+___
+
+###  ModuleFilename
+
+Ƭ **ModuleFilename**: *string | [ModuleFilenameFunction](README.md#modulefilenamefunction)*
+
+*Defined in [src/types/module-filename.ts:21](https://github.com/JuroOravec/mini-extract-plugin/blob/9e394f3/src/types/module-filename.ts#L21)*
+
+___
+
+###  ModuleFilenameFunction
+
+Ƭ **ModuleFilenameFunction**: *function*
+
+*Defined in [src/types/module-filename.ts:16](https://github.com/JuroOravec/mini-extract-plugin/blob/9e394f3/src/types/module-filename.ts#L16)*
+
+moduleFilename function signature
+
+#### Type declaration:
+
+▸ (`context`: [RenderContext](interfaces/rendercontext.md), `templateOptions`: [TemplateOptions](interfaces/templateoptions.md)): *string*
+
+**Parameters:**
+
+Name | Type |
+------ | ------ |
+`context` | [RenderContext](interfaces/rendercontext.md) |
+`templateOptions` | [TemplateOptions](interfaces/templateoptions.md) |
 
 ___
 
@@ -536,7 +544,7 @@ ___
 
 Ƭ **ModuleGraph**: *any*
 
-*Defined in [src/types/webpack.ts:60](https://github.com/JuroOravec/mini-extract-plugin/blob/63bec1c/src/types/webpack.ts#L60)*
+*Defined in [src/types/webpack.ts:60](https://github.com/JuroOravec/mini-extract-plugin/blob/9e394f3/src/types/webpack.ts#L60)*
 
 ___
 
@@ -544,7 +552,7 @@ ___
 
 Ƭ **Omit**: *Pick‹T, Exclude‹keyof T, K››*
 
-*Defined in [src/types/util.ts:11](https://github.com/JuroOravec/mini-extract-plugin/blob/63bec1c/src/types/util.ts#L11)*
+*Defined in [src/types/util.ts:11](https://github.com/JuroOravec/mini-extract-plugin/blob/9e394f3/src/types/util.ts#L11)*
 
 Omit<{a: string, b: number}, 'b'> -> {a: string}
 
@@ -554,7 +562,7 @@ ___
 
 Ƭ **OmitType**: *Pick‹Base, [AllowedNames](README.md#allowednames)‹Base, Type››*
 
-*Defined in [src/types/util.ts:30](https://github.com/JuroOravec/mini-extract-plugin/blob/63bec1c/src/types/util.ts#L30)*
+*Defined in [src/types/util.ts:30](https://github.com/JuroOravec/mini-extract-plugin/blob/9e394f3/src/types/util.ts#L30)*
 
 ___
 
@@ -562,7 +570,7 @@ ___
 
 Ƭ **Override**: *object*
 
-*Defined in [src/types/hook.ts:151](https://github.com/JuroOravec/mini-extract-plugin/blob/63bec1c/src/types/hook.ts#L151)*
+*Defined in [src/types/hook.ts:151](https://github.com/JuroOravec/mini-extract-plugin/blob/9e394f3/src/types/hook.ts#L151)*
 
 Hook override object, describing which MiniExtractPlugin hook should be
 tapped, the tapable.Hook method used for tapping, and what functions should
@@ -582,7 +590,7 @@ ___
 
 Ƭ **Overrides**: *[Override](README.md#override)[]*
 
-*Defined in [src/types/hook.ts:160](https://github.com/JuroOravec/mini-extract-plugin/blob/63bec1c/src/types/hook.ts#L160)*
+*Defined in [src/types/hook.ts:160](https://github.com/JuroOravec/mini-extract-plugin/blob/9e394f3/src/types/hook.ts#L160)*
 
 List of Override objects
 
@@ -592,7 +600,7 @@ ___
 
 Ƭ **PartialTaps**: *Partial‹[Taps](README.md#taps)›*
 
-*Defined in [src/types/hook.ts:138](https://github.com/JuroOravec/mini-extract-plugin/blob/63bec1c/src/types/hook.ts#L138)*
+*Defined in [src/types/hook.ts:138](https://github.com/JuroOravec/mini-extract-plugin/blob/9e394f3/src/types/hook.ts#L138)*
 
 Partial mapping of hook name to its function signature
 
@@ -602,7 +610,7 @@ ___
 
 Ƭ **RenderContentAssetOptions**: *object*
 
-*Defined in [src/lib/render-content-asset.ts:8](https://github.com/JuroOravec/mini-extract-plugin/blob/63bec1c/src/lib/render-content-asset.ts#L8)*
+*Defined in [src/lib/render-content-asset.ts:8](https://github.com/JuroOravec/mini-extract-plugin/blob/9e394f3/src/lib/render-content-asset.ts#L8)*
 
 #### Type declaration:
 
@@ -618,7 +626,7 @@ ___
 
 Ƭ **RenderManifestEntry**: *object*
 
-*Defined in [src/types/webpack.ts:67](https://github.com/JuroOravec/mini-extract-plugin/blob/63bec1c/src/types/webpack.ts#L67)*
+*Defined in [src/types/webpack.ts:67](https://github.com/JuroOravec/mini-extract-plugin/blob/9e394f3/src/types/webpack.ts#L67)*
 
 Replace with webpack-provided types once on webpack v5
 See https://github.com/webpack/webpack/blob/ec12ab73616cc9991bd06ab789e4b0be7646f2d4/lib/Template.js
@@ -645,7 +653,7 @@ ___
 
 Ƭ **RenderManifestOptions**: *object*
 
-*Defined in [src/types/webpack.ts:80](https://github.com/JuroOravec/mini-extract-plugin/blob/63bec1c/src/types/webpack.ts#L80)*
+*Defined in [src/types/webpack.ts:80](https://github.com/JuroOravec/mini-extract-plugin/blob/9e394f3/src/types/webpack.ts#L80)*
 
 Replace with webpack-provided types once on webpack v5
 See https://github.com/webpack/webpack/blob/ec12ab73616cc9991bd06ab789e4b0be7646f2d4/lib/Template.js
@@ -680,7 +688,7 @@ ___
 
 Ƭ **RequiredTuple**: *TL extends 0 ? [] : TL extends 1 ? [NonNullable<T[0]>] : TL extends 2 ? [NonNullable<T[0]>, NonNullable<T[1]>] : TL extends 3 ? [NonNullable<T[0]>, NonNullable<T[1]>, NonNullable<T[2]>] : TL extends 4 ? [NonNullable<T[0]>, NonNullable<T[1]>, NonNullable<T[2]>, NonNullable<T[3]>] : TL extends 5 ? [NonNullable<T[0]>, NonNullable<T[1]>, NonNullable<T[2]>, NonNullable<T[]>, NonNullable<T[]>] : never*
 
-*Defined in [src/types/util.ts:36](https://github.com/JuroOravec/mini-extract-plugin/blob/63bec1c/src/types/util.ts#L36)*
+*Defined in [src/types/util.ts:36](https://github.com/JuroOravec/mini-extract-plugin/blob/9e394f3/src/types/util.ts#L36)*
 
 ___
 
@@ -688,7 +696,7 @@ ___
 
 Ƭ **RuntimeTemplate**: *any*
 
-*Defined in [src/types/webpack.ts:59](https://github.com/JuroOravec/mini-extract-plugin/blob/63bec1c/src/types/webpack.ts#L59)*
+*Defined in [src/types/webpack.ts:59](https://github.com/JuroOravec/mini-extract-plugin/blob/9e394f3/src/types/webpack.ts#L59)*
 
 ___
 
@@ -696,7 +704,7 @@ ___
 
 Ƭ **SyncBailHookClass**: *[Constructor](README.md#constructor)‹[SyncBailHook](interfaces/syncbailhook.md)‹T1, T2, T3, THookResult››*
 
-*Defined in [src/types/hooks-definition.ts:40](https://github.com/JuroOravec/mini-extract-plugin/blob/63bec1c/src/types/hooks-definition.ts#L40)*
+*Defined in [src/types/hooks-definition.ts:40](https://github.com/JuroOravec/mini-extract-plugin/blob/9e394f3/src/types/hooks-definition.ts#L40)*
 
 ___
 
@@ -704,7 +712,7 @@ ___
 
 Ƭ **SyncHookClass**: *[Constructor](README.md#constructor)‹[SyncHook](interfaces/synchook.md)‹T1, T2, T3››*
 
-*Defined in [src/types/hooks-definition.ts:32](https://github.com/JuroOravec/mini-extract-plugin/blob/63bec1c/src/types/hooks-definition.ts#L32)*
+*Defined in [src/types/hooks-definition.ts:32](https://github.com/JuroOravec/mini-extract-plugin/blob/9e394f3/src/types/hooks-definition.ts#L32)*
 
 ___
 
@@ -712,7 +720,7 @@ ___
 
 Ƭ **SyncHookType**: *[SyncHook](interfaces/synchook.md) | [SyncBailHook](interfaces/syncbailhook.md) | [SyncWaterfallHook](interfaces/syncwaterfallhook.md) | [SyncLoopHook](interfaces/syncloophook.md)*
 
-*Defined in [src/types/hook.ts:68](https://github.com/JuroOravec/mini-extract-plugin/blob/63bec1c/src/types/hook.ts#L68)*
+*Defined in [src/types/hook.ts:68](https://github.com/JuroOravec/mini-extract-plugin/blob/9e394f3/src/types/hook.ts#L68)*
 
 ___
 
@@ -720,7 +728,7 @@ ___
 
 Ƭ **SyncLoopHookClass**: *[Constructor](README.md#constructor)‹[SyncLoopHook](interfaces/syncloophook.md)‹T1, T2, T3››*
 
-*Defined in [src/types/hooks-definition.ts:59](https://github.com/JuroOravec/mini-extract-plugin/blob/63bec1c/src/types/hooks-definition.ts#L59)*
+*Defined in [src/types/hooks-definition.ts:59](https://github.com/JuroOravec/mini-extract-plugin/blob/9e394f3/src/types/hooks-definition.ts#L59)*
 
 ___
 
@@ -728,7 +736,7 @@ ___
 
 Ƭ **SyncWaterfallHookClass**: *[Constructor](README.md#constructor)‹[SyncWaterfallHook](interfaces/syncwaterfallhook.md)‹T1, T2, T3››*
 
-*Defined in [src/types/hooks-definition.ts:51](https://github.com/JuroOravec/mini-extract-plugin/blob/63bec1c/src/types/hooks-definition.ts#L51)*
+*Defined in [src/types/hooks-definition.ts:51](https://github.com/JuroOravec/mini-extract-plugin/blob/9e394f3/src/types/hooks-definition.ts#L51)*
 
 ___
 
@@ -736,7 +744,7 @@ ___
 
 Ƭ **TapTypes**: *"tap" | "tapAsync" | "tapPromise" | "intercept"*
 
-*Defined in [src/types/hook.ts:144](https://github.com/JuroOravec/mini-extract-plugin/blob/63bec1c/src/types/hook.ts#L144)*
+*Defined in [src/types/hook.ts:144](https://github.com/JuroOravec/mini-extract-plugin/blob/9e394f3/src/types/hook.ts#L144)*
 
 Permitted keys to be used in `type` property of Hook Overrides.
 The keys are the available methods for tapping into a tapable.Hooks.
@@ -747,7 +755,7 @@ ___
 
 Ƭ **Taps**: *object*
 
-*Defined in [src/types/hook.ts:117](https://github.com/JuroOravec/mini-extract-plugin/blob/63bec1c/src/types/hook.ts#L117)*
+*Defined in [src/types/hook.ts:117](https://github.com/JuroOravec/mini-extract-plugin/blob/9e394f3/src/types/hook.ts#L117)*
 
 Mapping of hook name to its function signature
 
@@ -759,7 +767,7 @@ ___
 
 Ƭ **WithOptional**: *[Omit](README.md#omit)‹T, K› & Partial‹Pick‹T, K››*
 
-*Defined in [src/types/util.ts:16](https://github.com/JuroOravec/mini-extract-plugin/blob/63bec1c/src/types/util.ts#L16)*
+*Defined in [src/types/util.ts:16](https://github.com/JuroOravec/mini-extract-plugin/blob/9e394f3/src/types/util.ts#L16)*
 
 WithOptional<{a: string, b: number}, 'b'> -> {a: string, b?: number}
 
@@ -769,7 +777,7 @@ WithOptional<{a: string, b: number}, 'b'> -> {a: string, b?: number}
 
 • **REGEXP_CHUNKHASH**: *RegExp‹›* = /\[chunkhash(?::(\d+))?\]/i
 
-*Defined in [src/methods/apply.ts:23](https://github.com/JuroOravec/mini-extract-plugin/blob/63bec1c/src/methods/apply.ts#L23)*
+*Defined in [src/methods/apply.ts:23](https://github.com/JuroOravec/mini-extract-plugin/blob/9e394f3/src/methods/apply.ts#L23)*
 
 ___
 
@@ -777,7 +785,7 @@ ___
 
 • **REGEXP_CONTENTHASH**: *RegExp‹›* = /\[contenthash(?::(\d+))?\]/i
 
-*Defined in [src/methods/apply.ts:24](https://github.com/JuroOravec/mini-extract-plugin/blob/63bec1c/src/methods/apply.ts#L24)*
+*Defined in [src/methods/apply.ts:24](https://github.com/JuroOravec/mini-extract-plugin/blob/9e394f3/src/methods/apply.ts#L24)*
 
 ___
 
@@ -785,7 +793,7 @@ ___
 
 • **REGEXP_NAME**: *RegExp‹›* = /\[name\]/i
 
-*Defined in [src/methods/apply.ts:25](https://github.com/JuroOravec/mini-extract-plugin/blob/63bec1c/src/methods/apply.ts#L25)*
+*Defined in [src/methods/apply.ts:25](https://github.com/JuroOravec/mini-extract-plugin/blob/9e394f3/src/methods/apply.ts#L25)*
 
 ___
 
@@ -793,7 +801,7 @@ ___
 
 • **TypedWebpackDep**: *typeof Dependency* = WebpackDependency
 
-*Defined in [src/models/dependency.ts:13](https://github.com/JuroOravec/mini-extract-plugin/blob/63bec1c/src/models/dependency.ts#L13)*
+*Defined in [src/models/dependency.ts:13](https://github.com/JuroOravec/mini-extract-plugin/blob/9e394f3/src/models/dependency.ts#L13)*
 
 ___
 
@@ -801,7 +809,7 @@ ___
 
 • **TypedWebpackModule**: *Module* = WebpackModule as typeof webpack.compilation.Module
 
-*Defined in [src/models/module.ts:10](https://github.com/JuroOravec/mini-extract-plugin/blob/63bec1c/src/models/module.ts#L10)*
+*Defined in [src/models/module.ts:10](https://github.com/JuroOravec/mini-extract-plugin/blob/9e394f3/src/models/module.ts#L10)*
 
 ___
 
@@ -815,7 +823,7 @@ ___
   AsyncSeriesWaterfallHook,
 ]
 
-*Defined in [src/lib/hook.ts:21](https://github.com/JuroOravec/mini-extract-plugin/blob/63bec1c/src/lib/hook.ts#L21)*
+*Defined in [src/lib/hook.ts:21](https://github.com/JuroOravec/mini-extract-plugin/blob/9e394f3/src/lib/hook.ts#L21)*
 
 ___
 
@@ -823,7 +831,7 @@ ___
 
 • **createHash**: *any* = webpack.util.createHash
 
-*Defined in [src/methods/apply.ts:21](https://github.com/JuroOravec/mini-extract-plugin/blob/63bec1c/src/methods/apply.ts#L21)*
+*Defined in [src/methods/apply.ts:21](https://github.com/JuroOravec/mini-extract-plugin/blob/9e394f3/src/methods/apply.ts#L21)*
 
 ___
 
@@ -831,7 +839,7 @@ ___
 
 • **debug**: *log* = getDebugLogger()
 
-*Defined in [src/lib/debug.ts:16](https://github.com/JuroOravec/mini-extract-plugin/blob/63bec1c/src/lib/debug.ts#L16)*
+*Defined in [src/lib/debug.ts:16](https://github.com/JuroOravec/mini-extract-plugin/blob/9e394f3/src/lib/debug.ts#L16)*
 
 ___
 
@@ -1084,7 +1092,7 @@ ___
   },
 })
 
-*Defined in [src/lib/hooks-definitions.ts:31](https://github.com/JuroOravec/mini-extract-plugin/blob/63bec1c/src/lib/hooks-definitions.ts#L31)*
+*Defined in [src/lib/hooks-definitions.ts:31](https://github.com/JuroOravec/mini-extract-plugin/blob/9e394f3/src/lib/hooks-definitions.ts#L31)*
 
 #### Type declaration:
 
@@ -1477,7 +1485,7 @@ ___
 
 • **hooks**: *object* = hooksFromDefinitions() as Hooks<ActiveHookDefinitions>
 
-*Defined in [src/types/hook.ts:85](https://github.com/JuroOravec/mini-extract-plugin/blob/63bec1c/src/types/hook.ts#L85)*
+*Defined in [src/types/hook.ts:85](https://github.com/JuroOravec/mini-extract-plugin/blob/9e394f3/src/types/hook.ts#L85)*
 
 #### Type declaration:
 
@@ -1487,7 +1495,7 @@ ___
 
 ▸ **apply**(`this`: [MiniExtractPlugin](interfaces/miniextractplugin.md), `compiler`: Compiler): *void*
 
-*Defined in [src/methods/apply.ts:27](https://github.com/JuroOravec/mini-extract-plugin/blob/63bec1c/src/methods/apply.ts#L27)*
+*Defined in [src/methods/apply.ts:27](https://github.com/JuroOravec/mini-extract-plugin/blob/9e394f3/src/methods/apply.ts#L27)*
 
 **Parameters:**
 
@@ -1504,7 +1512,7 @@ ___
 
 ▸ **callTap**<**N**, **H**, **F**, **FP**, **FR**, **D**, **R**>(`__namedParameters`: object): *R*
 
-*Defined in [src/lib/hook.ts:88](https://github.com/JuroOravec/mini-extract-plugin/blob/63bec1c/src/lib/hook.ts#L88)*
+*Defined in [src/lib/hook.ts:88](https://github.com/JuroOravec/mini-extract-plugin/blob/9e394f3/src/lib/hook.ts#L88)*
 
 Calling Tapable's hooks with default value, required arguments, and type
 checking.
@@ -1561,7 +1569,7 @@ ___
 
 ▸ **castHookDefinitions**<**T**>(`definitions`: T): *T*
 
-*Defined in [src/types/hooks-definition.ts:143](https://github.com/JuroOravec/mini-extract-plugin/blob/63bec1c/src/types/hooks-definition.ts#L143)*
+*Defined in [src/types/hooks-definition.ts:143](https://github.com/JuroOravec/mini-extract-plugin/blob/9e394f3/src/types/hooks-definition.ts#L143)*
 
 **Type parameters:**
 
@@ -1581,7 +1589,7 @@ ___
 
 ▸ **castStrLit**<**T**>(`s`: T): *T*
 
-*Defined in [src/types/helper.ts:1](https://github.com/JuroOravec/mini-extract-plugin/blob/63bec1c/src/types/helper.ts#L1)*
+*Defined in [src/types/helper.ts:1](https://github.com/JuroOravec/mini-extract-plugin/blob/9e394f3/src/types/helper.ts#L1)*
 
 **Type parameters:**
 
@@ -1601,7 +1609,7 @@ ___
 
 ▸ **castTuple**<**T**, **L**>(...`a`: T)
 
-*Defined in [src/types/helper.ts:5](https://github.com/JuroOravec/mini-extract-plugin/blob/63bec1c/src/types/helper.ts#L5)*
+*Defined in [src/types/helper.ts:5](https://github.com/JuroOravec/mini-extract-plugin/blob/9e394f3/src/types/helper.ts#L5)*
 
 **Type parameters:**
 
@@ -1621,7 +1629,7 @@ ___
 
 ▸ **create**(): *object*
 
-*Defined in [src/lib/hook.ts:32](https://github.com/JuroOravec/mini-extract-plugin/blob/63bec1c/src/lib/hook.ts#L32)*
+*Defined in [src/lib/hook.ts:32](https://github.com/JuroOravec/mini-extract-plugin/blob/9e394f3/src/lib/hook.ts#L32)*
 
 Default hooks provided by MiniExtractPlugin
 
@@ -1633,7 +1641,7 @@ ___
 
 ▸ **defaultFilename**(`type`: string): *string*
 
-*Defined in [src/lib/default-filename.ts:1](https://github.com/JuroOravec/mini-extract-plugin/blob/63bec1c/src/lib/default-filename.ts#L1)*
+*Defined in [src/lib/default-filename.ts:1](https://github.com/JuroOravec/mini-extract-plugin/blob/9e394f3/src/lib/default-filename.ts#L1)*
 
 **Parameters:**
 
@@ -1649,7 +1657,7 @@ ___
 
 ▸ **enumerate**<**T**>(`iter`: Iterable‹T›): *Generator‹[number, T], void, unknown›*
 
-*Defined in [src/lib/util.ts:20](https://github.com/JuroOravec/mini-extract-plugin/blob/63bec1c/src/lib/util.ts#L20)*
+*Defined in [src/lib/util.ts:20](https://github.com/JuroOravec/mini-extract-plugin/blob/9e394f3/src/lib/util.ts#L20)*
 
 **Type parameters:**
 
@@ -1669,7 +1677,7 @@ ___
 
 ▸ **evalCode**(`loaderContext`: any, `code`: string, `filename`: string): *any*
 
-*Defined in [src/lib/module.ts:20](https://github.com/JuroOravec/mini-extract-plugin/blob/63bec1c/src/lib/module.ts#L20)*
+*Defined in [src/lib/module.ts:20](https://github.com/JuroOravec/mini-extract-plugin/blob/9e394f3/src/lib/module.ts#L20)*
 
 Evaluate module's source code
 
@@ -1689,7 +1697,7 @@ ___
 
 ▸ **exposedPromise**(`name`: string): *object*
 
-*Defined in [src/lib/util.ts:52](https://github.com/JuroOravec/mini-extract-plugin/blob/63bec1c/src/lib/util.ts#L52)*
+*Defined in [src/lib/util.ts:52](https://github.com/JuroOravec/mini-extract-plugin/blob/9e394f3/src/lib/util.ts#L52)*
 
 Create a promise and expose its resolve and reject functions through
 callables so the promise can be resolved outside of the resolve/reject scope
@@ -1716,7 +1724,7 @@ ___
 
 ▸ **findById**<**T**>(`modules`: T[], `id`: string): *null | T*
 
-*Defined in [src/lib/module.ts:8](https://github.com/JuroOravec/mini-extract-plugin/blob/63bec1c/src/lib/module.ts#L8)*
+*Defined in [src/lib/module.ts:8](https://github.com/JuroOravec/mini-extract-plugin/blob/9e394f3/src/lib/module.ts#L8)*
 
 Find module by ID from a list of modules
 
@@ -1739,7 +1747,7 @@ ___
 
 ▸ **getDebugLogger**(): *log*
 
-*Defined in [src/lib/debug.ts:4](https://github.com/JuroOravec/mini-extract-plugin/blob/63bec1c/src/lib/debug.ts#L4)*
+*Defined in [src/lib/debug.ts:4](https://github.com/JuroOravec/mini-extract-plugin/blob/9e394f3/src/lib/debug.ts#L4)*
 
 **Returns:** *log*
 
@@ -1747,9 +1755,9 @@ ___
 
 ###  getModuleFilename
 
-▸ **getModuleFilename**(`options`: [GetModuleFilenameOptions](README.md#getmodulefilenameoptions)): *any*
+▸ **getModuleFilename**(`options`: [GetModuleFilenameOptions](interfaces/getmodulefilenameoptions.md)): *string*
 
-*Defined in [src/lib/get-module-filename.ts:19](https://github.com/JuroOravec/mini-extract-plugin/blob/63bec1c/src/lib/get-module-filename.ts#L19)*
+*Defined in [src/lib/get-module-filename.ts:20](https://github.com/JuroOravec/mini-extract-plugin/blob/9e394f3/src/lib/get-module-filename.ts#L20)*
 
 Function to provide user with the chance to define module filename based on
 a lot of contextual data
@@ -1758,9 +1766,9 @@ a lot of contextual data
 
 Name | Type |
 ------ | ------ |
-`options` | [GetModuleFilenameOptions](README.md#getmodulefilenameoptions) |
+`options` | [GetModuleFilenameOptions](interfaces/getmodulefilenameoptions.md) |
 
-**Returns:** *any*
+**Returns:** *string*
 
 ___
 
@@ -1768,7 +1776,7 @@ ___
 
 ▸ **hooksFromDefinitions**(): *object*
 
-*Defined in [src/lib/hooks-definitions.ts:297](https://github.com/JuroOravec/mini-extract-plugin/blob/63bec1c/src/lib/hooks-definitions.ts#L297)*
+*Defined in [src/lib/hooks-definitions.ts:297](https://github.com/JuroOravec/mini-extract-plugin/blob/9e394f3/src/lib/hooks-definitions.ts#L297)*
 
 Since the dependecy graph looks like this:
 ```
@@ -1796,7 +1804,7 @@ ___
 
 ▸ **hotLoader**(`content`: string | Buffer, `context`: any): *string*
 
-*Defined in [src/lib/hot-loader.ts:4](https://github.com/JuroOravec/mini-extract-plugin/blob/63bec1c/src/lib/hot-loader.ts#L4)*
+*Defined in [src/lib/hot-loader.ts:4](https://github.com/JuroOravec/mini-extract-plugin/blob/9e394f3/src/lib/hot-loader.ts#L4)*
 
 **Parameters:**
 
@@ -1813,7 +1821,7 @@ ___
 
 ▸ **isHookAsync**(`hook`: Hook): *boolean*
 
-*Defined in [src/lib/hook.ts:39](https://github.com/JuroOravec/mini-extract-plugin/blob/63bec1c/src/lib/hook.ts#L39)*
+*Defined in [src/lib/hook.ts:39](https://github.com/JuroOravec/mini-extract-plugin/blob/9e394f3/src/lib/hook.ts#L39)*
 
 Determine whether the hook is an async hook
 
@@ -1831,7 +1839,7 @@ ___
 
 ▸ **isIterOfIter**<**T**>(`m`: T): *boolean*
 
-*Defined in [src/lib/util.ts:3](https://github.com/JuroOravec/mini-extract-plugin/blob/63bec1c/src/lib/util.ts#L3)*
+*Defined in [src/lib/util.ts:3](https://github.com/JuroOravec/mini-extract-plugin/blob/9e394f3/src/lib/util.ts#L3)*
 
 **Type parameters:**
 
@@ -1851,7 +1859,7 @@ ___
 
 ▸ **isIterable**<**T**>(`obj`: T): *boolean*
 
-*Defined in [src/lib/util.ts:13](https://github.com/JuroOravec/mini-extract-plugin/blob/63bec1c/src/lib/util.ts#L13)*
+*Defined in [src/lib/util.ts:13](https://github.com/JuroOravec/mini-extract-plugin/blob/9e394f3/src/lib/util.ts#L13)*
 
 **Type parameters:**
 
@@ -1871,7 +1879,7 @@ ___
 
 ▸ **lastItem**<**T**>(`arr`: T[]): *T*
 
-*Defined in [src/lib/util.ts:44](https://github.com/JuroOravec/mini-extract-plugin/blob/63bec1c/src/lib/util.ts#L44)*
+*Defined in [src/lib/util.ts:44](https://github.com/JuroOravec/mini-extract-plugin/blob/9e394f3/src/lib/util.ts#L44)*
 
 **Type parameters:**
 
@@ -1891,7 +1899,7 @@ ___
 
 ▸ **loader**(`this`: [MiniExtractPlugin](interfaces/miniextractplugin.md), `loaderContext`: any, `source?`: undefined | string, `sourceMap?`: undefined | string, `data?`: any): *void*
 
-*Defined in [src/methods/loader.ts:4](https://github.com/JuroOravec/mini-extract-plugin/blob/63bec1c/src/methods/loader.ts#L4)*
+*Defined in [src/methods/loader.ts:4](https://github.com/JuroOravec/mini-extract-plugin/blob/9e394f3/src/methods/loader.ts#L4)*
 
 **Parameters:**
 
@@ -1911,7 +1919,7 @@ ___
 
 ▸ **miniExtractPluginFactory**(`options`: [ClassOptions](interfaces/classoptions.md)): *object*
 
-*Defined in [src/index.ts:10](https://github.com/JuroOravec/mini-extract-plugin/blob/63bec1c/src/index.ts#L10)*
+*Defined in [src/index.ts:10](https://github.com/JuroOravec/mini-extract-plugin/blob/9e394f3/src/index.ts#L10)*
 
 **Parameters:**
 
@@ -1929,7 +1937,7 @@ ___
 
 ▸ **pitch**(`this`: [MiniExtractPlugin](interfaces/miniextractplugin.md), `loaderContext`: any, `remainingRequest`: string, `precedingRequest`: string, `data`: object): *Promise‹void›*
 
-*Defined in [src/methods/pitch.ts:24](https://github.com/JuroOravec/mini-extract-plugin/blob/63bec1c/src/methods/pitch.ts#L24)*
+*Defined in [src/methods/pitch.ts:24](https://github.com/JuroOravec/mini-extract-plugin/blob/9e394f3/src/methods/pitch.ts#L24)*
 
 **Parameters:**
 
@@ -1949,7 +1957,7 @@ ___
 
 ▸ **pluginFactory**(`classOptions`: Required‹[ClassOptions](interfaces/classoptions.md)›): *object*
 
-*Defined in [src/factory.ts:18](https://github.com/JuroOravec/mini-extract-plugin/blob/63bec1c/src/factory.ts#L18)*
+*Defined in [src/factory.ts:18](https://github.com/JuroOravec/mini-extract-plugin/blob/9e394f3/src/factory.ts#L18)*
 
 **Parameters:**
 
@@ -1967,7 +1975,7 @@ ___
 
 ▸ **renameClass**(`klass`: [Constructor](README.md#constructor)‹any›, `newName`: string): *void*
 
-*Defined in [src/lib/util.ts:27](https://github.com/JuroOravec/mini-extract-plugin/blob/63bec1c/src/lib/util.ts#L27)*
+*Defined in [src/lib/util.ts:27](https://github.com/JuroOravec/mini-extract-plugin/blob/9e394f3/src/lib/util.ts#L27)*
 
 **Parameters:**
 
@@ -1984,7 +1992,7 @@ ___
 
 ▸ **renderContentAsset**(`__namedParameters`: object): *Source*
 
-*Defined in [src/lib/render-content-asset.ts:14](https://github.com/JuroOravec/mini-extract-plugin/blob/63bec1c/src/lib/render-content-asset.ts#L14)*
+*Defined in [src/lib/render-content-asset.ts:14](https://github.com/JuroOravec/mini-extract-plugin/blob/9e394f3/src/lib/render-content-asset.ts#L14)*
 
 **Parameters:**
 
@@ -2004,7 +2012,7 @@ ___
 
 ▸ **subclass**(`__namedParameters`: object): *object & Tapable*
 
-*Defined in [src/models/dependency-template.ts:21](https://github.com/JuroOravec/mini-extract-plugin/blob/63bec1c/src/models/dependency-template.ts#L21)*
+*Defined in [src/models/dependency-template.ts:21](https://github.com/JuroOravec/mini-extract-plugin/blob/9e394f3/src/models/dependency-template.ts#L21)*
 
 **Parameters:**
 
@@ -2022,7 +2030,7 @@ ___
 
 ▸ **tapMany**(`pluginName`: string, `hooksObj`: [Collection](README.md#collection), `overrides`: [Overrides](README.md#overrides)): *void*
 
-*Defined in [src/lib/hook.ts:46](https://github.com/JuroOravec/mini-extract-plugin/blob/63bec1c/src/lib/hook.ts#L46)*
+*Defined in [src/lib/hook.ts:46](https://github.com/JuroOravec/mini-extract-plugin/blob/9e394f3/src/lib/hook.ts#L46)*
 
 Tap many hooks
 

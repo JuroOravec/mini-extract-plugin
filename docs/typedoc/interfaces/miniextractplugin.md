@@ -56,7 +56,7 @@ Defined in node_modules/ploadin/dist/ploadin.d.ts:2
 
 • **apply**: *function*
 
-*Defined in [src/types/subclassing.ts:74](https://github.com/JuroOravec/mini-extract-plugin/blob/63bec1c/src/types/subclassing.ts#L74)*
+*Defined in [src/types/subclassing.ts:75](https://github.com/JuroOravec/mini-extract-plugin/blob/9e394f3/src/types/subclassing.ts#L75)*
 
 #### Type declaration:
 
@@ -76,7 +76,7 @@ ___
 
 *Overrides void*
 
-*Defined in [src/types/subclassing.ts:71](https://github.com/JuroOravec/mini-extract-plugin/blob/63bec1c/src/types/subclassing.ts#L71)*
+*Defined in [src/types/subclassing.ts:72](https://github.com/JuroOravec/mini-extract-plugin/blob/9e394f3/src/types/subclassing.ts#L72)*
 
 ___
 
@@ -84,7 +84,7 @@ ___
 
 • **hooks**: *[ActiveHooks](../README.md#activehooks)*
 
-*Defined in [src/types/subclassing.ts:73](https://github.com/JuroOravec/mini-extract-plugin/blob/63bec1c/src/types/subclassing.ts#L73)*
+*Defined in [src/types/subclassing.ts:74](https://github.com/JuroOravec/mini-extract-plugin/blob/9e394f3/src/types/subclassing.ts#L74)*
 
 ___
 
@@ -92,7 +92,7 @@ ___
 
 • **options**: *[ConstructorOptions](../README.md#constructoroptions)*
 
-*Defined in [src/types/subclassing.ts:72](https://github.com/JuroOravec/mini-extract-plugin/blob/63bec1c/src/types/subclassing.ts#L72)*
+*Defined in [src/types/subclassing.ts:73](https://github.com/JuroOravec/mini-extract-plugin/blob/9e394f3/src/types/subclassing.ts#L73)*
 
 ## Accessors
 
@@ -176,7 +176,7 @@ Defined in node_modules/ploadin/dist/ploadin.d.ts:7
 
 ▸ **loader**(`loaderContext`: any, `source?`: undefined | string, `sourceMap?`: undefined | string, `data?`: any): *void*
 
-*Defined in [src/types/subclassing.ts:75](https://github.com/JuroOravec/mini-extract-plugin/blob/63bec1c/src/types/subclassing.ts#L75)*
+*Defined in [src/types/subclassing.ts:76](https://github.com/JuroOravec/mini-extract-plugin/blob/9e394f3/src/types/subclassing.ts#L76)*
 
 **Parameters:**
 
@@ -195,7 +195,7 @@ ___
 
 ▸ **pitch**(`loaderContext`: any, `request`: string, `precedingRequest`: string, `data`: object): *void*
 
-*Defined in [src/types/subclassing.ts:81](https://github.com/JuroOravec/mini-extract-plugin/blob/63bec1c/src/types/subclassing.ts#L81)*
+*Defined in [src/types/subclassing.ts:82](https://github.com/JuroOravec/mini-extract-plugin/blob/9e394f3/src/types/subclassing.ts#L82)*
 
 **Parameters:**
 

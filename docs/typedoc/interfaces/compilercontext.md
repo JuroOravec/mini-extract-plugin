@@ -27,7 +27,7 @@
 
 *Inherited from [Context](context.md).[classOptions](context.md#classoptions)*
 
-*Defined in [src/types/context.ts:15](https://github.com/JuroOravec/mini-extract-plugin/blob/63bec1c/src/types/context.ts#L15)*
+*Defined in [src/types/context.ts:15](https://github.com/JuroOravec/mini-extract-plugin/blob/9e394f3/src/types/context.ts#L15)*
 
 ___
 
@@ -35,7 +35,7 @@ ___
 
 • **compiler**: *Compiler*
 
-*Defined in [src/types/context.ts:20](https://github.com/JuroOravec/mini-extract-plugin/blob/63bec1c/src/types/context.ts#L20)*
+*Defined in [src/types/context.ts:20](https://github.com/JuroOravec/mini-extract-plugin/blob/9e394f3/src/types/context.ts#L20)*
 
 ___
 
@@ -45,7 +45,7 @@ ___
 
 *Inherited from [Context](context.md).[options](context.md#options)*
 
-*Defined in [src/types/context.ts:16](https://github.com/JuroOravec/mini-extract-plugin/blob/63bec1c/src/types/context.ts#L16)*
+*Defined in [src/types/context.ts:16](https://github.com/JuroOravec/mini-extract-plugin/blob/9e394f3/src/types/context.ts#L16)*
 
 ___
 
@@ -55,4 +55,4 @@ ___
 
 *Inherited from [Context](context.md).[plugin](context.md#plugin)*
 
-*Defined in [src/types/context.ts:14](https://github.com/JuroOravec/mini-extract-plugin/blob/63bec1c/src/types/context.ts#L14)*
+*Defined in [src/types/context.ts:14](https://github.com/JuroOravec/mini-extract-plugin/blob/9e394f3/src/types/context.ts#L14)*
