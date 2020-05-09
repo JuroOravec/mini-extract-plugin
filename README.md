@@ -20,7 +20,9 @@
 One-liner explaining the purpose of the module
 -->
 
-Generalized and hookable [mini-css-extract-plugin](https://github.com/webpack-contrib/mini-css-extract-plugin). Extract any format, process it your way.
+Generalized and hookable
+[mini-css-extract-plugin](https://github.com/webpack-contrib/mini-css-extract-plugin).
+Extract any format, process it your way.
 
 #### 🏠 [Homepage](https://github.com/JuroOravec/mini-extract-plugin#readme) | 🗃 [Repository](https://github.com/JuroOravec/mini-extract-plugin) | 📦 [NPM](https://www.npmjs.com/package/mini-extract-plugin) | 📚 [Documentation](https://github.com/JuroOravec/mini-extract-plugin/tree/master/docs) | 🐛 [Issue Tracker](https://github.com/JuroOravec/mini-extract-plugin/issues)
 
@@ -55,17 +57,22 @@ awesome when someone starts to use it.
 - State its goals/what problem(s) it solves.
 -->
 
-- Exposes 17 hooks that enable you to:
+- Exposes 18 hooks that enable you to:
 
   - Override how the modules are parsed when passed to the loader
   - Override how the modules are merged into a common file
   - Override what content is returned instead of the content was extracted.
   - Define if and how the modules should should be split
   - Hook into the compiler / compilation.
+  - Extend initialization
 
-- Based on [mini-css-extract-plugin](https://github.com/webpack-contrib/mini-css-extract-plugin) v0.9.0, this package recycles the same logic, but allows you override the format-specific logic.
+- Based on
+  [mini-css-extract-plugin](https://github.com/webpack-contrib/mini-css-extract-plugin)
+  v0.9.0, this package recycles the same logic, but allows you override the
+  format-specific logic and more.
 
-- See how the original mini-css-extract-plugin has been [reimplemented using this package](https://github.com/JuroOravec/mini-extract-plugin/tree/master/test/fixtures/mini-css-extract-plugin).
+- See how the original mini-css-extract-plugin has been
+  [reimplemented using this package](https://github.com/JuroOravec/mini-extract-plugin/tree/master/test/fixtures/mini-css-extract-plugin).
 
 <!-- Core Technical Concepts/Inspiration
 
@@ -91,7 +98,9 @@ npm install mini-extract-plugin
 
 ### Creating new MiniExtractPlugin classes
 
-For a minimal setup, just import the plugin and give it a unique type name by which the plugin will be known. The instances of the created class can be used in Webpack.
+For a minimal setup, just import the plugin and give it a unique type name by
+which the plugin will be known. The instances of the created class can be used
+in Webpack.
 
 ```ts
 // Default import is a class factory
@@ -139,7 +148,11 @@ const config = {
 }
 ```
 
-However, this example above is not terribly useful since we haven't specified any hooks. That means, for example, that found JSONs will be concatenated into as single file as strings (e.g. `"{}" + "{}"`), but that won't yield a valid JSON. So to make the new plugin class to work properly, we need to speficy more than just the type.
+However, this example above is not terribly useful since we haven't specified
+any hooks. That means, for example, that found JSONs will be concatenated into
+as single file as strings (e.g. `"{}" + "{}"`), but that won't yield a valid
+JSON. So to make the new plugin class to work properly, we need to speficy more
+than just the type.
 
 ```ts
 import mep from 'mini-extract-plugin';
@@ -201,36 +214,45 @@ Additional options allow you to:
 #### Examples
 
 - [mini-css-extract-plugin fixture](https://github.com/JuroOravec/mini-extract-plugin/tree/master/test/fixtures/mini-css-extract-plugin) -
-  Test re-implementation of [mini-css-extract-plugin](https://github.com/webpack-contrib/mini-css-extract-plugin)
-- [mini-i18n-extract-plugin](https://github.com/JuroOravec/mini-i18n-extract-plugin) - Extract i18n files (JSON / YAML) and split the files by entrypoints and language locales.
+  Test re-implementation of
+  [mini-css-extract-plugin](https://github.com/webpack-contrib/mini-css-extract-plugin)
+- [mini-i18n-extract-plugin](https://github.com/JuroOravec/mini-i18n-extract-plugin) -
+  Extract i18n files (JSON / YAML) and split the files by entrypoints and language locales.
 
 ### Subclassing
 
 Classes that can be passed to the factory functions can be found at the root of
 the export.
 
-See how classes are extended in the [re-implementation of mini-css-extract-plugin](https://github.com/JuroOravec/mini-extract-plugin/tree/master/test/fixtures/mini-css-extract-plugin).
+See how classes are extended in the
+[re-implementation of mini-css-extract-plugin](https://github.com/JuroOravec/mini-extract-plugin/tree/master/test/fixtures/mini-css-extract-plugin).
 
 ### Helpers
 
-The package also exposes a `util` export, which contains utility modules used for working with the hooks or objects passed to hook functions:
+The package also exposes a `util` export, which contains utility modules used
+for working with the hooks or objects passed to hook functions:
 
 - `util.module` includes helper functions for working with modules.
-- `util.subclass` includes helper functions for subclassing the classes that can be passed to the class factory. Use these functions if you need a subclass but don't care about implementation.
+- `util.subclass` includes helper functions for subclassing the classes that
+  can be passed to the class factory. Use these functions if you need a
+  subclass but don't care about implementation.
 
 ### Typing
 
 This project is written in TypeScript and the typings are included under the
 `types` import.
 
-- `types`, the root, includes interfaces related to subclassing (MiniExtractPlugin, class factory options, etc.)
+- `types`, the root, includes interfaces related to subclassing
+  (MiniExtractPlugin, class factory options, etc.)
 - `types.context` includes interfaces for the [contexts](#Contexts) passed to
   tapped functions
-- `types.hook` includes types related to Hooks (Hook overrides, types of recognized hooks, etc.)
+- `types.hook` includes types related to Hooks (Hook overrides, types of
+  recognized hooks, etc.)
 - `types.webpack` is a shim for Webpack, it includes types that either are not
   exposed in Webpack v4, or which have modified interfaces in the extraction
   process, so the provided types reflect the actual interface.
-- `types.util` includes helper types which may or may not be useful when working with the hooks.
+- `types.util` includes helper types which may or may not be useful when
+  working with the hooks.
 
 What you will most likely want is to have the hook functions types inferred.
 You can use the `types.hook.Taps` interface, which is an object of
@@ -251,7 +273,8 @@ const hooks: types.hook.PartialTaps = {
 
 ### Debugging
 
-This project uses [debug](https://www.npmjs.com/package/debug). To show debug logs, activate debug for `mini-extract-plugin`.
+This project uses [debug](https://www.npmjs.com/package/debug). To show debug
+logs, activate debug for `mini-extract-plugin`.
 
 CLI example:
 
@@ -273,11 +296,15 @@ When working with Vue, I was hoping to manage other auxiliary file types (i18n
 and documentation, to be specific) in a similar manner - modularized definition
 but processed and emitted as separate files during build.
 
-There's (understandably) not as much support for other file formats as there is for CSS. But since other formats could benefit from same action,generalizing the process was in order (and thus encouraging modularized approach for more formats).
+There's (understandably) not as much support for other file formats as there is
+for CSS. But since other formats could benefit from same action,generalizing
+the process was in order (and thus encouraging modularized approach for more
+formats).
 
 ## 🤖 API
 
-TypeDoc documentation can be [found here](https://github.com/JuroOravec/mini-extract-plugin/blob/master/docs/typedoc/README.md).
+TypeDoc documentation can be
+[found here](https://github.com/JuroOravec/mini-extract-plugin/blob/master/docs/typedoc/README.md).
 
 ### Options
 
@@ -310,14 +337,17 @@ The class factory accepts an object with following options:
 - `displayName` - String to be used when printing the class in logging messages
   or similar.
   - Default: `Mini ${type} Extract Plugin` where `type` is capitalized.
-- `className` - Name of the plugin class that is shown when calling either `class.toString()` or `class.name`.
+- `className` - Name of the plugin class that is shown when calling either
+  `class.toString()` or `class.name`.
   - Default: `Mini${type}ExtractPlugin` where `type` is capitalized.
 - `moduleType` - Identifier used to find modules processed by the class.
   - Default: `${type}/mini-extract`.
-- `pluginOptionsSchema` - JSON schema used to validate options passed to constructor and used in loader methods.
+- `pluginOptionsSchema` - JSON schema used to validate options passed to
+  constructor and used in loader methods.
   - Default: MiniCssExtractPlugin's
     [plugin options schema](https://github.com/webpack-contrib/mini-css-extract-plugin/blob/1ffc393a2e377fe0cc341cfcbc5396e07a8e4077/src/plugin-options.json)
-- `loaderOptionsSchema` - JSON schema used to validate options passed to constructor and used in plugin methods.
+- `loaderOptionsSchema` - JSON schema used to validate options passed to
+  constructor and used in plugin methods.
   - Default: MiniCssExtractPlugin's
     [plugin options schema](https://github.com/webpack-contrib/mini-css-extract-plugin/blob/1ffc393a2e377fe0cc341cfcbc5396e07a8e4077/src/loader-options.json)
 - `dependencyTemplateClass` - Class that implements Webpack's
@@ -385,10 +415,13 @@ The class factory accepts an object with following options:
 
 Hooks are called in following order:
 
-- _Plugin initialization: `Plugin.apply` is called_
+- _Plugin initialization_
+  - [`initialize`](#initialize)
+- _`Plugin.apply` is called_
   - [`compiler`](#compiler)
   - [`compilation`](#compilation)
-- _Modules passed to loader: `Loader.pitch` is called and modules are processed to dependencies_
+- _Modules passed to loader: `Loader.pitch` is called and modules are processed
+  to dependencies_
   - [`pitch`](#pitch)
   - [`childCompiler`](#childCompiler)
   - [`source`](#source)
@@ -424,10 +457,12 @@ The available hooks in alphabetical order are
 
 - Hook: [`SyncHook`](https://github.com/webpack/tapable)
 
-- Hook called after Modules were merged into a single Source that will be emitted into a file.
+- Hook called after Modules were merged into a single Source that will be
+  emitted into a file.
 
   Use this hook if you want to modify the resulting Source without overriding
-  the merging process itself, or if you want to trigger some behaviour after the the [`merge`](#merge) step has finished.
+  the merging process itself, or if you want to trigger some behaviour after
+  the [`merge`](#merge) step has finished.
 
 - Default: No behaviour.
 
@@ -444,7 +479,9 @@ The available hooks in alphabetical order are
 
 - Hook: [`SyncHook`](https://github.com/webpack/tapable)
 
-- Hook called after the list of [`RenderManifestEntries`](https://github.com/webpack/webpack/blob/ee94677a7729fac726b7100256986a7a7db8c53e/lib/Template.js#L57) has been prepared for the generation of chunk (non-entrypoint) files.
+- Hook called after the list of
+  [`RenderManifestEntries`](https://github.com/webpack/webpack/blob/ee94677a7729fac726b7100256986a7a7db8c53e/lib/Template.js#L57)
+  has been prepared for the generation of chunk (non-entrypoint) files.
 
   Use this hook if you want to modify the resulting list of
   [`RenderManifestEntries`](https://github.com/webpack/webpack/blob/ee94677a7729fac726b7100256986a7a7db8c53e/lib/Template.js#L57)
@@ -467,7 +504,9 @@ The available hooks in alphabetical order are
 
 - Hook: [`SyncHook`](https://github.com/webpack/tapable)
 
-- Hook called after the list of [`RenderManifestEntries`](https://github.com/webpack/webpack/blob/ee94677a7729fac726b7100256986a7a7db8c53e/lib/Template.js#L57) has been prepared for the generation of main (entry) files.
+- Hook called after the list of
+  [`RenderManifestEntries`](https://github.com/webpack/webpack/blob/ee94677a7729fac726b7100256986a7a7db8c53e/lib/Template.js#L57)
+  has been prepared for the generation of main (entry) files.
 
   Use this hook if you want to modify the resulting list of
   [`RenderManifestEntries`](https://github.com/webpack/webpack/blob/ee94677a7729fac726b7100256986a7a7db8c53e/lib/Template.js#L57)
@@ -490,7 +529,8 @@ The available hooks in alphabetical order are
 
 - Hook: [`SyncWaterfallHook`](https://github.com/webpack/tapable)
 
-- Hook called when merging multiple Modules into a single Source that will be emitted into a file.
+- Hook called when merging multiple Modules into a single Source that will be
+  emitted into a file.
 
   Use this hook if you want to modify the list of modules without overriding
   the merging process itself.
@@ -569,7 +609,8 @@ The available hooks in alphabetical order are
 
 - Hook called when the compilation of [child Compiler](#childCompiler) is run.
 
-  Use this hook if you need to modify the child Compiler's Compilation or if you want to access child Compiler's Compilation's hooks yourself.
+  Use this hook if you need to modify the child Compiler's Compilation or if
+  you want to access child Compiler's Compilation's hooks yourself.
 
 - Default: No behaviour.
 
@@ -583,9 +624,12 @@ The available hooks in alphabetical order are
 
 - Hook: [`AsyncParallelHook`](https://github.com/webpack/tapable)
 
-- Hook called after a child Compiler was set up in loader's `pitch` method. Child Compiler is used to evaluate the modules passed to the loader, and the resulting content will be extracted.
+- Hook called after a child Compiler was set up in loader's `pitch` method.
+  Child Compiler is used to evaluate the modules passed to the loader, and the
+  resulting content will be extracted.
 
-  Use this hook if you need to modify the child Compiler before other hooks are tapped, or if you want to access child Compiler's hooks yourself.
+  Use this hook if you need to modify the child Compiler before other hooks are
+  tapped, or if you want to access child Compiler's hooks yourself.
 
 - Default: No behaviour.
 
@@ -599,7 +643,10 @@ The available hooks in alphabetical order are
 
 - Hook: [`SyncHook`](https://github.com/webpack/tapable)
 
-- Hook called at the beginning of plugin's [`apply`](https://webpack.js.org/contribute/writing-a-plugin/) method. Use if you need to access Compiler hooks or if you need to set things up at the beginning of the process.
+- Hook called at the beginning of plugin's
+  [`apply`](https://webpack.js.org/contribute/writing-a-plugin/)
+  method. Use if you need to access Compiler hooks or if you need to set things
+  up at the beginning of the process.
 
 - Default: No behaviour.
 
@@ -613,7 +660,9 @@ The available hooks in alphabetical order are
 
 - Hook: [`SyncHook`](https://github.com/webpack/tapable)
 
-- Hook called at the beginning of Compiler's [`thisCompilation`](https://webpack.js.org/api/compiler-hooks/#thiscompilation) hook. Use if you need to access Compilation hooks.
+- Hook called at the beginning of Compiler's
+  [`thisCompilation`](https://webpack.js.org/api/compiler-hooks/#thiscompilation)
+  hook. Use if you need to access Compilation hooks.
 
 - Default: No behaviour.
 
@@ -629,15 +678,21 @@ The available hooks in alphabetical order are
 
 - Hook: [`SyncWaterfallHook`](https://github.com/webpack/tapable)
 
-- Process the data that was obtained from evaluating the source code of the Module that was passed to loader's `pitch` method.
+- Process the data that was obtained from evaluating the source code of the
+  Module that was passed to loader's `pitch` method.
 
-  The data should be processed to objects that can be passed to [`dependencyClass`](#options), which will be used by Webpack to create the extracted files.
+  The data should be processed to objects that can be passed to
+  [`dependencyClass`](#options), which will be used by Webpack to create the
+  extracted files.
 
-  Use this hook if you need to modify the data from Module before it is passed to the [`dependencyClass`](#options), or if need to split/merge the evaluated data.
+  Use this hook if you need to modify the data from Module before it is passed
+  to the [`dependencyClass`](#options), or if need to split/merge the evaluated
+  data.
 
 - Default:
   [MiniCssExtractPlugins](https://github.com/webpack-contrib/mini-css-extract-plugin)-derived
-  behaviour. Exported data is interpreted as an arrray of [ID, content] ([see source file](https://github.com/JuroOravec/mini-extract-plugin/tree/master/src/methods/pitch.ts)).
+  behaviour. Exported data is interpreted as an arrray of [ID, content]
+  ([see source file](https://github.com/JuroOravec/mini-extract-plugin/tree/master/src/methods/pitch.ts)).
 
 | Argument                                              | Description                                                                                                                                                                                                                                                                            |
 | ----------------------------------------------------- | -------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
@@ -651,11 +706,13 @@ The available hooks in alphabetical order are
 
 #### extracted
 
-- Signature: `(`[`PitchCompilationContext`](#PitchCompilationContext)`, string) => string`
+- Signature: `(`[`PitchCompilationContext`](#PitchCompilationContext)`,`
+  `string) => string`
 
 - Hook: [`SyncWaterfallHook`](https://github.com/webpack/tapable)
 
-- Modify the source string of the module from which content has been extracted before it is passed to Webpack.
+- Modify the source string of the module from which content has been extracted
+  before it is passed to Webpack.
 
   Use this hook if you need to modify the string so it can conforms to a loader
   / parser that it will be passed to next.
@@ -672,6 +729,25 @@ The available hooks in alphabetical order are
 | -------- | ------------------------------------------------------------------------------------------------------- |
 | `string` | String that will be returned to Webpack as the source of the module from which data has been extracted. |
 
+#### initialize
+
+- Signature: `(MiniExtractPlugin, object) => void`
+
+- Hook: [`SyncHook`](https://github.com/webpack/tapable)
+
+- Modify the MiniExtractPlugin instance during initialization (called from
+  constructor). This hook is called after other initialization logic is done.
+
+  Use this hook if you need to extend the class with custom methods /
+  properties, or to set default options values.
+
+- Default: No behaviour.
+
+| Argument          | Description                                                  |
+| ----------------- | ------------------------------------------------------------ |
+| `instance`        | `MiniExtractPlugin` instance that is being constructed.      |
+| `instanceOptions` | Options object with which the instance is being constructed. |
+
 #### merge
 
 - Signature: `(`[`RenderContext`](#RenderContext)`,`
@@ -680,7 +756,8 @@ The available hooks in alphabetical order are
 
 - Hook: [`SyncWaterfallHook`](https://github.com/webpack/tapable)
 
-- Hook called when merging multiple Modules into a single Source that will be emitted into a file.
+- Hook called when merging multiple Modules into a single Source that will be
+  emitted into a file.
 
   Use this hook if you want to override how Modules are merged.
 
@@ -701,7 +778,9 @@ The available hooks in alphabetical order are
 
 - Hook: [`AsyncParallelHook`](https://github.com/webpack/tapable)
 
-- Hook called at the beginning of loader's [`pitch`](https://webpack.js.org/contribute/writing-a-plugin/) method. Use if you need to set up the loader environment.
+- Hook called at the beginning of loader's
+  [`pitch`](https://webpack.js.org/contribute/writing-a-plugin/)
+  method. Use if you need to set up the loader environment.
 
 - Default: No behaviour.
 
@@ -731,7 +810,8 @@ The available hooks in alphabetical order are
 
   - Default:
     [MiniCssExtractPlugins](https://github.com/webpack-contrib/mini-css-extract-plugin)-derived
-    behaviour ([see source file](https://github.com/JuroOravec/mini-extract-plugin/tree/master/src/methods/apply.ts)).
+    behaviour
+    ([see source file](https://github.com/JuroOravec/mini-extract-plugin/tree/master/src/methods/apply.ts)).
 
   | Argument                          | Description                                                                                                                                                                                                              |
   | --------------------------------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ |
@@ -761,7 +841,8 @@ The available hooks in alphabetical order are
 
   - Default:
     [MiniCssExtractPlugins](https://github.com/webpack-contrib/mini-css-extract-plugin)-derived
-    behaviour ([see source file](https://github.com/JuroOravec/mini-extract-plugin/tree/master/src/methods/apply.ts)).
+    behaviour
+    ([see source file](https://github.com/JuroOravec/mini-extract-plugin/tree/master/src/methods/apply.ts)).
 
   | Argument                          | Description                                                                                                                                                                                                              |
   | --------------------------------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ |
@@ -778,7 +859,8 @@ The available hooks in alphabetical order are
 
 - Hook: [`AsyncSeriesWaterfallHook`](https://github.com/webpack/tapable)
 
-- Get source code from a Module that was passed to loader's `pitch` method. Use this hook if you need to modify the source code before it is evaluated.
+- Get source code from a Module that was passed to loader's `pitch` method. Use
+  this hook if you need to modify the source code before it is evaluated.
 
 - Default: No modifications done.
 
@@ -792,7 +874,10 @@ The available hooks in alphabetical order are
 
 ### Contexts
 
-Hooks can be tapped to modify the extraction process at different stages. Therefore, also the information available is different. That's why different hooks expose different "contexts", or objects with contextual information available at the point in time of the call.
+Hooks can be tapped to modify the extraction process at different stages.
+Therefore, also the information available is different. That's why different
+hooks expose different "contexts", or objects with contextual information
+available at the point in time of the call.
 
 Here is the list of used contexts ([see source file](https://github.com/JuroOravec/mini-extract-plugin/tree/master/src/types/context.ts)):
 
@@ -945,7 +1030,9 @@ Contributions, issues and feature requests are welcome! Thank you ❤️
 Feel free to dive in! See [current issues](https://github.com/JuroOravec/mini-extract-plugin/issues),
 [open an issue](https://github.com/JuroOravec/mini-extract-plugin/issues/new), or [submit PRs](https://github.com/JuroOravec/mini-extract-plugin/compare).
 
-How to report bugs, feature requests, and how to contribute and what conventions we use is all described in the [contributing guide](https://github.com/JuroOravec/mini-extract-plugin/tree/master/docs/CONTRIBUTING.md).
+How to report bugs, feature requests, and how to contribute and what
+conventions we use is all described in the
+[contributing guide](https://github.com/JuroOravec/mini-extract-plugin/tree/master/docs/CONTRIBUTING.md).
 
 When contributing we follow the
 [Contributor Covenant](https://contributor-covenant.org/version/1/3/0/).
