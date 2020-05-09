@@ -5,7 +5,7 @@
 
 import type tapable from 'tapable';
 
-import { Constructor } from './util';
+import type { Constructor } from './util';
 
 export type HookClass =
   | typeof tapable.Hook

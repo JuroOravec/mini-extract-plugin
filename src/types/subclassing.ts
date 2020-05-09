@@ -4,11 +4,11 @@
 
 import theWebpack from 'webpack';
 import type { Ploadin } from 'ploadin';
-import { Tapable } from 'tapable';
+import type { Tapable } from 'tapable';
 
 import type { Constructor, AnyFunc } from './util';
 import type { Overrides, ActiveHooks } from './hook';
-import { ModuleBase, DependencyBase } from './base';
+import type { ModuleBase, DependencyBase } from './base';
 
 export interface DependencyTemplate {
   apply: AnyFunc;

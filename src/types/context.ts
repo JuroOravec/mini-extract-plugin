@@ -6,7 +6,7 @@ import type webpack from 'webpack';
 
 import type { ConstructorOptions, MiniExtractPlugin } from './subclassing';
 import type { RenderManifestEntry, RenderManifestOptions } from './webpack';
-import { DependencyBase } from './base';
+import type { DependencyBase } from './base';
 
 type LoaderContext = any;
 

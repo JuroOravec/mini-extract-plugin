@@ -3,8 +3,8 @@
  */
 
 import webpack from 'webpack';
-import { Source } from 'webpack-sources';
-import { ModuleBase } from './base';
+import type { Source } from 'webpack-sources';
+import type { ModuleBase } from './base';
 
 /**
  * Interface for Webpack's Module class with some overrides to match the Module
