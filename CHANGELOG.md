@@ -1,3 +1,10 @@
+# [1.1.0](https://github.com/JuroOravec/mini-extract-plugin/compare/v1.0.2...v1.1.0) (2020-05-09)
+
+
+### Features
+
+* **hook:** add "extracted" hook ([a069d11](https://github.com/JuroOravec/mini-extract-plugin/commit/a069d1116ca97224b1129633834de904bd4b3f4c))
+
 ## [1.0.2](https://github.com/JuroOravec/mini-extract-plugin/compare/v1.0.1...v1.0.2) (2020-05-07)
 
 
