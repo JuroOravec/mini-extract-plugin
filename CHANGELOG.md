@@ -3,7 +3,7 @@
 
 ### Features
 
-* **typing:** export moduleFilename function types ([9e394f3](https://github.com/JuroOravec/mini-extract-plugin/commit/9e394f3ca991fe73085f42e41ac16fae9e3a9ae7))
+* **typing:** export moduleFilename function types TemplateOptions, ModuleFilenameFunction, ModuleFilename ([9e394f3](https://github.com/JuroOravec/mini-extract-plugin/commit/9e394f3ca991fe73085f42e41ac16fae9e3a9ae7))
 
 # [1.2.0](https://github.com/JuroOravec/mini-extract-plugin/compare/v1.1.1...v1.2.0) (2020-05-09)
 
