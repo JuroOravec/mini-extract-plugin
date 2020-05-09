@@ -1,16 +1,17 @@
-import type { Module, Chunk } from '../types/webpack';
+import type { Module } from '../types/webpack';
 import type { RenderContext } from '../types/context';
+import type { TemplateOptions, ModuleFilename } from '../types/module-filename';
 
-export type GetModuleFilenameOptions = {
+/**
+ * Options object passed to getModuleFilename, the function that calls
+ * moduleFilename
+ */
+interface GetModuleFilenameOptions {
   default: string;
   context: RenderContext;
   modules: Module[];
-  templateOptions: {
-    chunk: Chunk;
-    hash: string;
-    contentHashType: string;
-  };
-};
+  templateOptions: TemplateOptions;
+}
 
 /**
  * Function to provide user with the chance to define module filename based on
@@ -20,9 +21,9 @@ export default function getModuleFilename(options: GetModuleFilenameOptions) {
   const { default: defaultFilename, context, templateOptions } = options;
   const { plugin } = context;
 
-  const moduleFilename = plugin.options.moduleFilename;
+  const moduleFilename = plugin.options.moduleFilename as ModuleFilename;
   if (!moduleFilename) return defaultFilename;
   if (typeof moduleFilename === 'string') return moduleFilename;
 
-  return moduleFilename(plugin, { context, templateOptions });
+  return moduleFilename(context, templateOptions);
 }

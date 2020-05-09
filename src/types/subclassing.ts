@@ -9,6 +9,7 @@ import type { Tapable } from 'tapable';
 import type { Constructor, AnyFunc } from './util';
 import type { Overrides, ActiveHooks } from './hook';
 import type { ModuleBase, DependencyBase } from './base';
+import type { ModuleFilename } from './module-filename';
 
 export interface DependencyTemplate {
   apply: AnyFunc;
@@ -62,7 +63,7 @@ export interface ClassOptions {
 
 export type ConstructorOptions = {
   filename?: string;
-  moduleFilename?: string | Function;
+  moduleFilename?: ModuleFilename;
   chunkFilename?: string;
   ignoreOrder?: boolean;
 };
