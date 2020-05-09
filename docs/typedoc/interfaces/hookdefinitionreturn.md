@@ -19,7 +19,7 @@
 
 • **name**? : *undefined | null*
 
-*Defined in [src/types/hooks-definition.ts:129](https://github.com/JuroOravec/mini-extract-plugin/blob/4b5288b/src/types/hooks-definition.ts#L129)*
+*Defined in [src/types/hooks-definition.ts:129](https://github.com/JuroOravec/mini-extract-plugin/blob/b97da5f/src/types/hooks-definition.ts#L129)*
 
 ___
 
@@ -27,4 +27,4 @@ ___
 
 • **type**: *any*
 
-*Defined in [src/types/hooks-definition.ts:130](https://github.com/JuroOravec/mini-extract-plugin/blob/4b5288b/src/types/hooks-definition.ts#L130)*
+*Defined in [src/types/hooks-definition.ts:130](https://github.com/JuroOravec/mini-extract-plugin/blob/b97da5f/src/types/hooks-definition.ts#L130)*
