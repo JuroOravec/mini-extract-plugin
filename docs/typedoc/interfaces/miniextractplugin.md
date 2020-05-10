@@ -1,6 +1,46 @@
 [mini-extract-plugin](../README.md) › [MiniExtractPlugin](miniextractplugin.md)
 
-# Interface: MiniExtractPlugin
+# Interface: MiniExtractPlugin <**T, DepCls, DepTemplateCls, ModCls, ModFactoryCls, CtorOptions**>
+
+MiniExtractPlugin instance
+
+Following types of classes can be overriden by passing an object of types as
+the first type parameter:
+- `dependencyClass` - DependencyClass subtype
+- `dependencyTemplateClass` - DependencyTemplateClass subtype
+- `moduleClass` - ModuleClass subtype
+- `moduleFactoryClass` - ModuleFactoryClass subtype
+- `constructorOptions` - object type expected when instantiating MiniExtractPlugin;
+
+**`example`** 
+// ClassOptions with default types
+ClassOptions
+// ClassOptions with overriden moduleClass type
+ClassOptions<{
+  moduleClass: ModCls;
+}>
+// ClassOptions with all types overriden
+ClassOptions<{
+  dependencyClass: DepCls;
+  dependencyTemplateClass: DepTemplateCls;
+  moduleClass: ModCls;
+  moduleFactoryClass: ModFactoryCls;
+  constructorOptions: ConstructorOptions & { myCustomOption: boolean};
+}>
+
+## Type parameters
+
+▪ **T**: *object*
+
+▪ **DepCls**: *[DependencyClass](../README.md#dependencyclass)*
+
+▪ **DepTemplateCls**: *[DependencyTemplateClass](../README.md#dependencytemplateclass)*
+
+▪ **ModCls**: *[ModuleClass](../README.md#moduleclass)*
+
+▪ **ModFactoryCls**: *[ModuleFactoryClass](../README.md#modulefactoryclass)*
+
+▪ **CtorOptions**: *object*
 
 ## Hierarchy
 
@@ -56,7 +96,7 @@ Defined in node_modules/ploadin/dist/ploadin.d.ts:2
 
 • **apply**: *function*
 
-*Defined in [src/types/subclassing.ts:75](https://github.com/JuroOravec/mini-extract-plugin/blob/9e394f3/src/types/subclassing.ts#L75)*
+*Defined in [src/types/subclassing.ts:204](https://github.com/JuroOravec/mini-extract-plugin/blob/ee56c59/src/types/subclassing.ts#L204)*
 
 #### Type declaration:
 
@@ -72,11 +112,11 @@ ___
 
 ###  classOptions
 
-• **classOptions**: *Required‹[ClassOptions](classoptions.md)›*
+• **classOptions**: *Required‹[ClassOptions](classoptions.md)‹object››*
 
 *Overrides void*
 
-*Defined in [src/types/subclassing.ts:72](https://github.com/JuroOravec/mini-extract-plugin/blob/9e394f3/src/types/subclassing.ts#L72)*
+*Defined in [src/types/subclassing.ts:194](https://github.com/JuroOravec/mini-extract-plugin/blob/ee56c59/src/types/subclassing.ts#L194)*
 
 ___
 
@@ -84,15 +124,15 @@ ___
 
 • **hooks**: *[ActiveHooks](../README.md#activehooks)*
 
-*Defined in [src/types/subclassing.ts:74](https://github.com/JuroOravec/mini-extract-plugin/blob/9e394f3/src/types/subclassing.ts#L74)*
+*Defined in [src/types/subclassing.ts:203](https://github.com/JuroOravec/mini-extract-plugin/blob/ee56c59/src/types/subclassing.ts#L203)*
 
 ___
 
 ###  options
 
-• **options**: *[ConstructorOptions](../README.md#constructoroptions)*
+• **options**: *CtorOptions*
 
-*Defined in [src/types/subclassing.ts:73](https://github.com/JuroOravec/mini-extract-plugin/blob/9e394f3/src/types/subclassing.ts#L73)*
+*Defined in [src/types/subclassing.ts:202](https://github.com/JuroOravec/mini-extract-plugin/blob/ee56c59/src/types/subclassing.ts#L202)*
 
 ## Accessors
 
@@ -176,7 +216,7 @@ Defined in node_modules/ploadin/dist/ploadin.d.ts:7
 
 ▸ **loader**(`loaderContext`: any, `source?`: undefined | string, `sourceMap?`: undefined | string, `data?`: any): *void*
 
-*Defined in [src/types/subclassing.ts:76](https://github.com/JuroOravec/mini-extract-plugin/blob/9e394f3/src/types/subclassing.ts#L76)*
+*Defined in [src/types/subclassing.ts:205](https://github.com/JuroOravec/mini-extract-plugin/blob/ee56c59/src/types/subclassing.ts#L205)*
 
 **Parameters:**
 
@@ -195,7 +235,7 @@ ___
 
 ▸ **pitch**(`loaderContext`: any, `request`: string, `precedingRequest`: string, `data`: object): *void*
 
-*Defined in [src/types/subclassing.ts:82](https://github.com/JuroOravec/mini-extract-plugin/blob/9e394f3/src/types/subclassing.ts#L82)*
+*Defined in [src/types/subclassing.ts:211](https://github.com/JuroOravec/mini-extract-plugin/blob/ee56c59/src/types/subclassing.ts#L211)*
 
 **Parameters:**
 

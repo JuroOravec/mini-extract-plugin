@@ -20,7 +20,7 @@
 
 • **exports**: *any*
 
-*Defined in [src/types/context.ts:50](https://github.com/JuroOravec/mini-extract-plugin/blob/9e394f3/src/types/context.ts#L50)*
+*Defined in [src/types/context.ts:75](https://github.com/JuroOravec/mini-extract-plugin/blob/ee56c59/src/types/context.ts#L75)*
 
 ___
 
@@ -28,7 +28,7 @@ ___
 
 • **locals**: *any*
 
-*Defined in [src/types/context.ts:49](https://github.com/JuroOravec/mini-extract-plugin/blob/9e394f3/src/types/context.ts#L49)*
+*Defined in [src/types/context.ts:74](https://github.com/JuroOravec/mini-extract-plugin/blob/ee56c59/src/types/context.ts#L74)*
 
 ___
 
@@ -36,4 +36,4 @@ ___
 
 • **source**: *string*
 
-*Defined in [src/types/context.ts:48](https://github.com/JuroOravec/mini-extract-plugin/blob/9e394f3/src/types/context.ts#L48)*
+*Defined in [src/types/context.ts:73](https://github.com/JuroOravec/mini-extract-plugin/blob/ee56c59/src/types/context.ts#L73)*

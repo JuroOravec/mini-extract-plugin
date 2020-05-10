@@ -21,7 +21,7 @@ Hooks definition object
 
 • **name**: *string*
 
-*Defined in [src/types/hooks-definition.ts:124](https://github.com/JuroOravec/mini-extract-plugin/blob/9e394f3/src/types/hooks-definition.ts#L124)*
+*Defined in [src/types/hook-definition.ts:124](https://github.com/JuroOravec/mini-extract-plugin/blob/ee56c59/src/types/hook-definition.ts#L124)*
 
 ___
 
@@ -29,4 +29,4 @@ ___
 
 • **type**: *any*
 
-*Defined in [src/types/hooks-definition.ts:125](https://github.com/JuroOravec/mini-extract-plugin/blob/9e394f3/src/types/hooks-definition.ts#L125)*
+*Defined in [src/types/hook-definition.ts:125](https://github.com/JuroOravec/mini-extract-plugin/blob/ee56c59/src/types/hook-definition.ts#L125)*

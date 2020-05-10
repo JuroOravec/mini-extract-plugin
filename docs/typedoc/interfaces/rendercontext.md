@@ -1,10 +1,14 @@
 [mini-extract-plugin](../README.md) › [RenderContext](rendercontext.md)
 
-# Interface: RenderContext
+# Interface: RenderContext <**MEP**>
+
+## Type parameters
+
+▪ **MEP**: *[MiniExtractPlugin](miniextractplugin.md)*
 
 ## Hierarchy
 
-  ↳ [CompilationContext](compilationcontext.md)
+  ↳ [CompilationContext](compilationcontext.md)‹MEP›
 
   ↳ **RenderContext**
 
@@ -24,11 +28,11 @@
 
 ###  classOptions
 
-• **classOptions**: *MiniExtractPlugin["classOptions"]*
+• **classOptions**: *MEP["classOptions"]*
 
-*Inherited from [Context](context.md).[classOptions](context.md#classoptions)*
+*Inherited from [ContextBase](contextbase.md).[classOptions](contextbase.md#classoptions)*
 
-*Defined in [src/types/context.ts:15](https://github.com/JuroOravec/mini-extract-plugin/blob/9e394f3/src/types/context.ts#L15)*
+*Defined in [src/types/context.ts:20](https://github.com/JuroOravec/mini-extract-plugin/blob/ee56c59/src/types/context.ts#L20)*
 
 ___
 
@@ -38,7 +42,7 @@ ___
 
 *Inherited from [CompilationContext](compilationcontext.md).[compilation](compilationcontext.md#compilation)*
 
-*Defined in [src/types/context.ts:24](https://github.com/JuroOravec/mini-extract-plugin/blob/9e394f3/src/types/context.ts#L24)*
+*Defined in [src/types/context.ts:41](https://github.com/JuroOravec/mini-extract-plugin/blob/ee56c59/src/types/context.ts#L41)*
 
 ___
 
@@ -48,27 +52,27 @@ ___
 
 *Inherited from [CompilerContext](compilercontext.md).[compiler](compilercontext.md#compiler)*
 
-*Defined in [src/types/context.ts:20](https://github.com/JuroOravec/mini-extract-plugin/blob/9e394f3/src/types/context.ts#L20)*
+*Defined in [src/types/context.ts:31](https://github.com/JuroOravec/mini-extract-plugin/blob/ee56c59/src/types/context.ts#L31)*
 
 ___
 
 ###  options
 
-• **options**: *[ConstructorOptions](../README.md#constructoroptions)*
+• **options**: *MEP["options"]*
 
-*Inherited from [Context](context.md).[options](context.md#options)*
+*Inherited from [ContextBase](contextbase.md).[options](contextbase.md#options)*
 
-*Defined in [src/types/context.ts:16](https://github.com/JuroOravec/mini-extract-plugin/blob/9e394f3/src/types/context.ts#L16)*
+*Defined in [src/types/context.ts:21](https://github.com/JuroOravec/mini-extract-plugin/blob/ee56c59/src/types/context.ts#L21)*
 
 ___
 
 ###  plugin
 
-• **plugin**: *[MiniExtractPlugin](miniextractplugin.md)*
+• **plugin**: *MEP*
 
-*Inherited from [Context](context.md).[plugin](context.md#plugin)*
+*Inherited from [ContextBase](contextbase.md).[plugin](contextbase.md#plugin)*
 
-*Defined in [src/types/context.ts:14](https://github.com/JuroOravec/mini-extract-plugin/blob/9e394f3/src/types/context.ts#L14)*
+*Defined in [src/types/context.ts:19](https://github.com/JuroOravec/mini-extract-plugin/blob/ee56c59/src/types/context.ts#L19)*
 
 ___
 
@@ -76,7 +80,7 @@ ___
 
 • **renderEntries**: *[RenderManifestEntry](../README.md#rendermanifestentry)[]*
 
-*Defined in [src/types/context.ts:28](https://github.com/JuroOravec/mini-extract-plugin/blob/9e394f3/src/types/context.ts#L28)*
+*Defined in [src/types/context.ts:47](https://github.com/JuroOravec/mini-extract-plugin/blob/ee56c59/src/types/context.ts#L47)*
 
 ___
 
@@ -84,4 +88,4 @@ ___
 
 • **renderOptions**: *[RenderManifestOptions](../README.md#rendermanifestoptions)*
 
-*Defined in [src/types/context.ts:29](https://github.com/JuroOravec/mini-extract-plugin/blob/9e394f3/src/types/context.ts#L29)*
+*Defined in [src/types/context.ts:48](https://github.com/JuroOravec/mini-extract-plugin/blob/ee56c59/src/types/context.ts#L48)*

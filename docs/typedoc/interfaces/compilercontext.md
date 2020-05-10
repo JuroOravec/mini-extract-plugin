@@ -1,10 +1,17 @@
 [mini-extract-plugin](../README.md) › [CompilerContext](compilercontext.md)
 
-# Interface: CompilerContext
+# Interface: CompilerContext <**MEP**>
+
+Context object with compiler instance exposed to the plugin's `apply`
+method.
+
+## Type parameters
+
+▪ **MEP**: *[MiniExtractPlugin](miniextractplugin.md)*
 
 ## Hierarchy
 
-* [Context](context.md)
+* [ContextBase](contextbase.md)‹MEP›
 
   ↳ **CompilerContext**
 
@@ -23,11 +30,11 @@
 
 ###  classOptions
 
-• **classOptions**: *MiniExtractPlugin["classOptions"]*
+• **classOptions**: *MEP["classOptions"]*
 
-*Inherited from [Context](context.md).[classOptions](context.md#classoptions)*
+*Inherited from [ContextBase](contextbase.md).[classOptions](contextbase.md#classoptions)*
 
-*Defined in [src/types/context.ts:15](https://github.com/JuroOravec/mini-extract-plugin/blob/9e394f3/src/types/context.ts#L15)*
+*Defined in [src/types/context.ts:20](https://github.com/JuroOravec/mini-extract-plugin/blob/ee56c59/src/types/context.ts#L20)*
 
 ___
 
@@ -35,24 +42,24 @@ ___
 
 • **compiler**: *Compiler*
 
-*Defined in [src/types/context.ts:20](https://github.com/JuroOravec/mini-extract-plugin/blob/9e394f3/src/types/context.ts#L20)*
+*Defined in [src/types/context.ts:31](https://github.com/JuroOravec/mini-extract-plugin/blob/ee56c59/src/types/context.ts#L31)*
 
 ___
 
 ###  options
 
-• **options**: *[ConstructorOptions](../README.md#constructoroptions)*
+• **options**: *MEP["options"]*
 
-*Inherited from [Context](context.md).[options](context.md#options)*
+*Inherited from [ContextBase](contextbase.md).[options](contextbase.md#options)*
 
-*Defined in [src/types/context.ts:16](https://github.com/JuroOravec/mini-extract-plugin/blob/9e394f3/src/types/context.ts#L16)*
+*Defined in [src/types/context.ts:21](https://github.com/JuroOravec/mini-extract-plugin/blob/ee56c59/src/types/context.ts#L21)*
 
 ___
 
 ###  plugin
 
-• **plugin**: *[MiniExtractPlugin](miniextractplugin.md)*
+• **plugin**: *MEP*
 
-*Inherited from [Context](context.md).[plugin](context.md#plugin)*
+*Inherited from [ContextBase](contextbase.md).[plugin](contextbase.md#plugin)*
 
-*Defined in [src/types/context.ts:14](https://github.com/JuroOravec/mini-extract-plugin/blob/9e394f3/src/types/context.ts#L14)*
+*Defined in [src/types/context.ts:19](https://github.com/JuroOravec/mini-extract-plugin/blob/ee56c59/src/types/context.ts#L19)*

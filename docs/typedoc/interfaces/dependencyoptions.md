@@ -26,7 +26,7 @@
 
 *Inherited from [DependencyBase](dependencybase.md).[content](dependencybase.md#content)*
 
-*Defined in [src/types/base.ts:22](https://github.com/JuroOravec/mini-extract-plugin/blob/9e394f3/src/types/base.ts#L22)*
+*Defined in [src/types/base.ts:22](https://github.com/JuroOravec/mini-extract-plugin/blob/ee56c59/src/types/base.ts#L22)*
 
 ___
 
@@ -36,7 +36,7 @@ ___
 
 *Inherited from [DependencyBase](dependencybase.md).[context](dependencybase.md#context)*
 
-*Defined in [src/types/base.ts:21](https://github.com/JuroOravec/mini-extract-plugin/blob/9e394f3/src/types/base.ts#L21)*
+*Defined in [src/types/base.ts:21](https://github.com/JuroOravec/mini-extract-plugin/blob/ee56c59/src/types/base.ts#L21)*
 
 ___
 
@@ -46,7 +46,7 @@ ___
 
 *Inherited from [DependencyBase](dependencybase.md).[identifier](dependencybase.md#identifier)*
 
-*Defined in [src/types/base.ts:20](https://github.com/JuroOravec/mini-extract-plugin/blob/9e394f3/src/types/base.ts#L20)*
+*Defined in [src/types/base.ts:20](https://github.com/JuroOravec/mini-extract-plugin/blob/ee56c59/src/types/base.ts#L20)*
 
 ___
 
@@ -56,7 +56,7 @@ ___
 
 *Inherited from [DependencyBase](dependencybase.md).[miniExtractType](dependencybase.md#miniextracttype)*
 
-*Defined in [src/types/base.ts:18](https://github.com/JuroOravec/mini-extract-plugin/blob/9e394f3/src/types/base.ts#L18)*
+*Defined in [src/types/base.ts:18](https://github.com/JuroOravec/mini-extract-plugin/blob/ee56c59/src/types/base.ts#L18)*
 
 ___
 
@@ -66,4 +66,4 @@ ___
 
 *Inherited from [DependencyBase](dependencybase.md).[moduleType](dependencybase.md#moduletype)*
 
-*Defined in [src/types/base.ts:19](https://github.com/JuroOravec/mini-extract-plugin/blob/9e394f3/src/types/base.ts#L19)*
+*Defined in [src/types/base.ts:19](https://github.com/JuroOravec/mini-extract-plugin/blob/ee56c59/src/types/base.ts#L19)*
