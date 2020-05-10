@@ -9,14 +9,21 @@ import { renameClass } from '../lib/util';
 
 const TypedWebpackModule = WebpackModule as typeof webpack.compilation.Module;
 
-export class Module extends TypedWebpackModule implements IModule {
+export class Module<
+  T extends {
+    dependency?: Dependency;
+  } = {},
+  Dep extends Dependency = T['dependency'] extends Dependency
+    ? T['dependency']
+    : Dependency
+> extends TypedWebpackModule implements IModule {
   id: string;
-  content: Dependency['content'];
-  private _identifier: Dependency['identifier'];
-  private _identifierIndex: Dependency['identifierIndex'];
-  private _miniExtractType: Dependency['miniExtractType'];
+  content: Dep['content'];
+  private _identifier: Dep['identifier'];
+  private _identifierIndex: Dep['identifierIndex'];
+  private _miniExtractType: Dep['miniExtractType'];
 
-  constructor(dependency: Dependency) {
+  constructor(dependency: Dep) {
     const { context } = dependency;
     const moduleType = dependency.moduleType;
     super(moduleType, context === null ? undefined : context);
@@ -80,10 +87,14 @@ interface SubclassOptions {
   type: string;
 }
 
-export function subclass({ type }: SubclassOptions) {
-  class ModuleSubclass extends Module implements IModule {}
+export function subclass<
+  T extends {
+    dependency?: Dependency;
+  } = {}
+>({ type }: SubclassOptions) {
+  class ModuleSubclass extends Module<T> implements IModule {}
 
   const className = `${capitalize(type)}${ModuleSubclass.name}`;
   renameClass(ModuleSubclass, className);
-  return ModuleSubclass as ModuleClass;
+  return ModuleSubclass as ModuleClass<Module<T>>;
 }

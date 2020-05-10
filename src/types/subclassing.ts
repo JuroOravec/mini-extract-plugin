@@ -6,7 +6,7 @@ import theWebpack from 'webpack';
 import type { Ploadin } from 'ploadin';
 import type { Tapable } from 'tapable';
 
-import type { Constructor, AnyFunc } from './util';
+import type { Constructor, AnyFunc, RequiredKeys } from './util';
 import type { Overrides, ActiveHooks } from './hook';
 import type { ModuleBase, DependencyBase } from './base';
 import type { ModuleFilename } from './module-filename';
@@ -15,8 +15,9 @@ export interface DependencyTemplate {
   apply: AnyFunc;
 }
 
-export type DependencyTemplateClass = Constructor<DependencyTemplate> &
-  typeof Tapable;
+export type DependencyTemplateClass<
+  T extends DependencyTemplate = DependencyTemplate
+> = Constructor<T> & typeof Tapable;
 
 export interface Dependency
   extends theWebpack.compilation.Dependency,
@@ -24,29 +25,95 @@ export interface Dependency
   identifierIndex: number;
 }
 
-export type DependencyClass = Constructor<Dependency> & {
+export type DependencyClass<T extends Dependency = Dependency> = Constructor<
+  T
+> & {
   compare: typeof theWebpack.compilation.Dependency['compare'];
 };
 
 // eslint-disable-next-line @typescript-eslint/no-empty-interface
 export interface Module extends ModuleBase {}
 
-export type ModuleClass = Constructor<Module>;
+export type ModuleClass<T extends Module = Module> = Constructor<T>;
 
-type ModuleFactoryData = {
-  dependencies: Dependency[];
+export type ModuleFactoryData<D extends Dependency = Dependency> = {
+  dependencies: D[];
 } & { [key: string]: any };
 
-export interface ModuleFactory {
+export type ModuleFactoryCallback<M extends Module = Module> = (
+  error: Error | null,
+  result: M,
+) => void;
+
+export interface ModuleFactory<
+  // Allow user to specify the types by passing an object of types as params
+  T extends {
+    dependency?: Dependency;
+    module?: Module;
+  } = {},
+  // Set defaults
+  Dep extends Dependency = T['dependency'] extends Dependency
+    ? T['dependency']
+    : Dependency,
+  Mod extends Module = T['module'] extends Module ? T['module'] : Module
+> {
   create(
-    data: ModuleFactoryData,
-    callback: (error: Error | null, result: Module) => void,
+    data: ModuleFactoryData<Dep>,
+    callback: ModuleFactoryCallback<Mod>,
   ): void;
 }
 
-export type ModuleFactoryClass = Constructor<ModuleFactory> & typeof Tapable;
+export type ModuleFactoryClass<
+  T extends ModuleFactory = ModuleFactory
+> = Constructor<T> & typeof Tapable;
 
-export interface ClassOptions {
+/**
+ * Options passed to class factory.
+ *
+ * Following types of classes can be overriden by passing an object of types as
+ * the first type parameter:
+ * - `dependencyClass` - DependencyClass subtype
+ * - `dependencyTemplateClass` - DependencyTemplateClass subtype
+ * - `moduleClass` - ModuleClass subtype
+ * - `moduleFactoryClass` - ModuleFactoryClass subtype
+ *
+ * @example
+ * // ClassOptions with default types
+ * ClassOptions
+ * // ClassOptions with overriden moduleClass type
+ * ClassOptions<{
+ *   moduleClass: ModCls;
+ * }>
+ * // ClassOptions with all types overriden
+ * ClassOptions<{
+ *   dependencyClass: DepCls;
+ *   dependencyTemplateClass: DepTemplateCls;
+ *   moduleClass: ModCls;
+ *   moduleFactoryClass: ModFactoryCls;
+ * }>
+ */
+export interface ClassOptions<
+  // Allow user to specify the types by passing an object of types as params
+  T extends {
+    dependencyClass?: DependencyClass;
+    dependencyTemplateClass?: DependencyTemplateClass;
+    moduleClass?: ModuleClass;
+    moduleFactoryClass?: ModuleFactoryClass;
+  } = {},
+  // Set defaults
+  DepCls extends DependencyClass = T['dependencyClass'] extends DependencyClass
+    ? T['dependencyClass']
+    : DependencyClass,
+  DepTemplateCls extends DependencyTemplateClass = T['dependencyTemplateClass'] extends DependencyTemplateClass
+    ? T['dependencyTemplateClass']
+    : DependencyTemplateClass,
+  ModCls extends ModuleClass = T['moduleClass'] extends ModuleClass
+    ? T['moduleClass']
+    : ModuleClass,
+  ModFactoryCls extends ModuleFactoryClass = T['moduleFactoryClass'] extends ModuleFactoryClass
+    ? T['moduleFactoryClass']
+    : ModuleFactoryClass
+> {
   type: string;
   moduleType?: string;
   pluginName?: string;
@@ -55,12 +122,15 @@ export interface ClassOptions {
   hooks?: Overrides;
   pluginOptionsSchema?: any;
   loaderOptionsSchema?: any;
-  dependencyClass?: DependencyClass;
-  moduleFactoryClass?: ModuleFactoryClass;
-  moduleClass?: ModuleClass;
-  dependencyTemplateClass?: DependencyTemplateClass;
+  dependencyClass?: DepCls;
+  moduleFactoryClass?: ModFactoryCls;
+  moduleClass?: ModCls;
+  dependencyTemplateClass?: DepTemplateCls;
 }
 
+/**
+ * Default options passed to MiniExtractPlugin constructor
+ */
 export type ConstructorOptions = {
   filename?: string;
   moduleFilename?: ModuleFilename;
@@ -68,9 +138,68 @@ export type ConstructorOptions = {
   ignoreOrder?: boolean;
 };
 
-export interface MiniExtractPlugin extends Ploadin {
-  classOptions: Required<ClassOptions>;
-  options: ConstructorOptions;
+/**
+ * MiniExtractPlugin instance
+ *
+ * Following types of classes can be overriden by passing an object of types as
+ * the first type parameter:
+ * - `dependencyClass` - DependencyClass subtype
+ * - `dependencyTemplateClass` - DependencyTemplateClass subtype
+ * - `moduleClass` - ModuleClass subtype
+ * - `moduleFactoryClass` - ModuleFactoryClass subtype
+ * - `constructorOptions` - object type expected when instantiating MiniExtractPlugin;
+ *
+ * @example
+ * // ClassOptions with default types
+ * ClassOptions
+ * // ClassOptions with overriden moduleClass type
+ * ClassOptions<{
+ *   moduleClass: ModCls;
+ * }>
+ * // ClassOptions with all types overriden
+ * ClassOptions<{
+ *   dependencyClass: DepCls;
+ *   dependencyTemplateClass: DepTemplateCls;
+ *   moduleClass: ModCls;
+ *   moduleFactoryClass: ModFactoryCls;
+ *   constructorOptions: ConstructorOptions & { myCustomOption: boolean};
+ * }>
+ */
+export interface MiniExtractPlugin<
+  // Allow user to specify the types by passing an object of types as params
+  T extends {
+    dependencyClass?: DependencyClass;
+    dependencyTemplateClass?: DependencyTemplateClass;
+    moduleClass?: ModuleClass;
+    moduleFactoryClass?: ModuleFactoryClass;
+    constructorOptions?: { [key: string]: any };
+  } = {},
+  // Set defaults
+  DepCls extends DependencyClass = T['dependencyClass'] extends DependencyClass
+    ? T['dependencyClass']
+    : DependencyClass,
+  DepTemplateCls extends DependencyTemplateClass = T['dependencyTemplateClass'] extends DependencyTemplateClass
+    ? T['dependencyTemplateClass']
+    : DependencyTemplateClass,
+  ModCls extends ModuleClass = T['moduleClass'] extends ModuleClass
+    ? T['moduleClass']
+    : ModuleClass,
+  ModFactoryCls extends ModuleFactoryClass = T['moduleFactoryClass'] extends ModuleFactoryClass
+    ? T['moduleFactoryClass']
+    : ModuleFactoryClass,
+  CtorOptions extends object = T['constructorOptions'] extends object
+    ? T['constructorOptions']
+    : ConstructorOptions
+> extends Ploadin {
+  classOptions: Required<
+    ClassOptions<{
+      dependencyClass: DepCls;
+      dependencyTemplateClass: DepTemplateCls;
+      moduleClass: ModCls;
+      moduleFactoryClass: ModFactoryCls;
+    }>
+  >;
+  options: CtorOptions;
   hooks: ActiveHooks;
   apply: (c: theWebpack.Compiler) => void;
   loader(
@@ -86,4 +215,27 @@ export interface MiniExtractPlugin extends Ploadin {
     data: object,
   ): void;
 }
-export type MiniExtractPluginClass = Constructor<MiniExtractPlugin>;
+
+/**
+ * MiniExtractPlugin class
+ *
+ * Instance type can be overriden as the first type parameter.
+ *
+ * The type adapts whether the constructor's first argument is required based
+ * on if the options object has any required keys.
+ *
+ * @example
+ * // MiniExtractPluginClass with default type
+ * MiniExtractPluginClass
+ * // ClassOptions with overriden MiniExtractPlugin type
+ * MiniExtractPluginClass<MyCustomMiniExtractPlugin>
+ */
+export type MiniExtractPluginClass<
+  T extends MiniExtractPlugin = MiniExtractPlugin
+> = RequiredKeys<T['options']> extends never
+  ? {
+      new (options?: T['options']): T;
+    }
+  : {
+      new (options: T['options']): T;
+    };

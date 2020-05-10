@@ -1,5 +1,11 @@
 import capitalize from 'lodash.capitalize';
-import type { ClassOptions } from './types/subclassing';
+import type {
+  ClassOptions,
+  DependencyClass,
+  DependencyTemplateClass,
+  ModuleClass,
+  ModuleFactoryClass,
+} from './types/subclassing';
 import loaderSchema from './schemas/loader-options.json';
 import pluginSchema from './schemas/plugin-options.json';
 import pluginFactory from './factory';
@@ -7,7 +13,16 @@ import * as subclass from './lib/subclass';
 
 export * from './api';
 
-export default function miniExtractPluginFactory(options: ClassOptions) {
+export default function miniExtractPluginFactory<
+  // Allow user to specify the types by passing an object of types as params
+  T extends {
+    dependencyClass?: DependencyClass;
+    dependencyTemplateClass?: DependencyTemplateClass;
+    moduleClass?: ModuleClass;
+    moduleFactoryClass?: ModuleFactoryClass;
+    constructorOptions?: { [key: string]: any };
+  } = {}
+>(options: ClassOptions) {
   const { type } = options;
   const { moduleClass = subclass.module({ type }) } = options;
   const {
@@ -23,7 +38,7 @@ export default function miniExtractPluginFactory(options: ClassOptions) {
     hooks = [],
   } = options || {};
 
-  const PluginClass = pluginFactory({
+  const PluginClass = pluginFactory<T>({
     type,
     moduleType,
     pluginName,

@@ -16,10 +16,7 @@ export type Omit<T, K extends keyof T> = Pick<T, Exclude<keyof T, K>>;
 export type WithOptional<T, K extends keyof T> = Omit<T, K> &
   Partial<Pick<T, K>>;
 
-/**
- * Omit type - exclude object keys based on types. This consists of three steps
- */
-
+// Omit type consists of three steps:
 // 1 Transform the type to flag all the undesired keys as 'never'
 type FlagExcludedType<Base, Type> = {
   [Key in keyof Base]: Base[Key] extends Type ? never : Key;
@@ -27,11 +24,25 @@ type FlagExcludedType<Base, Type> = {
 // 2 Get the keys that are not flagged as 'never'
 type AllowedNames<Base, Type> = FlagExcludedType<Base, Type>[keyof Base];
 // 3 Use this with a simple Pick to get the right interface, excluding the undesired type
+/**
+ * Omit type - exclude object keys based on types.
+ */
 export type OmitType<Base, Type> = Pick<Base, AllowedNames<Base, Type>>;
 
-export type Constructor<T> = {
-  new (...agrs: any[]): T;
-};
+export type RequiredKeys<T> = {
+  [K in keyof T]-?: {} extends Pick<T, K> ? never : K;
+}[keyof T];
+
+export type Constructor<
+  T,
+  A extends Array<any> | undefined = any[]
+> = A extends Array<any>
+  ? {
+      new (...[args]: A): T;
+    }
+  : {
+      new (): T;
+    };
 
 export type RequiredTuple<
   T extends any[],

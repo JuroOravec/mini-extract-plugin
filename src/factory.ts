@@ -4,18 +4,29 @@ import { Ploadin, registerSubclass } from 'ploadin';
 
 import type {
   ClassOptions,
-  ConstructorOptions,
   MiniExtractPlugin as IMiniExtractPlugin,
   MiniExtractPluginClass,
+  DependencyClass,
+  DependencyTemplateClass,
+  ModuleClass,
+  ModuleFactoryClass,
 } from './types/subclassing';
 import * as hooks from './lib/hook';
-import type * as hookTypes from './types/hook';
 import apply from './methods/apply';
 import loader from './methods/loader';
 import pitch from './methods/pitch';
 import { renameClass } from './lib/util';
 
-export default function pluginFactory(classOptions: Required<ClassOptions>) {
+export default function pluginFactory<
+  // Allow user to specify the types by passing an object of types as params
+  T extends {
+    dependencyClass?: DependencyClass;
+    dependencyTemplateClass?: DependencyTemplateClass;
+    moduleClass?: ModuleClass;
+    moduleFactoryClass?: ModuleFactoryClass;
+    constructorOptions?: { [key: string]: any };
+  } = {}
+>(classOptions: Required<ClassOptions>) {
   const {
     pluginName,
     displayName,
@@ -28,15 +39,19 @@ export default function pluginFactory(classOptions: Required<ClassOptions>) {
   const REGEXP_PLACEHOLDERS = /\[(name|id|chunkhash)\]/g;
   const DEFAULT_FILENAME = `[name].${type}`;
 
-  class MiniExtractPlugin extends Ploadin implements IMiniExtractPlugin {
-    options: ConstructorOptions;
-    hooks: hookTypes.ActiveHooks;
+  type MEPSubclass = IMiniExtractPlugin<T>;
+  class MiniExtractPlugin extends Ploadin implements MEPSubclass {
+    options: MEPSubclass['options'];
+    hooks: MEPSubclass['hooks'];
 
-    constructor(options: ConstructorOptions = {}) {
+    constructor(
+      options: MEPSubclass['options'] = {} as MEPSubclass['options'],
+    ) {
       super();
       // @ts-ignore
       validateOptions(pluginOptionsSchema, options, displayName);
 
+      // Assign default properties
       this.options = Object.assign(
         {
           filename: DEFAULT_FILENAME,
@@ -103,5 +118,5 @@ export default function pluginFactory(classOptions: Required<ClassOptions>) {
   renameClass(MiniExtractPlugin, className);
   registerSubclass(MiniExtractPlugin, classOptions);
 
-  return MiniExtractPlugin as MiniExtractPluginClass;
+  return (MiniExtractPlugin as unknown) as MiniExtractPluginClass<MEPSubclass>;
 }

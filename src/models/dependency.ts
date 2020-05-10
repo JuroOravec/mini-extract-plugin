@@ -12,7 +12,14 @@ import { DependencyOptions } from '../types/context';
 
 const TypedWebpackDep: typeof webpack.compilation.Dependency = WebpackDependency;
 
-export class Dependency extends TypedWebpackDep implements IDependency {
+export class Dependency<
+  T extends {
+    dependencyOptions?: DependencyOptions;
+  } = {},
+  DepOpts extends DependencyOptions = T['dependencyOptions'] extends DependencyOptions
+    ? T['dependencyOptions']
+    : DependencyOptions
+> extends TypedWebpackDep implements IDependency {
   identifier: IDependency['identifier'];
   context: IDependency['context'];
   content: IDependency['content'];
@@ -21,9 +28,9 @@ export class Dependency extends TypedWebpackDep implements IDependency {
   miniExtractType: IDependency['miniExtractType'];
 
   constructor(
-    { identifier, content, moduleType, miniExtractType }: DependencyOptions,
-    context: Dependency['context'],
-    identifierIndex: Dependency['identifierIndex'],
+    { identifier, content, moduleType, miniExtractType }: DepOpts,
+    context: IDependency['context'],
+    identifierIndex: IDependency['identifierIndex'],
   ) {
     super();
 
@@ -45,13 +52,17 @@ interface SubclassOptions {
   type?: string;
 }
 
-export function subclass({ type }: SubclassOptions = {}) {
-  class DependencySubclass extends Dependency implements IDependency {
+export function subclass<
+  T extends {
+    dependencyOptions?: DependencyOptions;
+  } = {}
+>({ type }: SubclassOptions = {}) {
+  class DependencySubclass extends Dependency<T> implements IDependency {
     getResourceIdentifier() {
       return `${type}-module-${this.identifier}-${this.identifierIndex}`;
     }
   }
   const className = `${capitalize(type)}${Dependency.name}`;
   renameClass(DependencySubclass, className);
-  return DependencySubclass as DependencyClass;
+  return DependencySubclass as DependencyClass<Dependency<T>>;
 }
