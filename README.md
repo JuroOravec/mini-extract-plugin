@@ -221,8 +221,189 @@ Additional options allow you to:
 
 ### Subclassing
 
-Classes that can be passed to the factory functions can be found at the root of
-the export.
+#### Class factory
+
+Here's an example how MiniExtractPlugin can be subclassed taken from the [mini-css-extract-plugin replimenetation](https://github.com/JuroOravec/mini-extract-plugin/tree/master/test/fixtures/mini-css-extract-plugin)
+
+```ts
+import miniExtractPluginFactory, { types } from 'mini-extract-plugin';
+import Module from './module';
+import ModuleFactory from './module-factory';
+import Dependency from './dependency';
+import DependencyTemplate from './dependency-template';
+import hooks from './hooks';
+import { type, typeReadable } from './config';
+
+const MiniExtractPluginClass = miniExtractPluginFactory<{
+  dependencyClass: types.DependencyClass<Dependency>;
+  moduleClass: types.ModuleClass<Module>;
+  moduleFactoryClass: typeof ModuleFactory;
+}>({
+  type,
+  displayName: `My Mini ${typeReadable} Extract Plugin`,
+  moduleFactoryClass: ModuleFactory,
+  dependencyClass: Dependency,
+  dependencyTemplateClass: DependencyTemplate,
+  hooks: [
+    { name: 'compilation', type: 'tap', hooks: [hooks.compilation!] },
+    { name: 'merge', type: 'tap', hooks: [hooks.merge!] },
+  ],
+});
+
+export default MiniExtractPluginClass;
+```
+
+The factory function is passed:
+
+- identifiers `type` and optional `displayName`.
+- custom subclasses `dependencyClass`, `moduleClass`, and
+  `dependencyTemplateClass`.
+- [`compilation`](#compilation) and [`merge`](#merge) [hooks](#hooks).
+
+Factory function was also given an object as a type parameter. This object specifies which types should be used for classes and options, and enable type inferrence for subclasses with custom classes and options.
+
+Full list of type options with their defaults:
+
+```ts
+const MyMiniExtractPlugin = miniExtractPluginFactory<{
+  // These reflect the types of the classes that we pass to the
+  // class factory as options.
+  dependencyClass?: DependencyClass;
+  dependencyTemplateClass?: DependencyTemplateClass;
+  moduleClass?: ModuleClass;
+  moduleFactoryClass?: ModuleFactoryClass;
+  // Type of the options object passed to constructor on instantiations.
+  constructorOptions?: { [key: string]: any };
+} = {}
+>(...)
+```
+
+#### Options classes
+
+Classes that can be passed to the factory function can be found at the root of
+the export. Subclassing is as simple as:
+
+```ts
+import {
+  Dependency,
+  DependencyTemplate,
+  Module,
+  ModuleFactory,
+} from 'mini-extract-plugin';
+
+class DependencySubclass extends Dependency {}
+class DependencyTemplateSubclass extends DependencyTemplate {}
+class ModuleSubclass extends Module {}
+class ModuleFactorySubclass extends ModuleFactory {}
+```
+
+If you use TypeScript and want to override the types these subclass use in methods / constructor, you can pass type arguments. This is useful e.g. if your subclass adds properties, and you want TypeScript to recognize those properties.
+
+All type parameters that can be passed to classes + their defaults:
+
+```ts
+import {
+  subclassDependency,
+  subclassDependencyTemplate,
+  subclassModule,
+  subclassModuleFactory,
+} from 'mini-extract-plugin';
+
+class DependencySubclass extends Dependency<{
+  // Options object passed to the Dependency constructor
+  dependencyOptions: DependencyOptions;
+}> {}
+
+// subclassDependencyTemplate has no type parameters
+class DependencyTemplateSubclass extends DependencyTemplate {}
+
+class ModuleSubclass extends Module<{
+  // Dependency class whose instance is passed to the Module
+  // constructor
+  dependency: Dependency;
+}> {}
+
+class ModuleFactorySubclass extends ModuleFactory<{
+  // Dependency class that is passed to ModuleFactory.create
+  dependency: Dependency;
+  // Module class whose instance is created in ModuleFactory.create
+  // from Dependency
+  module: Module;
+}> {}
+```
+
+#### Subclassing helpers
+
+If you need to subclass any of the above but don't need to override the behaviour,
+you can use helper subclassing functions.
+
+Each of them accepts options
+
+```ts
+import {
+  subclassDependency,
+  subclassDependencyTemplate,
+  subclassModule,
+  subclassModuleFactory,
+} from 'mini-extract-plugin';
+
+// `type` is the same `type` argument passed to class factory
+const DependencySubclass = subclassDependency({ type: 'custom-plugin' });
+const DependencyTemplateSubclass = subclassDependencyTemplate({
+  type: 'custom-plugin',
+});
+const ModuleSubclass = subclassModule({ type: 'custom-plugin' });
+const ModuleFactorySubclass = subclassModuleFactory({
+  type: 'custom-plugin',
+  moduleClass: MyCustomModule, // Optionally define module class
+});
+```
+
+If you use TypeScript and want to override the classes these subclass use, you can pass type arguments. The type arguments passed to subclass helpers are same as to the classes.
+
+Given the example from above, if you want to module type created by `ModuleFactorySubclass` to match `MyCustomModule`, you can do following:
+
+```ts
+const ModuleFactorySubclass = subclassModuleFactory<{
+    module: Module;
+  }({
+  type: 'custom-plugin',
+  moduleClass: MyCustomModule,
+});
+```
+
+All type parameters that can be passed to helper functions + their defaults:
+
+```ts
+import {
+  subclassDependency,
+  subclassDependencyTemplate,
+  subclassModule,
+  subclassModuleFactory,
+} from 'mini-extract-plugin';
+
+const DependencySubclass = subclassDependency<{
+  // Options object passed to the Dependency constructor
+  dependencyOptions: DependencyOptions;
+}>(...);
+
+// subclassDependencyTemplate has no type parameters
+const DependencyTemplateSubclass = subclassDependencyTemplate(...);
+
+const ModuleSubclass = subclassModule<{
+  // Dependency class whose instance is passed to the Module
+  // constructor
+  dependency: Dependency;
+}>(...);
+
+const ModuleFactorySubclass = subclassModuleFactory<{
+  // Dependency class that is passed to ModuleFactory.create
+  dependency: Dependency;
+  // Module class whose instance is created in ModuleFactory.create
+  // from Dependency
+  module: Module;
+}>(...);
+```
 
 See how classes are extended in the
 [re-implementation of mini-css-extract-plugin](https://github.com/JuroOravec/mini-extract-plugin/tree/master/test/fixtures/mini-css-extract-plugin).
@@ -878,6 +1059,16 @@ Hooks can be tapped to modify the extraction process at different stages.
 Therefore, also the information available is different. That's why different
 hooks expose different "contexts", or objects with contextual information
 available at the point in time of the call.
+
+If you're using TypeScript, the type of the `MiniExtractPlugin` that is
+accessible from the context objects (together with its `options` and
+`classOptions`) can be overriden by passing your custom subclass as the first
+type parameter to the context type.
+
+```ts
+import { types } from 'mini-extract-plugin';
+let context: types.context.CompilationContext<MyMiniExtractPlugin>;
+```
 
 Here is the list of used contexts ([see source file](https://github.com/JuroOravec/mini-extract-plugin/tree/master/src/types/context.ts)):
 
