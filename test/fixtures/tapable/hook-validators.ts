@@ -95,7 +95,7 @@ function validateOptions(options: MiniExtractPlugin['options']) {
    */
 }
 
-function validateContext(context: context.Context) {
+function validateContext(context: context.ContextBase) {
   const { classOptions, plugin, options } = context;
   validateClassOptions(classOptions);
   validatePlugin(plugin);
