@@ -1,6 +1,6 @@
 import type tapable from 'tapable';
 
-import { definitions, hooksFromDefinitions } from '../lib/hooks-definitions';
+import { definitions, hooksFromDefinitions } from '../lib/hook-definition';
 import type { FirstNRequiredVariadicTuple, AnyFunc, OmitType } from './util';
 import type {
   HookDefinitions,
@@ -23,9 +23,9 @@ import type {
   SyncHookClass,
   SyncWaterfallHook,
   SyncHook,
-} from './hooks-definition';
+} from './hook-definition';
 
-export * from './hooks-definition';
+export * from './hook-definition';
 
 /**
  * Infer instance type from class type but allow to pass parameters to the

@@ -26,7 +26,7 @@ import {
   SyncWaterfallHookClass,
   AsyncParallelHookClass,
   AsyncSeriesWaterfallHookClass,
-} from '../types/hooks-definition';
+} from '../types/hook-definition';
 
 export const definitions = castHookDefinitions({
   initialize: {

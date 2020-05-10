@@ -1,5 +1,14 @@
+import {
+  AsyncParallelBailHook,
+  AsyncParallelHook,
+  AsyncSeriesBailHook,
+  AsyncSeriesHook,
+  AsyncSeriesWaterfallHook,
+  Hook,
+} from 'tapable';
+
 import debug from './debug';
-import { hooksFromDefinitions } from './hooks-definitions';
+import { hooksFromDefinitions } from './hook-definition';
 import type {
   Collection,
   Overrides,
@@ -9,14 +18,6 @@ import type {
   ActiveAsyncHookNames,
 } from '../types/hook';
 import type { AnyFunc } from '../types/util';
-import {
-  AsyncParallelBailHook,
-  AsyncParallelHook,
-  AsyncSeriesBailHook,
-  AsyncSeriesHook,
-  AsyncSeriesWaterfallHook,
-  Hook,
-} from 'tapable';
 
 const asyncHooks = [
   AsyncParallelBailHook,
