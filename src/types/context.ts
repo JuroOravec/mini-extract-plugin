@@ -4,43 +4,68 @@
 
 import type webpack from 'webpack';
 
-import type { ConstructorOptions, MiniExtractPlugin } from './subclassing';
+import type { MiniExtractPlugin } from './subclassing';
 import type { RenderManifestEntry, RenderManifestOptions } from './webpack';
 import type { DependencyBase } from './base';
 
 type LoaderContext = any;
 
-export interface Context {
-  plugin: MiniExtractPlugin;
-  classOptions: MiniExtractPlugin['classOptions'];
-  options: ConstructorOptions;
+/**
+ * Common properties present in all context objects.
+ */
+export interface ContextBase<
+  MEP extends MiniExtractPlugin = MiniExtractPlugin
+> {
+  plugin: MEP;
+  classOptions: MEP['classOptions'];
+  options: MEP['options'];
 }
 
-export interface CompilerContext extends Context {
+/**
+ * Context object with compiler instance exposed to the plugin's `apply`
+ * method.
+ */
+export interface CompilerContext<
+  MEP extends MiniExtractPlugin = MiniExtractPlugin
+> extends ContextBase<MEP> {
   compiler: webpack.Compiler;
 }
 
-export interface CompilationContext extends CompilerContext {
+/**
+ * Context object extending `CompilationContext` with compilation instance
+ * exposed to the compiler's `thisCompilation` hook.
+ */
+export interface CompilationContext<
+  MEP extends MiniExtractPlugin = MiniExtractPlugin
+> extends CompilerContext<MEP> {
   compilation: webpack.compilation.Compilation;
 }
 
-export interface RenderContext extends CompilationContext {
+export interface RenderContext<
+  MEP extends MiniExtractPlugin = MiniExtractPlugin
+> extends CompilationContext<MEP> {
   renderEntries: RenderManifestEntry[];
   renderOptions: RenderManifestOptions;
 }
 
-export interface PitchContext extends Context {
+export interface PitchContext<
+  MEP extends MiniExtractPlugin = MiniExtractPlugin
+> extends ContextBase<MEP> {
   loaderContext: LoaderContext;
   remainingRequest: string;
   precedingRequest: string;
   data: any;
 }
 
-export interface PitchCompilerContext extends PitchContext {
+export interface PitchCompilerContext<
+  MEP extends MiniExtractPlugin = MiniExtractPlugin
+> extends PitchContext<MEP> {
   childCompiler: webpack.Compiler;
 }
 
-export interface PitchCompilationContext extends PitchCompilerContext {
+export interface PitchCompilationContext<
+  MEP extends MiniExtractPlugin = MiniExtractPlugin
+> extends PitchCompilerContext<MEP> {
   childCompilation: webpack.compilation.Compilation;
 }
 
@@ -50,7 +75,9 @@ export interface LoaderModuleContext {
   exports: any;
 }
 
-export interface LoaderFuncContext extends Context {
+export interface LoaderFuncContext<
+  MEP extends MiniExtractPlugin = MiniExtractPlugin
+> extends ContextBase<MEP> {
   loaderContext: LoaderContext;
   source: string | Buffer;
   sourceMap: string;
