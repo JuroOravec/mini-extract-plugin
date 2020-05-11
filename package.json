@@ -1,6 +1,6 @@
 {
   "name": "mini-extract-plugin",
-  "version": "1.3.0",
+  "version": "1.4.0",
   "description": "Generalized and hookable mini-css-extract-plugin. Extract any format, process it your way.",
   "homepage": "https://github.com/JuroOravec/mini-extract-plugin#readme",
   "repository": "github:JuroOravec/mini-extract-plugin",
