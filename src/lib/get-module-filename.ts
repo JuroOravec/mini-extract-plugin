@@ -23,12 +23,17 @@ interface GetModuleFilenameOptions<
 export default function getModuleFilename<
   MEP extends MiniExtractPlugin = MiniExtractPlugin
 >(options: GetModuleFilenameOptions<MEP>) {
-  const { default: defaultFilename, context, templateOptions } = options;
+  const {
+    default: defaultFilename,
+    context,
+    templateOptions,
+    modules,
+  } = options;
   const { plugin } = context;
 
   const moduleFilename = plugin.options.moduleFilename as ModuleFilename<MEP>;
   if (!moduleFilename) return defaultFilename;
   if (typeof moduleFilename === 'string') return moduleFilename;
 
-  return moduleFilename(context, templateOptions);
+  return moduleFilename(context, templateOptions, modules);
 }
