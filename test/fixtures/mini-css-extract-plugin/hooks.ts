@@ -2,12 +2,12 @@ import { Template } from 'webpack';
 import { SourceMapSource, OriginalSource, ConcatSource } from 'webpack-sources';
 
 import { types, util } from '../../../src';
-import { getChunkObject } from './util';
-import CssModule from './module';
-import { DependencyOptions } from './types';
 
-const hooks: types.hook.PartialTaps = {
-  compilation: function compilationHook(ctx) {
+import type { MiniCssExtractPlugin, Taps } from './types';
+import { getChunkObject } from './util';
+
+const hooks: Partial<Taps> = {
+  compilation: (ctx) => {
     const {
       classOptions: { pluginName, type, moduleType },
       compilation: { mainTemplate },
@@ -168,9 +168,12 @@ const hooks: types.hook.PartialTaps = {
     });
   },
 
-  dependency: function dependencyHook(context, { exports: exported }) {
+  dependency: (context, { exports: exported }) => {
     const { childCompilation, classOptions } = context;
-    const deps: DependencyOptions[] = [];
+    const deps: types.GetHookReturnType<
+      'dependency',
+      MiniCssExtractPlugin
+    > = [];
     for (const [id, content, media, sourceMap] of exported) {
       const mod = util.module.findById(childCompilation.modules, id);
       if (!mod) continue;
@@ -187,14 +190,13 @@ const hooks: types.hook.PartialTaps = {
     return deps;
   },
 
-  merge: function mergeHook(ctx, modules) {
-    const cssModules = (modules as any) as CssModule[];
+  merge: (ctx, modules) => {
     const {
       compilation: { requestShortener },
     } = ctx;
     const source = new ConcatSource();
     const externalsSource = new ConcatSource();
-    for (const mod of cssModules) {
+    for (const mod of modules) {
       if (/^@import url/.test(mod.content)) {
         // HACK for IE
         // http://stackoverflow.com/a/14676665/1458162
