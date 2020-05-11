@@ -1,6 +1,7 @@
 import { Module, types } from '../../../src';
+
+import type { CssModule as ICssModule } from './types';
 import Dependency from './dependency';
-import { CssModule as ICssModule } from './types';
 
 export default class CssModule extends Module<{ dependency: Dependency }>
   implements ICssModule {

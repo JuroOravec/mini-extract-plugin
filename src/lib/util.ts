@@ -1,4 +1,4 @@
-import { Constructor, AnyFunc } from '../types/util';
+import type { Constructor, AnyFunc } from '../types/util';
 
 export const isIterOfIter = <T>(m: T) => {
   if (!isIterable(m)) return false;

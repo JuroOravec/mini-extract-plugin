@@ -1,5 +1,5 @@
-import miniExtractPluginFactory, { types } from '../../../src';
-import Module from './module';
+import miniExtractPluginFactory from '../../../src';
+
 import type { ClassParams } from './types';
 import ModuleFactory from './module-factory';
 import Dependency from './dependency';

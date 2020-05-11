@@ -1,13 +1,13 @@
 import WebpackModule from 'webpack/lib/Module';
-import webpack from 'webpack';
-
-import { Module as IModule, ModuleClass } from '../types/subclassing';
-import { Hash, RequestShortener } from '../types/webpack';
-import { Dependency } from './dependency';
+import { compilation } from 'webpack';
 import capitalize from 'lodash.capitalize';
+
+import type { Module as IModule, ModuleClass } from '../types/subclassing';
+import type { Hash, RequestShortener } from '../types/webpack';
+import { Dependency } from './dependency';
 import { renameClass } from '../lib/util';
 
-const TypedWebpackModule = WebpackModule as typeof webpack.compilation.Module;
+const TypedWebpackModule = WebpackModule as typeof compilation.Module;
 
 export class Module<
   T extends {
@@ -18,6 +18,7 @@ export class Module<
     : Dependency
 > extends TypedWebpackModule implements IModule {
   id: string;
+  request?: string;
   content: Dep['content'];
   private _identifier: Dep['identifier'];
   private _identifierIndex: Dep['identifierIndex'];
@@ -29,6 +30,7 @@ export class Module<
     super(moduleType, context === null ? undefined : context);
 
     this.id = '';
+    this.request = undefined;
     this._identifier = dependency.identifier;
     this._identifierIndex = dependency.identifierIndex;
     this.content = dependency.content;

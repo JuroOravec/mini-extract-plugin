@@ -3,12 +3,12 @@ import webpack from 'webpack';
 import WebpackDependency from 'webpack/lib/Dependency';
 import capitalize from 'lodash.capitalize';
 
-import {
+import type {
   Dependency as IDependency,
   DependencyClass,
+  DependencyOptions,
 } from '../types/subclassing';
 import { renameClass } from '../lib/util';
-import { DependencyOptions } from '../types/context';
 
 const TypedWebpackDep: typeof webpack.compilation.Dependency = WebpackDependency;
 

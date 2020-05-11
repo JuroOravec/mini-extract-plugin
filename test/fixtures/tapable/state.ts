@@ -3,8 +3,9 @@
  */
 
 import pick from 'lodash.pick';
-import { ActiveHooks, ActiveHookNames } from '../../../src/types/hook';
-import { HookState } from './types';
+
+import type { ActiveHooks, ActiveHookNames } from '../../../src/types/hook';
+import type { HookState } from './types';
 import { activeHooks } from './constants';
 
 export interface UpdateStateArgs {
