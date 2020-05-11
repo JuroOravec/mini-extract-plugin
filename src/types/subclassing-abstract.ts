@@ -1,20 +1,15 @@
 /**
- * Types related to subclassing MiniExtractPlugin
+ * Types related to subclassing MiniExtractPlugin.
  *
- * Also the entrypoint for the 'subclassing' types
+ * These types are for an abstract interface of MiniExtractPlugin,
+ * which omits types that reference MiniExtractPlugin back.
  */
 
-import type { RequiredKeys } from './util';
-import type { ActiveHooks, Overrides } from './hook';
-import type {
-  AbstractMiniExtractPlugin,
-  AbstractClassOptions,
-} from './subclassing-abstract';
-import type { ParamsDefault } from './subclassing-params';
+import type { Compiler } from 'webpack';
+import type { Ploadin } from 'ploadin';
+import type { Hook } from 'tapable';
 
-export * from './subclassing-abstract';
-export * from './subclassing-classes';
-export { ParamsDefault } from './subclassing-params';
+import type { ParamsDefault, ParamsParse } from './subclassing-params';
 
 /**
  * Options passed to class factory.
@@ -41,13 +36,29 @@ export { ParamsDefault } from './subclassing-params';
  *   moduleFactoryClass: ModFactoryCls;
  * }>
  */
-export interface ClassOptions<T extends ParamsDefault = {}>
-  extends AbstractClassOptions<T> {
-  hooks?: Overrides;
+export interface AbstractClassOptions<
+  T extends ParamsDefault = {},
+  Params extends ParamsParse<T> = ParamsParse<T>
+> {
+  type: string;
+  moduleType?: string;
+  pluginName?: string;
+  displayName?: string;
+  className?: string;
+  hooks?: { [key: string]: any }[];
+  pluginOptionsSchema?: any;
+  loaderOptionsSchema?: any;
+  dependencyClass?: Params['dependencyClass'];
+  moduleFactoryClass?: Params['moduleFactoryClass'];
+  moduleClass?: Params['moduleClass'];
+  dependencyTemplateClass?: Params['dependencyTemplateClass'];
 }
 
 /**
- * MiniExtractPlugin instance
+ * Abstract interface of MiniExtractPlugin instance.
+ *
+ * This interface omits properties that cause circular reference, which are:
+ * - `hooks`
  *
  * Following types of classes can be overriden by passing an object of types as
  * the first type parameter:
@@ -73,34 +84,24 @@ export interface ClassOptions<T extends ParamsDefault = {}>
  *   constructorOptions: ConstructorOptions & { myCustomOption: boolean};
  * }>
  */
-export interface MiniExtractPlugin<
+export interface AbstractMiniExtractPlugin<
   T extends ParamsDefault = {},
-  I extends AbstractMiniExtractPlugin<T> = AbstractMiniExtractPlugin<T>
-> extends AbstractMiniExtractPlugin<T> {
-  hooks: ActiveHooks;
-  classOptions: Required<ClassOptions<I['classOptions']>>;
+  Params extends ParamsParse<T> = ParamsParse<T>
+> extends Ploadin {
+  classOptions: Required<AbstractClassOptions<Params>>;
+  options: Params['constructorOptions'];
+  hooks: { [key: string]: Hook };
+  apply: (c: Compiler) => void;
+  loader(
+    loaderContext: any,
+    source?: string,
+    sourceMap?: string,
+    data?: any,
+  ): void;
+  pitch(
+    loaderContext: any,
+    request: string,
+    precedingRequest: string,
+    data: object,
+  ): void;
 }
-
-/**
- * MiniExtractPlugin class
- *
- * Instance type can be overriden as the first type parameter.
- *
- * The type adapts whether the constructor's first argument is required based
- * on if the options object has any required keys.
- *
- * @example
- * // MiniExtractPluginClass with default type
- * MiniExtractPluginClass
- * // ClassOptions with overriden MiniExtractPlugin type
- * MiniExtractPluginClass<MyCustomMiniExtractPlugin>
- */
-export type MiniExtractPluginClass<
-  T extends MiniExtractPlugin = MiniExtractPlugin
-> = RequiredKeys<T['options']> extends never
-  ? {
-      new (options?: T['options']): T;
-    }
-  : {
-      new (options: T['options']): T;
-    };
