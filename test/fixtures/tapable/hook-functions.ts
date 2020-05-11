@@ -1,20 +1,20 @@
 import { ConcatSource, OriginalSource } from 'webpack-sources';
 
+import type { Taps } from '../mini-css-extract-plugin/types';
 import { util, types } from '../../../src';
 import { enumerate } from '../../../src/lib/util';
 import renderContentAsset from '../../../src/lib/render-content-asset';
 import getModuleFilename from '../../../src/lib/get-module-filename';
 import defaultFilename from '../../../src/lib/default-filename';
-import { DependencyOptions } from '../mini-css-extract-plugin/types';
 
 /**
  * Hook functions that implement default behaviour to test whether hooks that
  * expect functions to modify/return the value work well
  */
-const hookFunctions: Partial<types.hook.Taps> = {
+const hookFunctions: Partial<Taps> = {
   dependency: (context, dependency) => {
     const { childCompilation, classOptions } = context;
-    const deps: DependencyOptions[] = [];
+    const deps = [];
     for (const [id, content, media, sourceMap] of dependency.exports) {
       const mod = util.module.findById(
         childCompilation.modules as types.webpack.Module[],

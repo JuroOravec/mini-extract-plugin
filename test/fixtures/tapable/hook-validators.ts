@@ -1,4 +1,4 @@
-import webpack, { Compiler } from 'webpack';
+import { Compiler, compilation, Output } from 'webpack';
 // @ts-ignore
 import Compilation from 'webpack/lib/Compilation';
 // @ts-ignore
@@ -10,7 +10,7 @@ import RequestShortener from 'webpack/lib/RequestShortener';
 import { Source } from 'webpack-sources';
 import { Ploadin } from 'ploadin';
 
-import { Taps } from '../../../src/types/hook';
+import type { Taps } from '../mini-css-extract-plugin/types';
 import {
   Module as IModule,
   RenderManifestEntry,
@@ -75,12 +75,12 @@ function validatePlugin(plugin: MiniExtractPlugin) {
   expect(plugin instanceof Ploadin).toBe(true);
 }
 
-function validateCompiler(compiler: webpack.Compiler) {
+function validateCompiler(compiler: Compiler) {
   expect(compiler).toBeDefined;
   expect(compiler instanceof Compiler).toBe(true);
 }
 
-function validateCompilation(compilation: webpack.compilation.Compilation) {
+function validateCompilation(compilation: compilation.Compilation) {
   expect(compilation).toBeDefined;
   expect(compilation instanceof Compilation).toBe(true);
 }
@@ -95,26 +95,32 @@ function validateOptions(options: MiniExtractPlugin['options']) {
    */
 }
 
-function validateContext(context: context.ContextBase) {
+function validateContext(context: context.ContextBase<MiniExtractPlugin>) {
   const { classOptions, plugin, options } = context;
   validateClassOptions(classOptions);
   validatePlugin(plugin);
   validateOptions(options);
 }
 
-function validateCompilerContext(context: context.CompilerContext) {
+function validateCompilerContext(
+  context: context.CompilerContext<MiniExtractPlugin>,
+) {
   const { compiler } = context;
   validateContext(context);
   validateCompiler(compiler);
 }
 
-function validateCompilationContext(context: context.CompilationContext) {
+function validateCompilationContext(
+  context: context.CompilationContext<MiniExtractPlugin>,
+) {
   const { compilation } = context;
   validateCompilerContext(context);
   validateCompilation(compilation);
 }
 
-function validatePitchContext(context: context.PitchContext) {
+function validatePitchContext(
+  context: context.PitchContext<MiniExtractPlugin>,
+) {
   const { loaderContext, precedingRequest, remainingRequest } = context;
 
   validateContext(context);
@@ -125,21 +131,25 @@ function validatePitchContext(context: context.PitchContext) {
   expect(typeof precedingRequest).toBe('string');
 }
 
-function validatePitchCompilerContext(context: context.PitchCompilerContext) {
+function validatePitchCompilerContext(
+  context: context.PitchCompilerContext<MiniExtractPlugin>,
+) {
   const { childCompiler } = context;
   validatePitchContext(context);
   validateCompiler(childCompiler);
 }
 
 function validatePitchCompilationContext(
-  context: context.PitchCompilationContext,
+  context: context.PitchCompilationContext<MiniExtractPlugin>,
 ) {
   const { childCompilation } = context;
   validatePitchCompilerContext(context);
   validateCompilation(childCompilation);
 }
 
-function validateRenderContext(context: context.RenderContext) {
+function validateRenderContext(
+  context: context.RenderContext<MiniExtractPlugin>,
+) {
   validateCompilationContext(context);
 
   const { renderOptions, renderEntries } = context;
@@ -152,7 +162,7 @@ function validateRenderContext(context: context.RenderContext) {
   expect(Array.isArray(renderEntries)).toBe(true);
 }
 
-function validateModules(modules: webpack.compilation.Module[] | IModule[]) {
+function validateModules(modules: compilation.Module[] | IModule[]) {
   expect(modules).toBeDefined();
   expect(Array.isArray(modules)).toBe(true);
 
@@ -162,7 +172,7 @@ function validateModules(modules: webpack.compilation.Module[] | IModule[]) {
 }
 
 function validateModuleGroups(
-  moduleGroups: webpack.compilation.Module[][] | IModule[][],
+  moduleGroups: compilation.Module[][] | IModule[][],
 ) {
   expect(moduleGroups).toBeDefined();
   expect(Array.isArray(moduleGroups)).toBe(true);
@@ -188,7 +198,7 @@ function validateSource(source: Source) {
 /**
  * Ensure that the info on the compiler's output filename is accessible
  */
-function validateOutputOptions(outputOptions: webpack.Output) {
+function validateOutputOptions(outputOptions: Output) {
   const { filename, publicPath } = outputOptions;
   validateDefinedString(filename);
 
@@ -297,16 +307,20 @@ const validators: Taps = {
     validatePitchCompilationContext(context);
     validateOutputOptions(context.childCompiler.options.output!);
   },
+
   childCompiler: (context) => {
     validatePitchCompilerContext(context);
     validateOutputOptions(context.childCompiler.options.output!);
   },
+
   compilation: (context) => {
     validateCompilationContext(context);
   },
+
   compiler: (context) => {
     validateCompilerContext(context);
   },
+
   pitch: (context) => {
     validatePitchContext(context);
   },
