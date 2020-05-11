@@ -440,10 +440,14 @@ You can use the `types.hook.Taps` interface, which is an object of
 `{ [hookName]: hookFunction }`.
 If you want to define only some hooks, use `types.hook.PartialTaps`.
 
+Both types accept MiniExtractPlugin interface as a type parameter. Use it to have correct types for arguments and return functions. The passed interface affects the inferred types of context objects, classes passed to MiniExtractPlugin (module, dependency, moduleFactory, ...).
+
 ```ts
 import { types } from 'mini-extract-plugin';
 
-const hooks: types.hook.PartialTaps = {
+import { IMyMiniExtractPlugin } from './types'
+
+const hooks: types.hook.PartialTaps<IMyMiniExtractPlugin> = {
   // Arguments of `dependency` are inferred thanks to
   // `PartialTaps`
   dependency: (context, {exports: exported}) => {
