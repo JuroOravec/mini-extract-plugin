@@ -1,14 +1,14 @@
 import capitalize from 'lodash.capitalize';
 
-import { Module } from './module';
-import { renameClass } from '../lib/util';
-import {
+import type {
   Dependency,
+  Module as IModule,
+  ModuleClass,
   ModuleFactory as IModuleFactory,
   ModuleFactoryClass,
-  ModuleClass,
 } from '../types/subclassing';
-import { Constructor } from '../types/util';
+import { Module } from './module';
+import { renameClass } from '../lib/util';
 
 /**
  * Get the create method arguments used by ModuleFactory given ModuleFactory
@@ -28,7 +28,7 @@ type ModFactoryModule<MF extends ModuleFactory> = Parameters<
 export class ModuleFactory<
   T extends {
     dependency?: Dependency;
-    module?: Module;
+    module?: IModule;
   } = {},
   I extends IModuleFactory<T> = IModuleFactory<T>
 > implements IModuleFactory<T> {
@@ -40,20 +40,24 @@ export class ModuleFactory<
       callback,
     ]: ModFactoryArgs<I>
   ) {
-    callback(null, new Module(dependency) as ModFactoryModule<I>);
+    callback(
+      null,
+      new ((Module as any) as ModuleClass<ModFactoryModule<I>>)(dependency),
+    );
   }
 }
 
 interface SubclassOptions {
   type: string;
-  moduleClass?: ModuleClass | Constructor<Module>;
+  moduleClass?: ModuleClass | ModuleClass<IModule>;
 }
 
 export function subclass<
   T extends {
     dependency?: Dependency;
-    module?: Module;
-  } = {}
+    module?: IModule;
+  } = {},
+  I extends IModuleFactory<T> = IModuleFactory<T>
 >({ moduleClass = Module, type }: SubclassOptions) {
   class ModuleFactorySubclass extends ModuleFactory<T>
     implements IModuleFactory {
@@ -65,13 +69,10 @@ export function subclass<
         callback,
       ]: ModFactoryArgs<ModuleFactory<T>>
     ) {
-      callback(
-        null,
-        new moduleClass(dependency) as ModFactoryModule<ModuleFactory<T>>,
-      );
+      callback(null, new moduleClass(dependency) as ModFactoryModule<I>);
     }
   }
   const className = `${capitalize(type)}${ModuleFactory.name}`;
   renameClass(ModuleFactorySubclass, className);
-  return ModuleFactorySubclass as ModuleFactoryClass<ModuleFactory<T>>;
+  return ModuleFactorySubclass as ModuleFactoryClass<I>;
 }
