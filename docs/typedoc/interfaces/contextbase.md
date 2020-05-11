@@ -6,7 +6,7 @@ Common properties present in all context objects.
 
 ## Type parameters
 
-▪ **MEP**: *[MiniExtractPlugin](miniextractplugin.md)*
+▪ **MEP**: *[AbstractMiniExtractPlugin](abstractminiextractplugin.md)*
 
 ## Hierarchy
 
@@ -32,7 +32,7 @@ Common properties present in all context objects.
 
 • **classOptions**: *MEP["classOptions"]*
 
-*Defined in [src/types/context.ts:20](https://github.com/JuroOravec/mini-extract-plugin/blob/ee56c59/src/types/context.ts#L20)*
+*Defined in [src/types/context.ts:19](https://github.com/JuroOravec/mini-extract-plugin/blob/87f855a/src/types/context.ts#L19)*
 
 ___
 
@@ -40,7 +40,7 @@ ___
 
 • **options**: *MEP["options"]*
 
-*Defined in [src/types/context.ts:21](https://github.com/JuroOravec/mini-extract-plugin/blob/ee56c59/src/types/context.ts#L21)*
+*Defined in [src/types/context.ts:20](https://github.com/JuroOravec/mini-extract-plugin/blob/87f855a/src/types/context.ts#L20)*
 
 ___
 
@@ -48,4 +48,4 @@ ___
 
 • **plugin**: *MEP*
 
-*Defined in [src/types/context.ts:19](https://github.com/JuroOravec/mini-extract-plugin/blob/ee56c59/src/types/context.ts#L19)*
+*Defined in [src/types/context.ts:18](https://github.com/JuroOravec/mini-extract-plugin/blob/87f855a/src/types/context.ts#L18)*

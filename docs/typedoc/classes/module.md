@@ -143,7 +143,7 @@ ___
 
 • **_identifier**: *Dep["identifier"]*
 
-*Defined in [src/models/module.ts:22](https://github.com/JuroOravec/mini-extract-plugin/blob/ee56c59/src/models/module.ts#L22)*
+*Defined in [src/models/module.ts:23](https://github.com/JuroOravec/mini-extract-plugin/blob/87f855a/src/models/module.ts#L23)*
 
 ___
 
@@ -151,7 +151,7 @@ ___
 
 • **_identifierIndex**: *Dep["identifierIndex"]*
 
-*Defined in [src/models/module.ts:23](https://github.com/JuroOravec/mini-extract-plugin/blob/ee56c59/src/models/module.ts#L23)*
+*Defined in [src/models/module.ts:24](https://github.com/JuroOravec/mini-extract-plugin/blob/87f855a/src/models/module.ts#L24)*
 
 ___
 
@@ -159,9 +159,9 @@ ___
 
 • **_miniExtractType**: *Dep["miniExtractType"]*
 
-*Defined in [src/types/webpack.ts:14](https://github.com/JuroOravec/mini-extract-plugin/blob/ee56c59/src/types/webpack.ts#L14)*
+*Defined in [src/types/webpack.ts:15](https://github.com/JuroOravec/mini-extract-plugin/blob/87f855a/src/types/webpack.ts#L15)*
 
-*Defined in [src/models/module.ts:24](https://github.com/JuroOravec/mini-extract-plugin/blob/ee56c59/src/models/module.ts#L24)*
+*Defined in [src/models/module.ts:25](https://github.com/JuroOravec/mini-extract-plugin/blob/87f855a/src/models/module.ts#L25)*
 
 ___
 
@@ -169,7 +169,7 @@ ___
 
 • **_moduleType**: *string*
 
-*Defined in [src/types/webpack.ts:15](https://github.com/JuroOravec/mini-extract-plugin/blob/ee56c59/src/types/webpack.ts#L15)*
+*Defined in [src/types/webpack.ts:16](https://github.com/JuroOravec/mini-extract-plugin/blob/87f855a/src/types/webpack.ts#L16)*
 
 ___
 
@@ -253,9 +253,9 @@ ___
 
 *Overrides [ModuleBase](../interfaces/modulebase.md).[content](../interfaces/modulebase.md#content)*
 
-*Defined in [src/types/base.ts:14](https://github.com/JuroOravec/mini-extract-plugin/blob/ee56c59/src/types/base.ts#L14)*
+*Defined in [src/types/base.ts:14](https://github.com/JuroOravec/mini-extract-plugin/blob/87f855a/src/types/base.ts#L14)*
 
-*Defined in [src/models/module.ts:21](https://github.com/JuroOravec/mini-extract-plugin/blob/ee56c59/src/models/module.ts#L21)*
+*Defined in [src/models/module.ts:22](https://github.com/JuroOravec/mini-extract-plugin/blob/87f855a/src/models/module.ts#L22)*
 
 ___
 
@@ -363,9 +363,9 @@ ___
 
 *Overrides void*
 
-*Defined in [src/types/base.ts:13](https://github.com/JuroOravec/mini-extract-plugin/blob/ee56c59/src/types/base.ts#L13)*
+*Defined in [src/types/base.ts:13](https://github.com/JuroOravec/mini-extract-plugin/blob/87f855a/src/types/base.ts#L13)*
 
-*Defined in [src/models/module.ts:20](https://github.com/JuroOravec/mini-extract-plugin/blob/ee56c59/src/models/module.ts#L20)*
+*Defined in [src/models/module.ts:20](https://github.com/JuroOravec/mini-extract-plugin/blob/87f855a/src/models/module.ts#L20)*
 
 ___
 
@@ -373,7 +373,7 @@ ___
 
 ▸ **identifier**(): *string*
 
-*Defined in [src/models/module.ts:44](https://github.com/JuroOravec/mini-extract-plugin/blob/ee56c59/src/models/module.ts#L44)*
+*Defined in [src/models/module.ts:46](https://github.com/JuroOravec/mini-extract-plugin/blob/87f855a/src/models/module.ts#L46)*
 
 **Returns:** *string*
 
@@ -397,7 +397,7 @@ ___
 
 *Overrides [ModuleBase](../interfaces/modulebase.md).[index2](../interfaces/modulebase.md#index2)*
 
-*Defined in [src/types/webpack.ts:16](https://github.com/JuroOravec/mini-extract-plugin/blob/ee56c59/src/types/webpack.ts#L16)*
+*Defined in [src/types/webpack.ts:17](https://github.com/JuroOravec/mini-extract-plugin/blob/87f855a/src/types/webpack.ts#L17)*
 
 ___
 
@@ -417,7 +417,7 @@ ___
 
 • **loaders**: *Array‹object›*
 
-*Defined in [src/types/webpack.ts:19](https://github.com/JuroOravec/mini-extract-plugin/blob/ee56c59/src/types/webpack.ts#L19)*
+*Defined in [src/types/webpack.ts:20](https://github.com/JuroOravec/mini-extract-plugin/blob/87f855a/src/types/webpack.ts#L20)*
 
 ___
 
@@ -485,7 +485,7 @@ ___
 
 ▸ **readableIdentifier**(`requestShortener`: [RequestShortener](../interfaces/requestshortener.md)): *string*
 
-*Defined in [src/models/module.ts:48](https://github.com/JuroOravec/mini-extract-plugin/blob/ee56c59/src/models/module.ts#L48)*
+*Defined in [src/types/subclassing-classes.ts:36](https://github.com/JuroOravec/mini-extract-plugin/blob/87f855a/src/types/subclassing-classes.ts#L36)*
 
 **Parameters:**
 
@@ -523,9 +523,13 @@ ___
 
 ###  request
 
-• **request**: *string*
+• **request**: *undefined | string*
 
-*Defined in [src/types/webpack.ts:21](https://github.com/JuroOravec/mini-extract-plugin/blob/ee56c59/src/types/webpack.ts#L21)*
+*Defined in [src/types/webpack.ts:22](https://github.com/JuroOravec/mini-extract-plugin/blob/87f855a/src/types/webpack.ts#L22)*
+
+*Defined in [src/types/subclassing-classes.ts:37](https://github.com/JuroOravec/mini-extract-plugin/blob/87f855a/src/types/subclassing-classes.ts#L37)*
+
+*Defined in [src/models/module.ts:21](https://github.com/JuroOravec/mini-extract-plugin/blob/87f855a/src/models/module.ts#L21)*
 
 ___
 
@@ -557,7 +561,7 @@ ___
 
 ▸ **updateHash**(`hash`: [Hash](../interfaces/hash.md)): *void*
 
-*Defined in [src/models/module.ts:80](https://github.com/JuroOravec/mini-extract-plugin/blob/ee56c59/src/models/module.ts#L80)*
+*Defined in [src/models/module.ts:82](https://github.com/JuroOravec/mini-extract-plugin/blob/87f855a/src/models/module.ts#L82)*
 
 **Parameters:**
 
@@ -684,7 +688,7 @@ ___
 
 ▸ **build**(`options`: any, `compilation`: any, `resolver`: any, `fileSystem`: any, `callback`: any): *void*
 
-*Defined in [src/models/module.ts:72](https://github.com/JuroOravec/mini-extract-plugin/blob/ee56c59/src/models/module.ts#L72)*
+*Defined in [src/models/module.ts:74](https://github.com/JuroOravec/mini-extract-plugin/blob/87f855a/src/models/module.ts#L74)*
 
 **Parameters:**
 
@@ -860,7 +864,7 @@ ___
 
 ▸ **nameForCondition**(): *string*
 
-*Defined in [src/models/module.ts:54](https://github.com/JuroOravec/mini-extract-plugin/blob/ee56c59/src/models/module.ts#L54)*
+*Defined in [src/models/module.ts:56](https://github.com/JuroOravec/mini-extract-plugin/blob/87f855a/src/models/module.ts#L56)*
 
 **Returns:** *string*
 
@@ -973,7 +977,7 @@ ___
 
 ▸ **size**(): *number*
 
-*Defined in [src/models/module.ts:40](https://github.com/JuroOravec/mini-extract-plugin/blob/ee56c59/src/models/module.ts#L40)*
+*Defined in [src/models/module.ts:42](https://github.com/JuroOravec/mini-extract-plugin/blob/87f855a/src/models/module.ts#L42)*
 
 **Returns:** *number*
 
@@ -1045,7 +1049,7 @@ ___
 
 ▸ **updateCacheModule**(`module`: Module): *void*
 
-*Defined in [src/models/module.ts:63](https://github.com/JuroOravec/mini-extract-plugin/blob/ee56c59/src/models/module.ts#L63)*
+*Defined in [src/models/module.ts:65](https://github.com/JuroOravec/mini-extract-plugin/blob/87f855a/src/models/module.ts#L65)*
 
 **Parameters:**
 

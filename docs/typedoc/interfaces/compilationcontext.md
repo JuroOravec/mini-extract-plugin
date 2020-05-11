@@ -7,7 +7,7 @@ exposed to the compiler's `thisCompilation` hook.
 
 ## Type parameters
 
-▪ **MEP**: *[MiniExtractPlugin](miniextractplugin.md)*
+▪ **MEP**: *[AbstractMiniExtractPlugin](abstractminiextractplugin.md)*
 
 ## Hierarchy
 
@@ -35,7 +35,7 @@ exposed to the compiler's `thisCompilation` hook.
 
 *Inherited from [ContextBase](contextbase.md).[classOptions](contextbase.md#classoptions)*
 
-*Defined in [src/types/context.ts:20](https://github.com/JuroOravec/mini-extract-plugin/blob/ee56c59/src/types/context.ts#L20)*
+*Defined in [src/types/context.ts:19](https://github.com/JuroOravec/mini-extract-plugin/blob/87f855a/src/types/context.ts#L19)*
 
 ___
 
@@ -43,7 +43,7 @@ ___
 
 • **compilation**: *Compilation*
 
-*Defined in [src/types/context.ts:41](https://github.com/JuroOravec/mini-extract-plugin/blob/ee56c59/src/types/context.ts#L41)*
+*Defined in [src/types/context.ts:40](https://github.com/JuroOravec/mini-extract-plugin/blob/87f855a/src/types/context.ts#L40)*
 
 ___
 
@@ -53,7 +53,7 @@ ___
 
 *Inherited from [CompilerContext](compilercontext.md).[compiler](compilercontext.md#compiler)*
 
-*Defined in [src/types/context.ts:31](https://github.com/JuroOravec/mini-extract-plugin/blob/ee56c59/src/types/context.ts#L31)*
+*Defined in [src/types/context.ts:30](https://github.com/JuroOravec/mini-extract-plugin/blob/87f855a/src/types/context.ts#L30)*
 
 ___
 
@@ -63,7 +63,7 @@ ___
 
 *Inherited from [ContextBase](contextbase.md).[options](contextbase.md#options)*
 
-*Defined in [src/types/context.ts:21](https://github.com/JuroOravec/mini-extract-plugin/blob/ee56c59/src/types/context.ts#L21)*
+*Defined in [src/types/context.ts:20](https://github.com/JuroOravec/mini-extract-plugin/blob/87f855a/src/types/context.ts#L20)*
 
 ___
 
@@ -73,4 +73,4 @@ ___
 
 *Inherited from [ContextBase](contextbase.md).[plugin](contextbase.md#plugin)*
 
-*Defined in [src/types/context.ts:19](https://github.com/JuroOravec/mini-extract-plugin/blob/ee56c59/src/types/context.ts#L19)*
+*Defined in [src/types/context.ts:18](https://github.com/JuroOravec/mini-extract-plugin/blob/87f855a/src/types/context.ts#L18)*

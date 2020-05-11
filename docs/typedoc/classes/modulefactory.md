@@ -38,7 +38,7 @@
 
 ▸ **create**(`data`: [ModuleFactoryData](../README.md#modulefactorydata)‹Dep›, `callback`: [ModuleFactoryCallback](../README.md#modulefactorycallback)‹Mod›): *void*
 
-*Defined in [src/types/subclassing.ts:60](https://github.com/JuroOravec/mini-extract-plugin/blob/ee56c59/src/types/subclassing.ts#L60)*
+*Defined in [src/types/subclassing-classes.ts:69](https://github.com/JuroOravec/mini-extract-plugin/blob/87f855a/src/types/subclassing-classes.ts#L69)*
 
 **Parameters:**
 

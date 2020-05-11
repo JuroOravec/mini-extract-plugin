@@ -177,7 +177,7 @@ ___
 
 • **content**: *string*
 
-*Defined in [src/types/base.ts:14](https://github.com/JuroOravec/mini-extract-plugin/blob/ee56c59/src/types/base.ts#L14)*
+*Defined in [src/types/base.ts:14](https://github.com/JuroOravec/mini-extract-plugin/blob/87f855a/src/types/base.ts#L14)*
 
 ___
 
@@ -267,7 +267,7 @@ ___
 
 *Overrides void*
 
-*Defined in [src/types/base.ts:13](https://github.com/JuroOravec/mini-extract-plugin/blob/ee56c59/src/types/base.ts#L13)*
+*Defined in [src/types/base.ts:13](https://github.com/JuroOravec/mini-extract-plugin/blob/87f855a/src/types/base.ts#L13)*
 
 ___
 
