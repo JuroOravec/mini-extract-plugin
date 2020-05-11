@@ -32,7 +32,7 @@ Common properties present in all context objects.
 
 • **classOptions**: *MEP["classOptions"]*
 
-*Defined in [src/types/context.ts:19](https://github.com/JuroOravec/mini-extract-plugin/blob/87f855a/src/types/context.ts#L19)*
+*Defined in [src/types/context.ts:19](https://github.com/JuroOravec/mini-extract-plugin/blob/a152a2a/src/types/context.ts#L19)*
 
 ___
 
@@ -40,7 +40,7 @@ ___
 
 • **options**: *MEP["options"]*
 
-*Defined in [src/types/context.ts:20](https://github.com/JuroOravec/mini-extract-plugin/blob/87f855a/src/types/context.ts#L20)*
+*Defined in [src/types/context.ts:20](https://github.com/JuroOravec/mini-extract-plugin/blob/a152a2a/src/types/context.ts#L20)*
 
 ___
 
@@ -48,4 +48,4 @@ ___
 
 • **plugin**: *MEP*
 
-*Defined in [src/types/context.ts:18](https://github.com/JuroOravec/mini-extract-plugin/blob/87f855a/src/types/context.ts#L18)*
+*Defined in [src/types/context.ts:18](https://github.com/JuroOravec/mini-extract-plugin/blob/a152a2a/src/types/context.ts#L18)*

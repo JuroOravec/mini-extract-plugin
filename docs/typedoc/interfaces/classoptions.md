@@ -63,7 +63,7 @@ ClassOptions<{
 
 *Inherited from [AbstractClassOptions](abstractclassoptions.md).[className](abstractclassoptions.md#optional-classname)*
 
-*Defined in [src/types/subclassing-abstract.ts:47](https://github.com/JuroOravec/mini-extract-plugin/blob/87f855a/src/types/subclassing-abstract.ts#L47)*
+*Defined in [src/types/subclassing-abstract.ts:47](https://github.com/JuroOravec/mini-extract-plugin/blob/a152a2a/src/types/subclassing-abstract.ts#L47)*
 
 ___
 
@@ -73,7 +73,7 @@ ___
 
 *Inherited from [AbstractClassOptions](abstractclassoptions.md).[dependencyClass](abstractclassoptions.md#optional-dependencyclass)*
 
-*Defined in [src/types/subclassing-abstract.ts:51](https://github.com/JuroOravec/mini-extract-plugin/blob/87f855a/src/types/subclassing-abstract.ts#L51)*
+*Defined in [src/types/subclassing-abstract.ts:51](https://github.com/JuroOravec/mini-extract-plugin/blob/a152a2a/src/types/subclassing-abstract.ts#L51)*
 
 ___
 
@@ -83,7 +83,7 @@ ___
 
 *Inherited from [AbstractClassOptions](abstractclassoptions.md).[dependencyTemplateClass](abstractclassoptions.md#optional-dependencytemplateclass)*
 
-*Defined in [src/types/subclassing-abstract.ts:54](https://github.com/JuroOravec/mini-extract-plugin/blob/87f855a/src/types/subclassing-abstract.ts#L54)*
+*Defined in [src/types/subclassing-abstract.ts:54](https://github.com/JuroOravec/mini-extract-plugin/blob/a152a2a/src/types/subclassing-abstract.ts#L54)*
 
 ___
 
@@ -93,7 +93,7 @@ ___
 
 *Inherited from [AbstractClassOptions](abstractclassoptions.md).[displayName](abstractclassoptions.md#optional-displayname)*
 
-*Defined in [src/types/subclassing-abstract.ts:46](https://github.com/JuroOravec/mini-extract-plugin/blob/87f855a/src/types/subclassing-abstract.ts#L46)*
+*Defined in [src/types/subclassing-abstract.ts:46](https://github.com/JuroOravec/mini-extract-plugin/blob/a152a2a/src/types/subclassing-abstract.ts#L46)*
 
 ___
 
@@ -103,7 +103,7 @@ ___
 
 *Overrides [AbstractClassOptions](abstractclassoptions.md).[hooks](abstractclassoptions.md#optional-hooks)*
 
-*Defined in [src/types/subclassing.ts:47](https://github.com/JuroOravec/mini-extract-plugin/blob/87f855a/src/types/subclassing.ts#L47)*
+*Defined in [src/types/subclassing.ts:47](https://github.com/JuroOravec/mini-extract-plugin/blob/a152a2a/src/types/subclassing.ts#L47)*
 
 ___
 
@@ -113,7 +113,7 @@ ___
 
 *Inherited from [AbstractClassOptions](abstractclassoptions.md).[loaderOptionsSchema](abstractclassoptions.md#optional-loaderoptionsschema)*
 
-*Defined in [src/types/subclassing-abstract.ts:50](https://github.com/JuroOravec/mini-extract-plugin/blob/87f855a/src/types/subclassing-abstract.ts#L50)*
+*Defined in [src/types/subclassing-abstract.ts:50](https://github.com/JuroOravec/mini-extract-plugin/blob/a152a2a/src/types/subclassing-abstract.ts#L50)*
 
 ___
 
@@ -123,7 +123,7 @@ ___
 
 *Inherited from [AbstractClassOptions](abstractclassoptions.md).[moduleClass](abstractclassoptions.md#optional-moduleclass)*
 
-*Defined in [src/types/subclassing-abstract.ts:53](https://github.com/JuroOravec/mini-extract-plugin/blob/87f855a/src/types/subclassing-abstract.ts#L53)*
+*Defined in [src/types/subclassing-abstract.ts:53](https://github.com/JuroOravec/mini-extract-plugin/blob/a152a2a/src/types/subclassing-abstract.ts#L53)*
 
 ___
 
@@ -133,7 +133,7 @@ ___
 
 *Inherited from [AbstractClassOptions](abstractclassoptions.md).[moduleFactoryClass](abstractclassoptions.md#optional-modulefactoryclass)*
 
-*Defined in [src/types/subclassing-abstract.ts:52](https://github.com/JuroOravec/mini-extract-plugin/blob/87f855a/src/types/subclassing-abstract.ts#L52)*
+*Defined in [src/types/subclassing-abstract.ts:52](https://github.com/JuroOravec/mini-extract-plugin/blob/a152a2a/src/types/subclassing-abstract.ts#L52)*
 
 ___
 
@@ -143,7 +143,7 @@ ___
 
 *Inherited from [AbstractClassOptions](abstractclassoptions.md).[moduleType](abstractclassoptions.md#optional-moduletype)*
 
-*Defined in [src/types/subclassing-abstract.ts:44](https://github.com/JuroOravec/mini-extract-plugin/blob/87f855a/src/types/subclassing-abstract.ts#L44)*
+*Defined in [src/types/subclassing-abstract.ts:44](https://github.com/JuroOravec/mini-extract-plugin/blob/a152a2a/src/types/subclassing-abstract.ts#L44)*
 
 ___
 
@@ -153,7 +153,7 @@ ___
 
 *Inherited from [AbstractClassOptions](abstractclassoptions.md).[pluginName](abstractclassoptions.md#optional-pluginname)*
 
-*Defined in [src/types/subclassing-abstract.ts:45](https://github.com/JuroOravec/mini-extract-plugin/blob/87f855a/src/types/subclassing-abstract.ts#L45)*
+*Defined in [src/types/subclassing-abstract.ts:45](https://github.com/JuroOravec/mini-extract-plugin/blob/a152a2a/src/types/subclassing-abstract.ts#L45)*
 
 ___
 
@@ -163,7 +163,7 @@ ___
 
 *Inherited from [AbstractClassOptions](abstractclassoptions.md).[pluginOptionsSchema](abstractclassoptions.md#optional-pluginoptionsschema)*
 
-*Defined in [src/types/subclassing-abstract.ts:49](https://github.com/JuroOravec/mini-extract-plugin/blob/87f855a/src/types/subclassing-abstract.ts#L49)*
+*Defined in [src/types/subclassing-abstract.ts:49](https://github.com/JuroOravec/mini-extract-plugin/blob/a152a2a/src/types/subclassing-abstract.ts#L49)*
 
 ___
 
@@ -173,4 +173,4 @@ ___
 
 *Inherited from [AbstractClassOptions](abstractclassoptions.md).[type](abstractclassoptions.md#type)*
 
-*Defined in [src/types/subclassing-abstract.ts:43](https://github.com/JuroOravec/mini-extract-plugin/blob/87f855a/src/types/subclassing-abstract.ts#L43)*
+*Defined in [src/types/subclassing-abstract.ts:43](https://github.com/JuroOravec/mini-extract-plugin/blob/a152a2a/src/types/subclassing-abstract.ts#L43)*

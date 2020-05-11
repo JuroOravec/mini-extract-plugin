@@ -24,7 +24,7 @@ Default types for the params passed to MiniExractPlugin class or options
 
 • **constructorOptions**? : *undefined | object*
 
-*Defined in [src/types/subclassing-params.ts:22](https://github.com/JuroOravec/mini-extract-plugin/blob/87f855a/src/types/subclassing-params.ts#L22)*
+*Defined in [src/types/subclassing-params.ts:22](https://github.com/JuroOravec/mini-extract-plugin/blob/a152a2a/src/types/subclassing-params.ts#L22)*
 
 ___
 
@@ -32,7 +32,7 @@ ___
 
 • **dependencyClass**? : *[DependencyClass](../README.md#dependencyclass)*
 
-*Defined in [src/types/subclassing-params.ts:18](https://github.com/JuroOravec/mini-extract-plugin/blob/87f855a/src/types/subclassing-params.ts#L18)*
+*Defined in [src/types/subclassing-params.ts:18](https://github.com/JuroOravec/mini-extract-plugin/blob/a152a2a/src/types/subclassing-params.ts#L18)*
 
 ___
 
@@ -40,7 +40,7 @@ ___
 
 • **dependencyTemplateClass**? : *[DependencyTemplateClass](../README.md#dependencytemplateclass)*
 
-*Defined in [src/types/subclassing-params.ts:19](https://github.com/JuroOravec/mini-extract-plugin/blob/87f855a/src/types/subclassing-params.ts#L19)*
+*Defined in [src/types/subclassing-params.ts:19](https://github.com/JuroOravec/mini-extract-plugin/blob/a152a2a/src/types/subclassing-params.ts#L19)*
 
 ___
 
@@ -48,7 +48,7 @@ ___
 
 • **moduleClass**? : *[ModuleClass](../README.md#moduleclass)*
 
-*Defined in [src/types/subclassing-params.ts:20](https://github.com/JuroOravec/mini-extract-plugin/blob/87f855a/src/types/subclassing-params.ts#L20)*
+*Defined in [src/types/subclassing-params.ts:20](https://github.com/JuroOravec/mini-extract-plugin/blob/a152a2a/src/types/subclassing-params.ts#L20)*
 
 ___
 
@@ -56,4 +56,4 @@ ___
 
 • **moduleFactoryClass**? : *[ModuleFactoryClass](../README.md#modulefactoryclass)*
 
-*Defined in [src/types/subclassing-params.ts:21](https://github.com/JuroOravec/mini-extract-plugin/blob/87f855a/src/types/subclassing-params.ts#L21)*
+*Defined in [src/types/subclassing-params.ts:21](https://github.com/JuroOravec/mini-extract-plugin/blob/a152a2a/src/types/subclassing-params.ts#L21)*

@@ -92,7 +92,7 @@ Defined in node_modules/ploadin/dist/ploadin.d.ts:2
 
 *Inherited from [AbstractMiniExtractPlugin](abstractminiextractplugin.md).[apply](abstractminiextractplugin.md#apply)*
 
-*Defined in [src/types/subclassing-abstract.ts:94](https://github.com/JuroOravec/mini-extract-plugin/blob/87f855a/src/types/subclassing-abstract.ts#L94)*
+*Defined in [src/types/subclassing-abstract.ts:94](https://github.com/JuroOravec/mini-extract-plugin/blob/a152a2a/src/types/subclassing-abstract.ts#L94)*
 
 #### Type declaration:
 
@@ -112,7 +112,7 @@ ___
 
 *Overrides [AbstractMiniExtractPlugin](abstractminiextractplugin.md).[classOptions](abstractminiextractplugin.md#classoptions)*
 
-*Defined in [src/types/subclassing.ts:82](https://github.com/JuroOravec/mini-extract-plugin/blob/87f855a/src/types/subclassing.ts#L82)*
+*Defined in [src/types/subclassing.ts:82](https://github.com/JuroOravec/mini-extract-plugin/blob/a152a2a/src/types/subclassing.ts#L82)*
 
 ___
 
@@ -122,7 +122,7 @@ ___
 
 *Overrides [AbstractMiniExtractPlugin](abstractminiextractplugin.md).[hooks](abstractminiextractplugin.md#hooks)*
 
-*Defined in [src/types/subclassing.ts:81](https://github.com/JuroOravec/mini-extract-plugin/blob/87f855a/src/types/subclassing.ts#L81)*
+*Defined in [src/types/subclassing.ts:81](https://github.com/JuroOravec/mini-extract-plugin/blob/a152a2a/src/types/subclassing.ts#L81)*
 
 ___
 
@@ -132,7 +132,7 @@ ___
 
 *Inherited from [AbstractMiniExtractPlugin](abstractminiextractplugin.md).[options](abstractminiextractplugin.md#options)*
 
-*Defined in [src/types/subclassing-abstract.ts:92](https://github.com/JuroOravec/mini-extract-plugin/blob/87f855a/src/types/subclassing-abstract.ts#L92)*
+*Defined in [src/types/subclassing-abstract.ts:92](https://github.com/JuroOravec/mini-extract-plugin/blob/a152a2a/src/types/subclassing-abstract.ts#L92)*
 
 ## Accessors
 
@@ -218,7 +218,7 @@ Defined in node_modules/ploadin/dist/ploadin.d.ts:7
 
 *Inherited from [AbstractMiniExtractPlugin](abstractminiextractplugin.md).[loader](abstractminiextractplugin.md#loader)*
 
-*Defined in [src/types/subclassing-abstract.ts:95](https://github.com/JuroOravec/mini-extract-plugin/blob/87f855a/src/types/subclassing-abstract.ts#L95)*
+*Defined in [src/types/subclassing-abstract.ts:95](https://github.com/JuroOravec/mini-extract-plugin/blob/a152a2a/src/types/subclassing-abstract.ts#L95)*
 
 **Parameters:**
 
@@ -239,7 +239,7 @@ ___
 
 *Inherited from [AbstractMiniExtractPlugin](abstractminiextractplugin.md).[pitch](abstractminiextractplugin.md#pitch)*
 
-*Defined in [src/types/subclassing-abstract.ts:101](https://github.com/JuroOravec/mini-extract-plugin/blob/87f855a/src/types/subclassing-abstract.ts#L101)*
+*Defined in [src/types/subclassing-abstract.ts:101](https://github.com/JuroOravec/mini-extract-plugin/blob/a152a2a/src/types/subclassing-abstract.ts#L101)*
 
 **Parameters:**
 

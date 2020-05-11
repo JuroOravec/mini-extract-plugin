@@ -32,7 +32,7 @@
 
 *Inherited from [ContextBase](contextbase.md).[classOptions](contextbase.md#classoptions)*
 
-*Defined in [src/types/context.ts:19](https://github.com/JuroOravec/mini-extract-plugin/blob/87f855a/src/types/context.ts#L19)*
+*Defined in [src/types/context.ts:19](https://github.com/JuroOravec/mini-extract-plugin/blob/a152a2a/src/types/context.ts#L19)*
 
 ___
 
@@ -40,7 +40,7 @@ ___
 
 • **data**: *any*
 
-*Defined in [src/types/context.ts:83](https://github.com/JuroOravec/mini-extract-plugin/blob/87f855a/src/types/context.ts#L83)*
+*Defined in [src/types/context.ts:83](https://github.com/JuroOravec/mini-extract-plugin/blob/a152a2a/src/types/context.ts#L83)*
 
 ___
 
@@ -48,7 +48,7 @@ ___
 
 • **loaderContext**: *[LoaderContext](../README.md#loadercontext)*
 
-*Defined in [src/types/context.ts:80](https://github.com/JuroOravec/mini-extract-plugin/blob/87f855a/src/types/context.ts#L80)*
+*Defined in [src/types/context.ts:80](https://github.com/JuroOravec/mini-extract-plugin/blob/a152a2a/src/types/context.ts#L80)*
 
 ___
 
@@ -58,7 +58,7 @@ ___
 
 *Inherited from [ContextBase](contextbase.md).[options](contextbase.md#options)*
 
-*Defined in [src/types/context.ts:20](https://github.com/JuroOravec/mini-extract-plugin/blob/87f855a/src/types/context.ts#L20)*
+*Defined in [src/types/context.ts:20](https://github.com/JuroOravec/mini-extract-plugin/blob/a152a2a/src/types/context.ts#L20)*
 
 ___
 
@@ -68,7 +68,7 @@ ___
 
 *Inherited from [ContextBase](contextbase.md).[plugin](contextbase.md#plugin)*
 
-*Defined in [src/types/context.ts:18](https://github.com/JuroOravec/mini-extract-plugin/blob/87f855a/src/types/context.ts#L18)*
+*Defined in [src/types/context.ts:18](https://github.com/JuroOravec/mini-extract-plugin/blob/a152a2a/src/types/context.ts#L18)*
 
 ___
 
@@ -76,7 +76,7 @@ ___
 
 • **source**: *string | Buffer*
 
-*Defined in [src/types/context.ts:81](https://github.com/JuroOravec/mini-extract-plugin/blob/87f855a/src/types/context.ts#L81)*
+*Defined in [src/types/context.ts:81](https://github.com/JuroOravec/mini-extract-plugin/blob/a152a2a/src/types/context.ts#L81)*
 
 ___
 
@@ -84,4 +84,4 @@ ___
 
 • **sourceMap**: *string*
 
-*Defined in [src/types/context.ts:82](https://github.com/JuroOravec/mini-extract-plugin/blob/87f855a/src/types/context.ts#L82)*
+*Defined in [src/types/context.ts:82](https://github.com/JuroOravec/mini-extract-plugin/blob/a152a2a/src/types/context.ts#L82)*

@@ -93,7 +93,7 @@ Defined in node_modules/ploadin/dist/ploadin.d.ts:2
 
 • **apply**: *function*
 
-*Defined in [src/types/subclassing-abstract.ts:94](https://github.com/JuroOravec/mini-extract-plugin/blob/87f855a/src/types/subclassing-abstract.ts#L94)*
+*Defined in [src/types/subclassing-abstract.ts:94](https://github.com/JuroOravec/mini-extract-plugin/blob/a152a2a/src/types/subclassing-abstract.ts#L94)*
 
 #### Type declaration:
 
@@ -113,7 +113,7 @@ ___
 
 *Overrides void*
 
-*Defined in [src/types/subclassing-abstract.ts:91](https://github.com/JuroOravec/mini-extract-plugin/blob/87f855a/src/types/subclassing-abstract.ts#L91)*
+*Defined in [src/types/subclassing-abstract.ts:91](https://github.com/JuroOravec/mini-extract-plugin/blob/a152a2a/src/types/subclassing-abstract.ts#L91)*
 
 ___
 
@@ -121,7 +121,7 @@ ___
 
 • **hooks**: *object*
 
-*Defined in [src/types/subclassing-abstract.ts:93](https://github.com/JuroOravec/mini-extract-plugin/blob/87f855a/src/types/subclassing-abstract.ts#L93)*
+*Defined in [src/types/subclassing-abstract.ts:93](https://github.com/JuroOravec/mini-extract-plugin/blob/a152a2a/src/types/subclassing-abstract.ts#L93)*
 
 #### Type declaration:
 
@@ -133,7 +133,7 @@ ___
 
 • **options**: *Params["constructorOptions"]*
 
-*Defined in [src/types/subclassing-abstract.ts:92](https://github.com/JuroOravec/mini-extract-plugin/blob/87f855a/src/types/subclassing-abstract.ts#L92)*
+*Defined in [src/types/subclassing-abstract.ts:92](https://github.com/JuroOravec/mini-extract-plugin/blob/a152a2a/src/types/subclassing-abstract.ts#L92)*
 
 ## Accessors
 
@@ -217,7 +217,7 @@ Defined in node_modules/ploadin/dist/ploadin.d.ts:7
 
 ▸ **loader**(`loaderContext`: any, `source?`: undefined | string, `sourceMap?`: undefined | string, `data?`: any): *void*
 
-*Defined in [src/types/subclassing-abstract.ts:95](https://github.com/JuroOravec/mini-extract-plugin/blob/87f855a/src/types/subclassing-abstract.ts#L95)*
+*Defined in [src/types/subclassing-abstract.ts:95](https://github.com/JuroOravec/mini-extract-plugin/blob/a152a2a/src/types/subclassing-abstract.ts#L95)*
 
 **Parameters:**
 
@@ -236,7 +236,7 @@ ___
 
 ▸ **pitch**(`loaderContext`: any, `request`: string, `precedingRequest`: string, `data`: object): *void*
 
-*Defined in [src/types/subclassing-abstract.ts:101](https://github.com/JuroOravec/mini-extract-plugin/blob/87f855a/src/types/subclassing-abstract.ts#L101)*
+*Defined in [src/types/subclassing-abstract.ts:101](https://github.com/JuroOravec/mini-extract-plugin/blob/a152a2a/src/types/subclassing-abstract.ts#L101)*
 
 **Parameters:**
 

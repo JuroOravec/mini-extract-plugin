@@ -20,7 +20,7 @@
 
 • **moduleClass**? : *[ModuleClass](../README.md#moduleclass) | [ModuleClass](../README.md#moduleclass)‹IModule›*
 
-*Defined in [src/models/module-factory.ts:52](https://github.com/JuroOravec/mini-extract-plugin/blob/87f855a/src/models/module-factory.ts#L52)*
+*Defined in [src/models/module-factory.ts:52](https://github.com/JuroOravec/mini-extract-plugin/blob/a152a2a/src/models/module-factory.ts#L52)*
 
 ___
 
@@ -28,7 +28,7 @@ ___
 
 • **name**? : *undefined | string*
 
-*Defined in [src/models/dependency.ts:51](https://github.com/JuroOravec/mini-extract-plugin/blob/87f855a/src/models/dependency.ts#L51)*
+*Defined in [src/models/dependency.ts:51](https://github.com/JuroOravec/mini-extract-plugin/blob/a152a2a/src/models/dependency.ts#L51)*
 
 ___
 
@@ -36,10 +36,10 @@ ___
 
 • **type**: *string*
 
-*Defined in [src/models/dependency-template.ts:19](https://github.com/JuroOravec/mini-extract-plugin/blob/87f855a/src/models/dependency-template.ts#L19)*
+*Defined in [src/models/dependency-template.ts:19](https://github.com/JuroOravec/mini-extract-plugin/blob/a152a2a/src/models/dependency-template.ts#L19)*
 
-*Defined in [src/models/dependency.ts:52](https://github.com/JuroOravec/mini-extract-plugin/blob/87f855a/src/models/dependency.ts#L52)*
+*Defined in [src/models/dependency.ts:52](https://github.com/JuroOravec/mini-extract-plugin/blob/a152a2a/src/models/dependency.ts#L52)*
 
-*Defined in [src/models/module.ts:89](https://github.com/JuroOravec/mini-extract-plugin/blob/87f855a/src/models/module.ts#L89)*
+*Defined in [src/models/module.ts:89](https://github.com/JuroOravec/mini-extract-plugin/blob/a152a2a/src/models/module.ts#L89)*
 
-*Defined in [src/models/module-factory.ts:51](https://github.com/JuroOravec/mini-extract-plugin/blob/87f855a/src/models/module-factory.ts#L51)*
+*Defined in [src/models/module-factory.ts:51](https://github.com/JuroOravec/mini-extract-plugin/blob/a152a2a/src/models/module-factory.ts#L51)*

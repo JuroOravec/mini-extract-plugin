@@ -26,7 +26,7 @@
 
 • **content**: *string*
 
-*Defined in [src/types/base.ts:22](https://github.com/JuroOravec/mini-extract-plugin/blob/87f855a/src/types/base.ts#L22)*
+*Defined in [src/types/base.ts:22](https://github.com/JuroOravec/mini-extract-plugin/blob/a152a2a/src/types/base.ts#L22)*
 
 ___
 
@@ -34,7 +34,7 @@ ___
 
 • **context**: *string | null | undefined*
 
-*Defined in [src/types/base.ts:21](https://github.com/JuroOravec/mini-extract-plugin/blob/87f855a/src/types/base.ts#L21)*
+*Defined in [src/types/base.ts:21](https://github.com/JuroOravec/mini-extract-plugin/blob/a152a2a/src/types/base.ts#L21)*
 
 ___
 
@@ -42,7 +42,7 @@ ___
 
 • **identifier**: *string*
 
-*Defined in [src/types/base.ts:20](https://github.com/JuroOravec/mini-extract-plugin/blob/87f855a/src/types/base.ts#L20)*
+*Defined in [src/types/base.ts:20](https://github.com/JuroOravec/mini-extract-plugin/blob/a152a2a/src/types/base.ts#L20)*
 
 ___
 
@@ -50,7 +50,7 @@ ___
 
 • **miniExtractType**: *string*
 
-*Defined in [src/types/base.ts:18](https://github.com/JuroOravec/mini-extract-plugin/blob/87f855a/src/types/base.ts#L18)*
+*Defined in [src/types/base.ts:18](https://github.com/JuroOravec/mini-extract-plugin/blob/a152a2a/src/types/base.ts#L18)*
 
 ___
 
@@ -58,4 +58,4 @@ ___
 
 • **moduleType**: *string*
 
-*Defined in [src/types/base.ts:19](https://github.com/JuroOravec/mini-extract-plugin/blob/87f855a/src/types/base.ts#L19)*
+*Defined in [src/types/base.ts:19](https://github.com/JuroOravec/mini-extract-plugin/blob/a152a2a/src/types/base.ts#L19)*
