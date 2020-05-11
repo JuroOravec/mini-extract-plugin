@@ -11,6 +11,8 @@ import type { Overrides, ActiveHooks } from './hook';
 import type { ModuleBase, DependencyBase } from './base';
 import type { ModuleFilename } from './module-filename';
 
+export { ParamsDefault } from './subclassing-params';
+
 export interface DependencyTemplate {
   apply: AnyFunc;
 }
@@ -92,27 +94,7 @@ export type ModuleFactoryClass<
  *   moduleFactoryClass: ModFactoryCls;
  * }>
  */
-export interface ClassOptions<
-  // Allow user to specify the types by passing an object of types as params
-  T extends {
-    dependencyClass?: DependencyClass;
-    dependencyTemplateClass?: DependencyTemplateClass;
-    moduleClass?: ModuleClass;
-    moduleFactoryClass?: ModuleFactoryClass;
-  } = {},
-  // Set defaults
-  DepCls extends DependencyClass = T['dependencyClass'] extends DependencyClass
-    ? T['dependencyClass']
-    : DependencyClass,
-  DepTemplateCls extends DependencyTemplateClass = T['dependencyTemplateClass'] extends DependencyTemplateClass
-    ? T['dependencyTemplateClass']
-    : DependencyTemplateClass,
-  ModCls extends ModuleClass = T['moduleClass'] extends ModuleClass
-    ? T['moduleClass']
-    : ModuleClass,
-  ModFactoryCls extends ModuleFactoryClass = T['moduleFactoryClass'] extends ModuleFactoryClass
-    ? T['moduleFactoryClass']
-    : ModuleFactoryClass
+export interface ClassOptions<T extends ParamsDefault = {}>
 > {
   type: string;
   moduleType?: string;
@@ -166,30 +148,7 @@ export type ConstructorOptions = {
  * }>
  */
 export interface MiniExtractPlugin<
-  // Allow user to specify the types by passing an object of types as params
-  T extends {
-    dependencyClass?: DependencyClass;
-    dependencyTemplateClass?: DependencyTemplateClass;
-    moduleClass?: ModuleClass;
-    moduleFactoryClass?: ModuleFactoryClass;
-    constructorOptions?: { [key: string]: any };
-  } = {},
-  // Set defaults
-  DepCls extends DependencyClass = T['dependencyClass'] extends DependencyClass
-    ? T['dependencyClass']
-    : DependencyClass,
-  DepTemplateCls extends DependencyTemplateClass = T['dependencyTemplateClass'] extends DependencyTemplateClass
-    ? T['dependencyTemplateClass']
-    : DependencyTemplateClass,
-  ModCls extends ModuleClass = T['moduleClass'] extends ModuleClass
-    ? T['moduleClass']
-    : ModuleClass,
-  ModFactoryCls extends ModuleFactoryClass = T['moduleFactoryClass'] extends ModuleFactoryClass
-    ? T['moduleFactoryClass']
-    : ModuleFactoryClass,
-  CtorOptions extends object = T['constructorOptions'] extends object
-    ? T['constructorOptions']
-    : ConstructorOptions
+  T extends ParamsDefault = {},
 > extends Ploadin {
   classOptions: Required<
     ClassOptions<{

@@ -6,10 +6,7 @@ import type {
   ClassOptions,
   MiniExtractPlugin as IMiniExtractPlugin,
   MiniExtractPluginClass,
-  DependencyClass,
-  DependencyTemplateClass,
-  ModuleClass,
-  ModuleFactoryClass,
+  ParamsDefault,
 } from './types/subclassing';
 import * as hooks from './lib/hook';
 import apply from './methods/apply';
@@ -19,14 +16,8 @@ import { renameClass } from './lib/util';
 
 export default function pluginFactory<
   // Allow user to specify the types by passing an object of types as params
-  T extends {
-    dependencyClass?: DependencyClass;
-    dependencyTemplateClass?: DependencyTemplateClass;
-    moduleClass?: ModuleClass;
-    moduleFactoryClass?: ModuleFactoryClass;
-    constructorOptions?: { [key: string]: any };
-  } = {}
->(classOptions: Required<ClassOptions>) {
+  T extends ParamsDefault = {}
+>(classOptions: Required<ClassOptions<T>>) {
   const {
     pluginName,
     displayName,
@@ -75,7 +66,6 @@ export default function pluginFactory<
           );
         }
       }
-
       this.apply = apply.bind(this);
       this.loader = loader.bind(this);
       this.pitch = pitch.bind(this);

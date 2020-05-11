@@ -1,11 +1,7 @@
 import capitalize from 'lodash.capitalize';
-import type {
-  ClassOptions,
-  DependencyClass,
-  DependencyTemplateClass,
-  ModuleClass,
-  ModuleFactoryClass,
-} from './types/subclassing';
+
+import type { ClassOptions } from './types/subclassing';
+import type { ParamsParse, ParamsDefault } from './types/subclassing-params';
 import loaderSchema from './schemas/loader-options.json';
 import pluginSchema from './schemas/plugin-options.json';
 import pluginFactory from './factory';
@@ -15,14 +11,10 @@ export * from './api';
 
 export default function miniExtractPluginFactory<
   // Allow user to specify the types by passing an object of types as params
-  T extends {
-    dependencyClass?: DependencyClass;
-    dependencyTemplateClass?: DependencyTemplateClass;
-    moduleClass?: ModuleClass;
-    moduleFactoryClass?: ModuleFactoryClass;
-    constructorOptions?: { [key: string]: any };
-  } = {}
->(options: ClassOptions) {
+  T extends ParamsDefault = {},
+  Params extends ParamsParse<T> = ParamsParse<T>,
+  ClsOpts extends ClassOptions<T> = ClassOptions<T>
+>(options: ClsOpts) {
   const { type } = options;
   const { moduleClass = subclass.module({ type }) } = options;
   const {
@@ -44,10 +36,10 @@ export default function miniExtractPluginFactory<
     pluginName,
     displayName,
     className,
-    moduleClass,
-    moduleFactoryClass,
-    dependencyClass,
-    dependencyTemplateClass,
+    moduleClass: (moduleClass as unknown) as Params['moduleClass'],
+    moduleFactoryClass: moduleFactoryClass as Params['moduleFactoryClass'],
+    dependencyClass: dependencyClass as Params['dependencyClass'],
+    dependencyTemplateClass: dependencyTemplateClass as Params['dependencyTemplateClass'],
     pluginOptionsSchema,
     loaderOptionsSchema,
     hooks,
