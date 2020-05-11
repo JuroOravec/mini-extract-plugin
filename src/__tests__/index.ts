@@ -4,6 +4,8 @@ import MiniCssExtractPlugin from 'mini-css-extract-plugin';
 import miniExtractPluginFactory, { types } from '..';
 import { create } from '../lib/hook';
 
+import type { MiniCssExtractPlugin as ITestMiniCssExtractPlugin } from '../../test/fixtures/mini-css-extract-plugin/types';
+import type { HookState } from '../../test/fixtures/tapable/types';
 import TestMiniCssExtractPlugin from '../../test/fixtures/mini-css-extract-plugin';
 import Dependency from '../../test/fixtures/mini-css-extract-plugin/dependency';
 import DependencyTemplate from '../../test/fixtures/mini-css-extract-plugin/dependency-template';
@@ -17,7 +19,11 @@ import {
   validateHookWasCalled,
   overrides,
 } from '../../test/fixtures/tapable';
-import { HookState } from '../../test/fixtures/tapable/types';
+import {
+  validateRenderContext,
+  validateDefinedObject,
+  validateModules,
+} from '../../test/fixtures/tapable/validators';
 
 async function compareWebpackOutputs(
   webpackConfigs: webpack.Configuration[],
@@ -53,6 +59,20 @@ function prepConfig(plugin?: any, loader?: any) {
     config.module!.rules[0].use = [loader, ...loaders];
   }
   return config;
+}
+
+function createPlugin(
+  classOptions: Partial<types.MiniExtractPlugin['classOptions']> = {},
+  instanceOptions: types.MiniExtractPlugin['options'] = {},
+) {
+  const DummyPluginClass = miniExtractPluginFactory({
+    type: 'css',
+    moduleFactoryClass: ModuleFactory,
+    dependencyClass: Dependency,
+    dependencyTemplateClass: DependencyTemplate,
+    ...classOptions,
+  });
+  return new DummyPluginClass(instanceOptions);
 }
 
 describe('MiniExtractPlugin', () => {
@@ -123,6 +143,39 @@ describe('MiniExtractPlugin', () => {
     });
   });
 
+  describe('options', () => {
+    const moduleFilenameValidator: types.ModuleFilenameFunction<ITestMiniCssExtractPlugin> = function (
+      ctx,
+      templateOptions,
+      modules,
+    ) {
+      return '[name].css';
+    };
+    const mockModuleFilename = jest.fn(moduleFilenameValidator);
+
+    beforeAll(async () => {
+      const plugin = createPlugin(
+        {},
+        {
+          moduleFilename: (...args: any[]) =>
+            mockModuleFilename.call(mockModuleFilename, ...args),
+        },
+      );
+      await runWebpack(prepConfig(plugin, plugin.asLoader));
+    });
+
+    test('moduleFilename gets called', () => {
+      expect(mockModuleFilename).toBeCalled();
+    });
+
+    test('moduleFilename gets called with correct args', () => {
+      const [ctx, templateOpts, modules] = mockModuleFilename.mock.calls[0];
+      validateRenderContext(ctx);
+      validateDefinedObject(templateOpts);
+      validateModules(modules);
+    });
+  });
+
   describe('hooks', () => {
     const hooks = create();
     const hookState = state.create(hooks);
@@ -135,17 +188,6 @@ describe('MiniExtractPlugin', () => {
     const hookNamesAsArgs = hookNames.map((s) => [s]);
     const voidHookNamesAsArgs = voidHookNames.map((s) => [s]);
     const returnHookNamesAsArgs = returnHookNames.map((s) => [s]);
-
-    function createPlugin(options: any = {}) {
-      const DummyPluginClass = miniExtractPluginFactory({
-        type: 'css',
-        moduleFactoryClass: ModuleFactory,
-        dependencyClass: Dependency as any,
-        dependencyTemplateClass: DependencyTemplate as any,
-        ...options,
-      });
-      return new DummyPluginClass();
-    }
 
     describe('non-returning hooks - no taps', () => {
       const voidHookOverrides = overrides.filter(
