@@ -7,8 +7,8 @@ import {
   Hook,
 } from 'tapable';
 
-import debug from './debug';
-import { hooksFromDefinitions } from './hook-definition';
+import type { AnyFunc } from '../types/util';
+import type { MiniExtractPlugin } from '../types/subclassing';
 import type {
   Collection,
   Overrides,
@@ -17,7 +17,8 @@ import type {
   ActiveHookNames,
   ActiveAsyncHookNames,
 } from '../types/hook';
-import type { AnyFunc } from '../types/util';
+import debug from './debug';
+import { hooksFromDefinitions } from './hook-definition';
 
 const asyncHooks = [
   AsyncParallelBailHook,
@@ -30,8 +31,8 @@ const asyncHooks = [
 /**
  * Default hooks provided by MiniExtractPlugin
  */
-export function create() {
-  return hooksFromDefinitions() as ActiveHooks;
+export function create<MEP extends MiniExtractPlugin = MiniExtractPlugin>() {
+  return hooksFromDefinitions<MEP>() as ActiveHooks;
 }
 
 /**

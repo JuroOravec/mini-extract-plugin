@@ -1,9 +1,9 @@
 import webpack from 'webpack';
 
 import type { MiniExtractPlugin } from '../types/subclassing';
-import type { CompilerContext } from '../types/context';
+import type { GetModule } from '../types/subclassing-util';
+import type { CompilerContext, RenderContext } from '../types/context';
 import type {
-  Module,
   Hash,
   Chunk,
   RenderManifestEntry,
@@ -15,7 +15,6 @@ import { isIterOfIter, enumerate } from '../lib/util';
 import getModuleFilename from '../lib/get-module-filename';
 import renderContentAsset from '../lib/render-content-asset';
 import defaultFilename from '../lib/default-filename';
-import { RenderContext } from '../types/context';
 
 // @ts-ignore
 const createHash = webpack.util.createHash;
@@ -24,12 +23,12 @@ const REGEXP_CHUNKHASH = /\[chunkhash(?::(\d+))?\]/i;
 const REGEXP_CONTENTHASH = /\[contenthash(?::(\d+))?\]/i;
 const REGEXP_NAME = /\[name\]/i;
 
-export default function apply(
-  this: MiniExtractPlugin,
-  compiler: webpack.Compiler,
-) {
+export default function apply<
+  MEP extends MiniExtractPlugin = MiniExtractPlugin
+>(this: MEP, compiler: webpack.Compiler) {
   debug('Started apply method');
-  const context: CompilerContext = {
+  type Module = GetModule<MEP>;
+  const context: CompilerContext<MEP> = {
     plugin: this,
     classOptions: this.classOptions,
     compiler,
@@ -72,7 +71,7 @@ export default function apply(
         (entries: RenderManifestEntry[], options: RenderManifestOptions) => {
           debug('Started apply.compiler.thisCompilation.renderManifest');
           const { chunk } = options;
-          const renderContext: RenderContext = {
+          const renderContext: RenderContext<MEP> = {
             ...context,
             compilation,
             renderOptions: options,
@@ -86,7 +85,7 @@ export default function apply(
           const modifiedModules = callTap({
             name: 'beforeRenderMain',
             hooks: this.hooks,
-            args: [renderContext, renderedModules, undefined],
+            args: [renderContext, renderedModules as Module[], undefined],
             default: [renderedModules] as Module[][],
           });
 
@@ -159,7 +158,7 @@ export default function apply(
             'Started apply.compiler.thisCompilation.chunkTemplate.renderManifest',
           );
           const { chunk } = options;
-          const renderContext: RenderContext = {
+          const renderContext: RenderContext<MEP> = {
             ...context,
             compilation,
             renderOptions: options,
@@ -173,7 +172,7 @@ export default function apply(
           const modifiedModules = callTap({
             name: 'beforeRenderChunk',
             hooks: this.hooks,
-            args: [renderContext, renderedModules, undefined],
+            args: [renderContext, renderedModules as Module[], undefined],
             default: [renderedModules] as Module[][],
           });
 
@@ -237,7 +236,6 @@ export default function apply(
         },
       );
 
-      // @ts-ignore
       compilation.mainTemplate.hooks.hashForChunk.tap(
         this.classOptions.pluginName,
         (hash, chunk) => {

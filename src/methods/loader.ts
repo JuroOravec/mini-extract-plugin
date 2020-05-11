@@ -1,8 +1,10 @@
-import debug from '../lib/debug';
 import type { MiniExtractPlugin } from '../types/subclassing';
+import debug from '../lib/debug';
 
-export default function loader(
-  this: MiniExtractPlugin,
+export default function loader<
+  MEP extends MiniExtractPlugin = MiniExtractPlugin
+>(
+  this: MEP,
   loaderContext: any,
   source?: string,
   sourceMap?: string,
