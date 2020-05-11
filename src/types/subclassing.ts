@@ -14,6 +14,7 @@ import type { ParamsDefault } from './subclassing-params';
 
 export * from './subclassing-abstract';
 export * from './subclassing-classes';
+export * from './subclassing-util';
 export { ParamsDefault } from './subclassing-params';
 
 /**
