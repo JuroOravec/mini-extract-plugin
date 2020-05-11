@@ -1,3 +1,73 @@
+# [1.4.0](https://github.com/JuroOravec/mini-extract-plugin/compare/v1.3.0...v1.4.0) (2020-05-11)
+
+
+### Features
+
+* **typing:** Allow to pass MEP class to ModuleFilename types ([c82e845](https://github.com/JuroOravec/mini-extract-plugin/commit/c82e845f2be569854a18908acf58203e411873d7))
+
+    Thus, when functions that should be used for the `moduleFilename` instance
+    option can be given a type parameter, so the context argument infers
+    correctly to that of the passed class.
+
+* **typing:** Allow to pass MiniExtractPlugin class to Taps type ([9185e72](https://github.com/JuroOravec/mini-extract-plugin/commit/9185e72d704afb7d79fbcf6509e46f5c711c2509))
+
+    And thus allow the hook function params and return types to be inferred
+    correctly for the MiniExtractPlugin class that the hooks relate to. So
+    correct types of Module class, Dependency
+    class, etc, and correct options are all automatically inferred when the Taps
+    type is provided with a MiniExtractPlugin class type
+
+* **typing:** Pass MiniExtractPlugin type to context types ([ac05685](https://github.com/JuroOravec/mini-extract-plugin/commit/ac05685dc547ec2dc3614c43ef68704ecf217847))
+
+    Pass MiniExtractPlugin type to context types as a first type parameter.
+    This modifies the type of the `plugin`, `options`, and `classOptions`
+    properties of the context objects.
+    
+    This allows to TypeScript to recognize subclass-specific properties /
+    options. Defaults to default
+MiniExtractPlugin class.
+
+* **typing:** Pass types to class factory, classes and helpers ([cbbf8eb](https://github.com/JuroOravec/mini-extract-plugin/commit/cbbf8eb351dc2092fba718fd21483533c2e94697))
+
+    Class factory accepts an object as a first type parameter. The object
+    specifies the types of the `dependencyClass`, `dependencyTemplateClass`,
+    `moduleClass`, `moduleFactoryClass` that should be
+    used within the plugin. Furthermore, also the type of the constructor
+    options object can be specified with `constructorOptions` property.
+
+    Dependency class and its subclassing helper can be passed an object as a
+    type parameter to specify:
+    - `dependencyOptions` - the options object passed
+    to the Dependency constructor.
+
+    ModuleFactory class and its subclassing helper can be passed an object as a
+    type parameter to specify:
+    - `dependency` - the Dependency instance type that is passed to
+    `ModuleFactory.create` method
+    - `module` - the Module instance type that should be created and returned by `ModuleFactory.create` method.
+
+    Module class and its subclassing helper can be passed an object as a type
+    parameter to specify:
+    - `dependency` - the Dependency instance type that is passed to Module
+    constructor.
+
+    Class factory can be passed an object as a type parameter to specify:
+    - `dependencyClass` - type of the `dependencyClass` option passed to the
+    factory function.
+    - `dependencyTemplateClass` - type of the `dependencyTemplateClass` option
+    passed to the factory function.
+    - `moduleClass` - type of the `moduleClass` option passed to the factory
+    function.
+    - `moduleFactoryClass` - type of the `moduleFactoryClass` option passed to
+    the factory function.
+    - `constructorOptions` - type of the options object passed to the instance
+    constructor.
+
+    Additionally added following types to `types.util`:
+    - `RequiredKeys` - Type that accepts and object type and returns a union of
+    keys of required properties or never if there are
+    none.
+
 # [1.3.0](https://github.com/JuroOravec/mini-extract-plugin/compare/v1.2.0...v1.3.0) (2020-05-09)
 
 

@@ -1,89 +1,107 @@
 /**
  * Types related to subclassing MiniExtractPlugin
+ *
+ * Also the entrypoint for the 'subclassing' types
  */
 
-import theWebpack from 'webpack';
-import type { Ploadin } from 'ploadin';
-import type { Tapable } from 'tapable';
+import type { RequiredKeys } from './util';
+import type { ActiveHooks, Overrides } from './hook';
+import type {
+  AbstractMiniExtractPlugin,
+  AbstractClassOptions,
+} from './subclassing-abstract';
+import type { ParamsDefault } from './subclassing-params';
 
-import type { Constructor, AnyFunc } from './util';
-import type { Overrides, ActiveHooks } from './hook';
-import type { ModuleBase, DependencyBase } from './base';
-import type { ModuleFilename } from './module-filename';
+export * from './subclassing-abstract';
+export * from './subclassing-classes';
+export * from './subclassing-util';
+export { ParamsDefault } from './subclassing-params';
 
-export interface DependencyTemplate {
-  apply: AnyFunc;
-}
-
-export type DependencyTemplateClass = Constructor<DependencyTemplate> &
-  typeof Tapable;
-
-export interface Dependency
-  extends theWebpack.compilation.Dependency,
-    DependencyBase {
-  identifierIndex: number;
-}
-
-export type DependencyClass = Constructor<Dependency> & {
-  compare: typeof theWebpack.compilation.Dependency['compare'];
-};
-
-// eslint-disable-next-line @typescript-eslint/no-empty-interface
-export interface Module extends ModuleBase {}
-
-export type ModuleClass = Constructor<Module>;
-
-type ModuleFactoryData = {
-  dependencies: Dependency[];
-} & { [key: string]: any };
-
-export interface ModuleFactory {
-  create(
-    data: ModuleFactoryData,
-    callback: (error: Error | null, result: Module) => void,
-  ): void;
-}
-
-export type ModuleFactoryClass = Constructor<ModuleFactory> & typeof Tapable;
-
-export interface ClassOptions {
-  type: string;
-  moduleType?: string;
-  pluginName?: string;
-  displayName?: string;
-  className?: string;
+/**
+ * Options passed to class factory.
+ *
+ * Following types of classes can be overriden by passing an object of types as
+ * the first type parameter:
+ * - `dependencyClass` - DependencyClass subtype
+ * - `dependencyTemplateClass` - DependencyTemplateClass subtype
+ * - `moduleClass` - ModuleClass subtype
+ * - `moduleFactoryClass` - ModuleFactoryClass subtype
+ *
+ * @example
+ * // ClassOptions with default types
+ * ClassOptions
+ * // ClassOptions with overriden moduleClass type
+ * ClassOptions<{
+ *   moduleClass: ModCls;
+ * }>
+ * // ClassOptions with all types overriden
+ * ClassOptions<{
+ *   dependencyClass: DepCls;
+ *   dependencyTemplateClass: DepTemplateCls;
+ *   moduleClass: ModCls;
+ *   moduleFactoryClass: ModFactoryCls;
+ * }>
+ */
+export interface ClassOptions<T extends ParamsDefault = {}>
+  extends AbstractClassOptions<T> {
   hooks?: Overrides;
-  pluginOptionsSchema?: any;
-  loaderOptionsSchema?: any;
-  dependencyClass?: DependencyClass;
-  moduleFactoryClass?: ModuleFactoryClass;
-  moduleClass?: ModuleClass;
-  dependencyTemplateClass?: DependencyTemplateClass;
 }
 
-export type ConstructorOptions = {
-  filename?: string;
-  moduleFilename?: ModuleFilename;
-  chunkFilename?: string;
-  ignoreOrder?: boolean;
-};
-
-export interface MiniExtractPlugin extends Ploadin {
-  classOptions: Required<ClassOptions>;
-  options: ConstructorOptions;
+/**
+ * MiniExtractPlugin instance
+ *
+ * Following types of classes can be overriden by passing an object of types as
+ * the first type parameter:
+ * - `dependencyClass` - DependencyClass subtype
+ * - `dependencyTemplateClass` - DependencyTemplateClass subtype
+ * - `moduleClass` - ModuleClass subtype
+ * - `moduleFactoryClass` - ModuleFactoryClass subtype
+ * - `constructorOptions` - object type expected when instantiating MiniExtractPlugin;
+ *
+ * @example
+ * // ClassOptions with default types
+ * ClassOptions
+ * // ClassOptions with overriden moduleClass type
+ * ClassOptions<{
+ *   moduleClass: ModCls;
+ * }>
+ * // ClassOptions with all types overriden
+ * ClassOptions<{
+ *   dependencyClass: DepCls;
+ *   dependencyTemplateClass: DepTemplateCls;
+ *   moduleClass: ModCls;
+ *   moduleFactoryClass: ModFactoryCls;
+ *   constructorOptions: ConstructorOptions & { myCustomOption: boolean};
+ * }>
+ */
+export interface MiniExtractPlugin<
+  T extends ParamsDefault = {},
+  I extends AbstractMiniExtractPlugin<T> = AbstractMiniExtractPlugin<T>
+> extends AbstractMiniExtractPlugin<T> {
   hooks: ActiveHooks;
-  apply: (c: theWebpack.Compiler) => void;
-  loader(
-    loaderContext: any,
-    source?: string,
-    sourceMap?: string,
-    data?: any,
-  ): void;
-  pitch(
-    loaderContext: any,
-    request: string,
-    precedingRequest: string,
-    data: object,
-  ): void;
+  classOptions: Required<ClassOptions<I['classOptions']>>;
 }
-export type MiniExtractPluginClass = Constructor<MiniExtractPlugin>;
+
+/**
+ * MiniExtractPlugin class
+ *
+ * Instance type can be overriden as the first type parameter.
+ *
+ * The type adapts whether the constructor's first argument is required based
+ * on if the options object has any required keys.
+ *
+ * @example
+ * // MiniExtractPluginClass with default type
+ * MiniExtractPluginClass
+ * // ClassOptions with overriden MiniExtractPlugin type
+ * MiniExtractPluginClass<MyCustomMiniExtractPlugin>
+ */
+export type MiniExtractPluginClass<
+  T extends MiniExtractPlugin = MiniExtractPlugin
+> = RequiredKeys<T['options']> extends never
+  ? {
+      new (options?: T['options']): T;
+    }
+  : {
+      new (options: T['options']): T;
+    };

@@ -5,15 +5,9 @@
  * with what functions when a new MiniExtractPlugin class is created.
  */
 
-import {
-  Overrides,
-  Override,
-  ActiveHooks,
-  ActiveHookNames,
-  Taps,
-} from '../../../src/types/hook';
+import type { types } from '../../../src';
+import type { HookState } from './types';
 import flat from '../../lib/flat';
-import { HookState } from './types';
 import { recorder } from './state';
 import { activeHooks } from './constants';
 import hookFunctions from './hook-functions';
@@ -25,12 +19,12 @@ import hookValidators from './hook-validators';
  */
 export function recordAll(
   stateObject: HookState,
-  hooks: Partial<ActiveHooks> = activeHooks,
-  overrides: Overrides = [],
+  hooks: Partial<types.hook.ActiveHooks> = activeHooks,
+  overrides: types.hook.Overrides = [],
 ) {
   const recordHookState = recorder(stateObject);
   return Object.keys(hooks).map((key) => {
-    const updateState = recordHookState(key as ActiveHookNames);
+    const updateState = recordHookState(key as types.hook.ActiveHookNames);
     // Find functions that should be called for this hook and call them
     // before we record that the
     const hookOverrides = flat(
@@ -51,8 +45,8 @@ export function recordAll(
         throw err;
       }
     }
-    const override: Override = {
-      name: key as ActiveHookNames,
+    const override: types.hook.Override = {
+      name: key as types.hook.ActiveHookNames,
       type: 'tap',
       hooks: [hookFn],
     };
@@ -80,11 +74,11 @@ export function recordAll(
  */
 export function create(
   stateObject: HookState,
-  hooks: Partial<ActiveHooks> = activeHooks,
+  hooks: Partial<types.hook.ActiveHooks> = activeHooks,
 ) {
-  const validatorHookOverrides: Override[] = Object.keys(hooks).map(
+  const validatorHookOverrides: types.hook.Override[] = Object.keys(hooks).map(
     (hookName) => {
-      const typedName = hookName as keyof Taps;
+      const typedName = hookName as keyof types.hook.Taps;
       const validator = hookValidators[typedName];
       if (!validator) {
         throw Error(`Validator for hook ${typedName} is missing`);
@@ -95,18 +89,22 @@ export function create(
         return hookFn ? hookFn(...args) : undefined;
       }
       return {
-        name: hookName as ActiveHookNames,
+        name: hookName as types.hook.ActiveHookNames,
         type: 'tap',
         hooks: [hookFunction],
       };
     },
   );
 
-  const defaultHookOverrides: Override[] = Object.keys(hooks).map(
+  const defaultHookOverrides: types.hook.Override[] = Object.keys(hooks).map(
     (hookName) => {
-      const hookFn = hookFunctions[hookName as keyof Taps];
+      const hookFn = hookFunctions[hookName as keyof types.hook.Taps];
       const hookFns = hookFn ? [hookFn] : [];
-      return { name: hookName as ActiveHookNames, type: 'tap', hooks: hookFns };
+      return {
+        name: hookName as types.hook.ActiveHookNames,
+        type: 'tap',
+        hooks: hookFns,
+      };
     },
   );
 
@@ -123,6 +121,6 @@ export function create(
  * name of the hook that the override is targetting is in the given array of
  * names.
  */
-export function filter(overrides: Overrides, hookNames: string[]) {
+export function filter(overrides: types.hook.Overrides, hookNames: string[]) {
   return overrides.filter(({ name }) => hookNames.includes(name));
 }

@@ -1,5 +1,6 @@
 import type { Chunk } from './webpack';
 import type { RenderContext } from './context';
+import type { AbstractMiniExtractPlugin } from './subclassing-abstract';
 
 /**
  * TemplateOptions object passed to moduleFilename if it's a function
@@ -13,9 +14,10 @@ export interface TemplateOptions {
 /**
  * moduleFilename function signature
  */
-export type ModuleFilenameFunction = (
-  context: RenderContext,
-  templateOptions: TemplateOptions,
-) => string;
+export type ModuleFilenameFunction<
+  MEP extends AbstractMiniExtractPlugin = AbstractMiniExtractPlugin
+> = (context: RenderContext<MEP>, templateOptions: TemplateOptions) => string;
 
-export type ModuleFilename = string | ModuleFilenameFunction;
+export type ModuleFilename<
+  MEP extends AbstractMiniExtractPlugin = AbstractMiniExtractPlugin
+> = string | ModuleFilenameFunction<MEP>;

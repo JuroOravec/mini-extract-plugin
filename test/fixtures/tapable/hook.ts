@@ -5,7 +5,7 @@
 import { SyncHook, AsyncParallelHook, AsyncSeriesHook } from 'tapable';
 import partition from 'lodash.partition';
 
-import { Collection } from '../../../src/types/hook';
+import type { Collection } from '../../../src/types/hook';
 
 /**
  * tapable.Hook types whose return values are ignored.

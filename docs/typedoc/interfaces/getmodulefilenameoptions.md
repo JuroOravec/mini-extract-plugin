@@ -1,9 +1,13 @@
 [mini-extract-plugin](../README.md) › [GetModuleFilenameOptions](getmodulefilenameoptions.md)
 
-# Interface: GetModuleFilenameOptions
+# Interface: GetModuleFilenameOptions <**MEP**>
 
 Options object passed to getModuleFilename, the function that calls
 moduleFilename
+
+## Type parameters
+
+▪ **MEP**: *[MiniExtractPlugin](miniextractplugin.md)*
 
 ## Hierarchy
 
@@ -22,9 +26,9 @@ moduleFilename
 
 ###  context
 
-• **context**: *[RenderContext](rendercontext.md)*
+• **context**: *[RenderContext](rendercontext.md)‹MEP›*
 
-*Defined in [src/lib/get-module-filename.ts:11](https://github.com/JuroOravec/mini-extract-plugin/blob/9e394f3/src/lib/get-module-filename.ts#L11)*
+*Defined in [src/lib/get-module-filename.ts:14](https://github.com/JuroOravec/mini-extract-plugin/blob/87f855a/src/lib/get-module-filename.ts#L14)*
 
 ___
 
@@ -32,15 +36,15 @@ ___
 
 • **default**: *string*
 
-*Defined in [src/lib/get-module-filename.ts:10](https://github.com/JuroOravec/mini-extract-plugin/blob/9e394f3/src/lib/get-module-filename.ts#L10)*
+*Defined in [src/lib/get-module-filename.ts:13](https://github.com/JuroOravec/mini-extract-plugin/blob/87f855a/src/lib/get-module-filename.ts#L13)*
 
 ___
 
 ###  modules
 
-• **modules**: *[Module](../classes/module.md)[]*
+• **modules**: *[GetModule](../README.md#getmodule)‹MEP›[]*
 
-*Defined in [src/lib/get-module-filename.ts:12](https://github.com/JuroOravec/mini-extract-plugin/blob/9e394f3/src/lib/get-module-filename.ts#L12)*
+*Defined in [src/lib/get-module-filename.ts:15](https://github.com/JuroOravec/mini-extract-plugin/blob/87f855a/src/lib/get-module-filename.ts#L15)*
 
 ___
 
@@ -48,4 +52,4 @@ ___
 
 • **templateOptions**: *[TemplateOptions](templateoptions.md)*
 
-*Defined in [src/lib/get-module-filename.ts:13](https://github.com/JuroOravec/mini-extract-plugin/blob/9e394f3/src/lib/get-module-filename.ts#L13)*
+*Defined in [src/lib/get-module-filename.ts:16](https://github.com/JuroOravec/mini-extract-plugin/blob/87f855a/src/lib/get-module-filename.ts#L16)*

@@ -1,9 +1,9 @@
-import webpack from 'webpack';
-import { types } from '../../../src';
+import type { compilation } from 'webpack';
+import type { types } from '../../../src';
 
 export function getChunkObject(
   chunkType: string,
-  mainChunk: types.webpack.Chunk | webpack.compilation.Chunk,
+  mainChunk: types.webpack.Chunk | compilation.Chunk,
 ) {
   const obj: {
     [key: string]: number;

@@ -1,22 +1,25 @@
 import { ConcatSource, OriginalSource, Source } from 'webpack-sources';
 
 import type { RenderContext } from '../types/context';
-import type { Module, RequestShortener, ChunkGroup } from '../types/webpack';
+import type { RequestShortener, ChunkGroup } from '../types/webpack';
+import type { MiniExtractPlugin } from '../types/subclassing';
+import type { GetModule } from '../types/subclassing-util';
 import { callTap } from './hook';
 import debug from './debug';
 
-export type RenderContentAssetOptions = {
-  context: RenderContext;
-  modules: Module[];
+export type RenderContentAssetOptions<
+  MEP extends MiniExtractPlugin = MiniExtractPlugin
+> = {
+  context: RenderContext<MEP>;
+  modules: GetModule<MEP>[];
   ignoreOrder: boolean;
 };
 
-export default function renderContentAsset({
-  context,
-  modules,
-  ignoreOrder,
-}: RenderContentAssetOptions): Source {
+export default function renderContentAsset<
+  MEP extends MiniExtractPlugin = MiniExtractPlugin
+>({ context, modules, ignoreOrder }: RenderContentAssetOptions<MEP>): Source {
   debug('Started renderContentAsset');
+  type Module = RenderContentAssetOptions<MEP>['modules'][0];
   const {
     plugin,
     compilation,
@@ -164,7 +167,7 @@ export default function renderContentAsset({
     // TODO remove this in next major version
     // and increase minimum webpack version to 4.12.0
     modules
-      .sort((a, b) => a.index2 - b.index2)
+      .sort((a, b) => a.index2! - b.index2!)
       .forEach((m) => usedModulesSet.add(m));
   }
 

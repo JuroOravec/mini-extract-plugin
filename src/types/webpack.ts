@@ -2,8 +2,9 @@
  * Types shimming Webpack types
  */
 
-import webpack from 'webpack';
+import type { compilation, SortableSet } from 'webpack';
 import type { Source } from 'webpack-sources';
+
 import type { ModuleBase } from './base';
 
 /**
@@ -40,7 +41,7 @@ export interface RequestShortener {
  * Interface for Webpack's ChunkGroup class with some overrides to match the
  * ChunkGroup objects that are encountered in the extraction process.
  */
-export type ChunkGroup = webpack.compilation.ChunkGroup & {
+export type ChunkGroup = compilation.ChunkGroup & {
   getModuleIndex2: (module: Module) => number;
   name: string;
 };
@@ -49,9 +50,9 @@ export type ChunkGroup = webpack.compilation.ChunkGroup & {
  * Interface for Webpack's Chunk class with some overrides to match the Chunk
  * objects that are encountered in the extraction process.
  */
-export interface Chunk extends webpack.compilation.Chunk {
+export interface Chunk extends compilation.Chunk {
   contentHash: { [key: string]: string };
-  groupsIterable: webpack.SortableSet<ChunkGroup>;
+  groupsIterable: SortableSet<ChunkGroup>;
 }
 
 export type CodeGenerationResult = any;
@@ -83,7 +84,7 @@ export type RenderManifestOptions = {
   fullHash: string;
   outputOptions: any;
   codeGenerationResults: Map<Module, CodeGenerationResult>;
-  moduleTemplates: { javascript: webpack.compilation.ModuleTemplate };
+  moduleTemplates: { javascript: compilation.ModuleTemplate };
   dependencyTemplates: DependencyTemplate[];
   runtimeTemplate: RuntimeTemplate;
   moduleGraph: ModuleGraph;

@@ -12,26 +12,32 @@ import SingleEntryPlugin from 'webpack/lib/SingleEntryPlugin';
 // @ts-ignore
 import LimitChunkCountPlugin from 'webpack/lib/optimize/LimitChunkCountPlugin';
 
-import type { Module } from '../types/webpack';
-import type { DependencyOptions, PitchContext } from '../types/context';
+import type { PitchContext } from '../types/context';
 import type { MiniExtractPlugin } from '../types/subclassing';
-
+import type {
+  GetModule,
+  GetDependencyOptions,
+} from '../types/subclassing-util';
 import debug from '../lib/debug';
 import hotLoader from '../lib/hot-loader';
 import * as moduleLib from '../lib/module';
 import { callTap } from '../lib/hook';
 
-export default async function pitch(
-  this: MiniExtractPlugin,
+export default async function pitch<
+  MEP extends MiniExtractPlugin = MiniExtractPlugin
+>(
+  this: MEP,
   loaderContext: any,
   remainingRequest: string,
   precedingRequest: string,
   data: object,
 ) {
   debug('Started pitch method');
+  type Module = GetModule<MEP>;
+  type DepOpts = GetDependencyOptions<MEP>;
   const callback = loaderContext.async();
 
-  const pitchContext: PitchContext = {
+  const pitchContext: PitchContext<MEP> = {
     plugin: this,
     classOptions: this.classOptions,
     options: this.options,
@@ -179,7 +185,7 @@ export default async function pitch(
         args: [pitchCompilationContext, undefined, undefined],
       });
 
-      const addDependencies = (dependencies: DependencyOptions[]) => {
+      const addDependencies = (dependencies: DepOpts[]) => {
         if (!Array.isArray(dependencies) && dependencies != null) {
           throw new Error(
             `Exported value was not extracted as an array: ${JSON.stringify(
@@ -238,10 +244,10 @@ export default async function pitch(
           : exports;
 
         const loaderModuleContext = { source, locals, exports: exportsData };
-        const dependencies: DependencyOptions[] = [];
+        const dependencies: DepOpts[] = [];
 
         // Get dependencies from hooks if any
-        let deps: DependencyOptions[] = callTap({
+        let deps: DepOpts[] = callTap({
           name: 'dependency',
           hooks: this.hooks,
           args: [pitchCompilationContext, loaderModuleContext, undefined],

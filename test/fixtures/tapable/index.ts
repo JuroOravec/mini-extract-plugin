@@ -1,6 +1,6 @@
 import hookFunctions from './hook-functions';
 import hookValidators from './hook-validators';
-import { HookStateRecord } from './types';
+import type { HookStateRecord } from './types';
 
 export * as hook from './hook';
 export * as overrides from './overrides';

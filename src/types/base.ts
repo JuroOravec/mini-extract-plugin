@@ -3,13 +3,13 @@
  * of API
  */
 
-import webpack from 'webpack';
+import type { compilation } from 'webpack';
 
 /**
  * Shared base of the interface for Webpack's Module class with some overrides
  * to match the Module objects that are encountered in the extraction process.
  */
-export interface ModuleBase extends webpack.compilation.Module {
+export interface ModuleBase extends compilation.Module {
   id: string;
   content: string;
 }

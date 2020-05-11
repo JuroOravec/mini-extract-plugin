@@ -1,11 +1,13 @@
 import miniExtractPluginFactory from '../../../src';
+
+import type { ClassParams } from './types';
 import ModuleFactory from './module-factory';
 import Dependency from './dependency';
 import DependencyTemplate from './dependency-template';
 import hooks from './hooks';
 import { type, typeReadable } from './config';
 
-const MiniExtractPluginClass = miniExtractPluginFactory({
+const MiniExtractPluginClass = miniExtractPluginFactory<ClassParams>({
   type,
   displayName: `My Mini ${typeReadable} Extract Plugin`,
   moduleFactoryClass: ModuleFactory,

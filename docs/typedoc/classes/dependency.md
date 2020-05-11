@@ -1,6 +1,12 @@
 [mini-extract-plugin](../README.md) › [Dependency](dependency.md)
 
-# Class: Dependency
+# Class: Dependency <**T, DepOpts**>
+
+## Type parameters
+
+▪ **T**: *object*
+
+▪ **DepOpts**: *[DependencyOptions](../interfaces/dependencyoptions.md)*
 
 ## Hierarchy
 
@@ -68,9 +74,9 @@ Defined in node_modules/@types/webpack/index.d.ts:966
 
 *Inherited from [DependencyBase](../interfaces/dependencybase.md).[content](../interfaces/dependencybase.md#content)*
 
-*Defined in [src/types/base.ts:22](https://github.com/JuroOravec/mini-extract-plugin/blob/9e394f3/src/types/base.ts#L22)*
+*Defined in [src/types/base.ts:22](https://github.com/JuroOravec/mini-extract-plugin/blob/87f855a/src/types/base.ts#L22)*
 
-*Defined in [src/models/dependency.ts:18](https://github.com/JuroOravec/mini-extract-plugin/blob/9e394f3/src/models/dependency.ts#L18)*
+*Defined in [src/models/dependency.ts:25](https://github.com/JuroOravec/mini-extract-plugin/blob/87f855a/src/models/dependency.ts#L25)*
 
 ___
 
@@ -80,9 +86,9 @@ ___
 
 *Inherited from [DependencyBase](../interfaces/dependencybase.md).[context](../interfaces/dependencybase.md#context)*
 
-*Defined in [src/types/base.ts:21](https://github.com/JuroOravec/mini-extract-plugin/blob/9e394f3/src/types/base.ts#L21)*
+*Defined in [src/types/base.ts:21](https://github.com/JuroOravec/mini-extract-plugin/blob/87f855a/src/types/base.ts#L21)*
 
-*Defined in [src/models/dependency.ts:17](https://github.com/JuroOravec/mini-extract-plugin/blob/9e394f3/src/models/dependency.ts#L17)*
+*Defined in [src/models/dependency.ts:24](https://github.com/JuroOravec/mini-extract-plugin/blob/87f855a/src/models/dependency.ts#L24)*
 
 ___
 
@@ -92,9 +98,9 @@ ___
 
 *Inherited from [DependencyBase](../interfaces/dependencybase.md).[identifier](../interfaces/dependencybase.md#identifier)*
 
-*Defined in [src/types/base.ts:20](https://github.com/JuroOravec/mini-extract-plugin/blob/9e394f3/src/types/base.ts#L20)*
+*Defined in [src/types/base.ts:20](https://github.com/JuroOravec/mini-extract-plugin/blob/87f855a/src/types/base.ts#L20)*
 
-*Defined in [src/models/dependency.ts:16](https://github.com/JuroOravec/mini-extract-plugin/blob/9e394f3/src/models/dependency.ts#L16)*
+*Defined in [src/models/dependency.ts:23](https://github.com/JuroOravec/mini-extract-plugin/blob/87f855a/src/models/dependency.ts#L23)*
 
 ___
 
@@ -102,9 +108,9 @@ ___
 
 • **identifierIndex**: *IDependency["identifierIndex"]*
 
-*Defined in [src/types/subclassing.ts:24](https://github.com/JuroOravec/mini-extract-plugin/blob/9e394f3/src/types/subclassing.ts#L24)*
+*Defined in [src/types/subclassing-classes.ts:25](https://github.com/JuroOravec/mini-extract-plugin/blob/87f855a/src/types/subclassing-classes.ts#L25)*
 
-*Defined in [src/models/dependency.ts:19](https://github.com/JuroOravec/mini-extract-plugin/blob/9e394f3/src/models/dependency.ts#L19)*
+*Defined in [src/models/dependency.ts:26](https://github.com/JuroOravec/mini-extract-plugin/blob/87f855a/src/models/dependency.ts#L26)*
 
 ___
 
@@ -114,9 +120,9 @@ ___
 
 *Inherited from [DependencyBase](../interfaces/dependencybase.md).[miniExtractType](../interfaces/dependencybase.md#miniextracttype)*
 
-*Defined in [src/types/base.ts:18](https://github.com/JuroOravec/mini-extract-plugin/blob/9e394f3/src/types/base.ts#L18)*
+*Defined in [src/types/base.ts:18](https://github.com/JuroOravec/mini-extract-plugin/blob/87f855a/src/types/base.ts#L18)*
 
-*Defined in [src/models/dependency.ts:21](https://github.com/JuroOravec/mini-extract-plugin/blob/9e394f3/src/models/dependency.ts#L21)*
+*Defined in [src/models/dependency.ts:28](https://github.com/JuroOravec/mini-extract-plugin/blob/87f855a/src/models/dependency.ts#L28)*
 
 ___
 
@@ -126,9 +132,9 @@ ___
 
 *Inherited from [DependencyBase](../interfaces/dependencybase.md).[moduleType](../interfaces/dependencybase.md#moduletype)*
 
-*Defined in [src/types/base.ts:19](https://github.com/JuroOravec/mini-extract-plugin/blob/9e394f3/src/types/base.ts#L19)*
+*Defined in [src/types/base.ts:19](https://github.com/JuroOravec/mini-extract-plugin/blob/87f855a/src/types/base.ts#L19)*
 
-*Defined in [src/models/dependency.ts:20](https://github.com/JuroOravec/mini-extract-plugin/blob/9e394f3/src/models/dependency.ts#L20)*
+*Defined in [src/models/dependency.ts:27](https://github.com/JuroOravec/mini-extract-plugin/blob/87f855a/src/models/dependency.ts#L27)*
 
 ## Methods
 

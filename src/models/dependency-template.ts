@@ -1,6 +1,7 @@
+import { Tapable } from 'tapable';
 import capitalize from 'lodash.capitalize';
 
-import {
+import type {
   DependencyTemplate as IDependencyTemplate,
   DependencyTemplateClass,
 } from '../types/subclassing';
@@ -8,7 +9,7 @@ import { renameClass } from '../lib/util';
 
 // TODO When moving to Webpack v5, subclass original DependencyTemplate from
 // webpack/lib/DependencyTemplate
-export class DependencyTemplate implements IDependencyTemplate {
+export class DependencyTemplate extends Tapable implements IDependencyTemplate {
   apply() {
     /* noop */
   }

@@ -1,11 +1,10 @@
 import { Dependency } from '../../../src';
-import { CssDependency as ICssDependency, Tail } from './types';
 
-type DepCtorParams = ConstructorParameters<typeof Dependency>;
-type ConstructorOptions = {
-  media: ICssDependency['media'];
-  sourceMap: ICssDependency['sourceMap'];
-} & DepCtorParams[0];
+import type {
+  CssDependency as ICssDependency,
+  Tail,
+  DependencyParams,
+} from './types';
 
 export default class CssDependency extends Dependency
   implements ICssDependency {
@@ -13,8 +12,8 @@ export default class CssDependency extends Dependency
   sourceMap: ICssDependency['sourceMap'];
 
   constructor(
-    { media, sourceMap, ...rest }: ConstructorOptions,
-    ...args: Tail<DepCtorParams>
+    { media, sourceMap, ...rest }: DependencyParams[0],
+    ...args: Tail<DependencyParams>
   ) {
     super(rest, ...args);
 

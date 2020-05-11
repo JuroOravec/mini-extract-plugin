@@ -1,10 +1,42 @@
 [mini-extract-plugin](../README.md) › [ClassOptions](classoptions.md)
 
-# Interface: ClassOptions
+# Interface: ClassOptions <**T, Params**>
+
+Options passed to class factory.
+
+Following types of classes can be overriden by passing an object of types as
+the first type parameter:
+- `dependencyClass` - DependencyClass subtype
+- `dependencyTemplateClass` - DependencyTemplateClass subtype
+- `moduleClass` - ModuleClass subtype
+- `moduleFactoryClass` - ModuleFactoryClass subtype
+
+**`example`** 
+// ClassOptions with default types
+ClassOptions
+// ClassOptions with overriden moduleClass type
+ClassOptions<{
+  moduleClass: ModCls;
+}>
+// ClassOptions with all types overriden
+ClassOptions<{
+  dependencyClass: DepCls;
+  dependencyTemplateClass: DepTemplateCls;
+  moduleClass: ModCls;
+  moduleFactoryClass: ModFactoryCls;
+}>
+
+## Type parameters
+
+▪ **T**: *[ParamsDefault](paramsdefault.md)*
+
+▪ **Params**: *[ParamsParse](../README.md#paramsparse)‹T›*
 
 ## Hierarchy
 
-* **ClassOptions**
+* [AbstractClassOptions](abstractclassoptions.md)‹T›
+
+  ↳ **ClassOptions**
 
 ## Index
 
@@ -29,23 +61,29 @@
 
 • **className**? : *undefined | string*
 
-*Defined in [src/types/subclassing.ts:54](https://github.com/JuroOravec/mini-extract-plugin/blob/9e394f3/src/types/subclassing.ts#L54)*
+*Inherited from [AbstractClassOptions](abstractclassoptions.md).[className](abstractclassoptions.md#optional-classname)*
+
+*Defined in [src/types/subclassing-abstract.ts:47](https://github.com/JuroOravec/mini-extract-plugin/blob/87f855a/src/types/subclassing-abstract.ts#L47)*
 
 ___
 
 ### `Optional` dependencyClass
 
-• **dependencyClass**? : *[DependencyClass](../README.md#dependencyclass)*
+• **dependencyClass**? : *Params["dependencyClass"]*
 
-*Defined in [src/types/subclassing.ts:58](https://github.com/JuroOravec/mini-extract-plugin/blob/9e394f3/src/types/subclassing.ts#L58)*
+*Inherited from [AbstractClassOptions](abstractclassoptions.md).[dependencyClass](abstractclassoptions.md#optional-dependencyclass)*
+
+*Defined in [src/types/subclassing-abstract.ts:51](https://github.com/JuroOravec/mini-extract-plugin/blob/87f855a/src/types/subclassing-abstract.ts#L51)*
 
 ___
 
 ### `Optional` dependencyTemplateClass
 
-• **dependencyTemplateClass**? : *[DependencyTemplateClass](../README.md#dependencytemplateclass)*
+• **dependencyTemplateClass**? : *Params["dependencyTemplateClass"]*
 
-*Defined in [src/types/subclassing.ts:61](https://github.com/JuroOravec/mini-extract-plugin/blob/9e394f3/src/types/subclassing.ts#L61)*
+*Inherited from [AbstractClassOptions](abstractclassoptions.md).[dependencyTemplateClass](abstractclassoptions.md#optional-dependencytemplateclass)*
+
+*Defined in [src/types/subclassing-abstract.ts:54](https://github.com/JuroOravec/mini-extract-plugin/blob/87f855a/src/types/subclassing-abstract.ts#L54)*
 
 ___
 
@@ -53,7 +91,9 @@ ___
 
 • **displayName**? : *undefined | string*
 
-*Defined in [src/types/subclassing.ts:53](https://github.com/JuroOravec/mini-extract-plugin/blob/9e394f3/src/types/subclassing.ts#L53)*
+*Inherited from [AbstractClassOptions](abstractclassoptions.md).[displayName](abstractclassoptions.md#optional-displayname)*
+
+*Defined in [src/types/subclassing-abstract.ts:46](https://github.com/JuroOravec/mini-extract-plugin/blob/87f855a/src/types/subclassing-abstract.ts#L46)*
 
 ___
 
@@ -61,7 +101,9 @@ ___
 
 • **hooks**? : *[Overrides](../README.md#overrides)*
 
-*Defined in [src/types/subclassing.ts:55](https://github.com/JuroOravec/mini-extract-plugin/blob/9e394f3/src/types/subclassing.ts#L55)*
+*Overrides [AbstractClassOptions](abstractclassoptions.md).[hooks](abstractclassoptions.md#optional-hooks)*
+
+*Defined in [src/types/subclassing.ts:47](https://github.com/JuroOravec/mini-extract-plugin/blob/87f855a/src/types/subclassing.ts#L47)*
 
 ___
 
@@ -69,23 +111,29 @@ ___
 
 • **loaderOptionsSchema**? : *any*
 
-*Defined in [src/types/subclassing.ts:57](https://github.com/JuroOravec/mini-extract-plugin/blob/9e394f3/src/types/subclassing.ts#L57)*
+*Inherited from [AbstractClassOptions](abstractclassoptions.md).[loaderOptionsSchema](abstractclassoptions.md#optional-loaderoptionsschema)*
+
+*Defined in [src/types/subclassing-abstract.ts:50](https://github.com/JuroOravec/mini-extract-plugin/blob/87f855a/src/types/subclassing-abstract.ts#L50)*
 
 ___
 
 ### `Optional` moduleClass
 
-• **moduleClass**? : *[ModuleClass](../README.md#moduleclass)*
+• **moduleClass**? : *Params["moduleClass"]*
 
-*Defined in [src/types/subclassing.ts:60](https://github.com/JuroOravec/mini-extract-plugin/blob/9e394f3/src/types/subclassing.ts#L60)*
+*Inherited from [AbstractClassOptions](abstractclassoptions.md).[moduleClass](abstractclassoptions.md#optional-moduleclass)*
+
+*Defined in [src/types/subclassing-abstract.ts:53](https://github.com/JuroOravec/mini-extract-plugin/blob/87f855a/src/types/subclassing-abstract.ts#L53)*
 
 ___
 
 ### `Optional` moduleFactoryClass
 
-• **moduleFactoryClass**? : *[ModuleFactoryClass](../README.md#modulefactoryclass)*
+• **moduleFactoryClass**? : *Params["moduleFactoryClass"]*
 
-*Defined in [src/types/subclassing.ts:59](https://github.com/JuroOravec/mini-extract-plugin/blob/9e394f3/src/types/subclassing.ts#L59)*
+*Inherited from [AbstractClassOptions](abstractclassoptions.md).[moduleFactoryClass](abstractclassoptions.md#optional-modulefactoryclass)*
+
+*Defined in [src/types/subclassing-abstract.ts:52](https://github.com/JuroOravec/mini-extract-plugin/blob/87f855a/src/types/subclassing-abstract.ts#L52)*
 
 ___
 
@@ -93,7 +141,9 @@ ___
 
 • **moduleType**? : *undefined | string*
 
-*Defined in [src/types/subclassing.ts:51](https://github.com/JuroOravec/mini-extract-plugin/blob/9e394f3/src/types/subclassing.ts#L51)*
+*Inherited from [AbstractClassOptions](abstractclassoptions.md).[moduleType](abstractclassoptions.md#optional-moduletype)*
+
+*Defined in [src/types/subclassing-abstract.ts:44](https://github.com/JuroOravec/mini-extract-plugin/blob/87f855a/src/types/subclassing-abstract.ts#L44)*
 
 ___
 
@@ -101,7 +151,9 @@ ___
 
 • **pluginName**? : *undefined | string*
 
-*Defined in [src/types/subclassing.ts:52](https://github.com/JuroOravec/mini-extract-plugin/blob/9e394f3/src/types/subclassing.ts#L52)*
+*Inherited from [AbstractClassOptions](abstractclassoptions.md).[pluginName](abstractclassoptions.md#optional-pluginname)*
+
+*Defined in [src/types/subclassing-abstract.ts:45](https://github.com/JuroOravec/mini-extract-plugin/blob/87f855a/src/types/subclassing-abstract.ts#L45)*
 
 ___
 
@@ -109,7 +161,9 @@ ___
 
 • **pluginOptionsSchema**? : *any*
 
-*Defined in [src/types/subclassing.ts:56](https://github.com/JuroOravec/mini-extract-plugin/blob/9e394f3/src/types/subclassing.ts#L56)*
+*Inherited from [AbstractClassOptions](abstractclassoptions.md).[pluginOptionsSchema](abstractclassoptions.md#optional-pluginoptionsschema)*
+
+*Defined in [src/types/subclassing-abstract.ts:49](https://github.com/JuroOravec/mini-extract-plugin/blob/87f855a/src/types/subclassing-abstract.ts#L49)*
 
 ___
 
@@ -117,4 +171,6 @@ ___
 
 • **type**: *string*
 
-*Defined in [src/types/subclassing.ts:50](https://github.com/JuroOravec/mini-extract-plugin/blob/9e394f3/src/types/subclassing.ts#L50)*
+*Inherited from [AbstractClassOptions](abstractclassoptions.md).[type](abstractclassoptions.md#type)*
+
+*Defined in [src/types/subclassing-abstract.ts:43](https://github.com/JuroOravec/mini-extract-plugin/blob/87f855a/src/types/subclassing-abstract.ts#L43)*

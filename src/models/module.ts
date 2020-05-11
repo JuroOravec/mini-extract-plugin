@@ -1,27 +1,36 @@
 import WebpackModule from 'webpack/lib/Module';
-import webpack from 'webpack';
-
-import { Module as IModule, ModuleClass } from '../types/subclassing';
-import { Hash, RequestShortener } from '../types/webpack';
-import { Dependency } from './dependency';
+import { compilation } from 'webpack';
 import capitalize from 'lodash.capitalize';
+
+import type { Module as IModule, ModuleClass } from '../types/subclassing';
+import type { Hash, RequestShortener } from '../types/webpack';
+import { Dependency } from './dependency';
 import { renameClass } from '../lib/util';
 
-const TypedWebpackModule = WebpackModule as typeof webpack.compilation.Module;
+const TypedWebpackModule = WebpackModule as typeof compilation.Module;
 
-export class Module extends TypedWebpackModule implements IModule {
+export class Module<
+  T extends {
+    dependency?: Dependency;
+  } = {},
+  Dep extends Dependency = T['dependency'] extends Dependency
+    ? T['dependency']
+    : Dependency
+> extends TypedWebpackModule implements IModule {
   id: string;
-  content: Dependency['content'];
-  private _identifier: Dependency['identifier'];
-  private _identifierIndex: Dependency['identifierIndex'];
-  private _miniExtractType: Dependency['miniExtractType'];
+  request?: string;
+  content: Dep['content'];
+  private _identifier: Dep['identifier'];
+  private _identifierIndex: Dep['identifierIndex'];
+  private _miniExtractType: Dep['miniExtractType'];
 
-  constructor(dependency: Dependency) {
+  constructor(dependency: Dep) {
     const { context } = dependency;
     const moduleType = dependency.moduleType;
     super(moduleType, context === null ? undefined : context);
 
     this.id = '';
+    this.request = undefined;
     this._identifier = dependency.identifier;
     this._identifierIndex = dependency.identifierIndex;
     this.content = dependency.content;
@@ -80,10 +89,14 @@ interface SubclassOptions {
   type: string;
 }
 
-export function subclass({ type }: SubclassOptions) {
-  class ModuleSubclass extends Module implements IModule {}
+export function subclass<
+  T extends {
+    dependency?: Dependency;
+  } = {}
+>({ type }: SubclassOptions) {
+  class ModuleSubclass extends Module<T> implements IModule {}
 
   const className = `${capitalize(type)}${ModuleSubclass.name}`;
   renameClass(ModuleSubclass, className);
-  return ModuleSubclass as ModuleClass;
+  return ModuleSubclass as ModuleClass<Module<T>>;
 }

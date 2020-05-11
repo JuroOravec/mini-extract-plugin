@@ -1,8 +1,10 @@
 import { Module, types } from '../../../src';
-import Dependency from './dependency';
-import { CssModule as ICssModule } from './types';
 
-export default class CssModule extends Module implements ICssModule {
+import type { CssModule as ICssModule } from './types';
+import Dependency from './dependency';
+
+export default class CssModule extends Module<{ dependency: Dependency }>
+  implements ICssModule {
   sourceMap: ICssModule['sourceMap'];
   media: ICssModule['media'];
 
