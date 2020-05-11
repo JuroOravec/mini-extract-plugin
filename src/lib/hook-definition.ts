@@ -4,7 +4,6 @@ import {
   AsyncParallelHook,
   AsyncSeriesWaterfallHook,
 } from 'tapable';
-import type webpack from 'webpack';
 import type { Source } from 'webpack-sources';
 
 import type {
@@ -14,12 +13,10 @@ import type {
   LoaderModuleContext,
   PitchCompilerContext,
   PitchCompilationContext,
-  DependencyOptions,
   RenderContext,
 } from '../types/context';
-import type { Module, RenderManifestEntry } from '../types/webpack';
-import type { MiniExtractPlugin } from '../types/subclassing';
-import { castTuple, castStrLit } from '../types/helper';
+import type { RenderManifestEntry } from '../types/webpack';
+import type { AbstractMiniExtractPlugin } from '../types/subclassing-abstract';
 import {
   castHookDefinitions,
   SyncHookClass,
@@ -27,253 +24,257 @@ import {
   AsyncParallelHookClass,
   AsyncSeriesWaterfallHookClass,
 } from '../types/hook-definition';
+import type {
+  GetDependencyOptions,
+  GetModule,
+} from '../types/subclassing-util';
+import { castTuple, castStrLit } from '../types/helper';
 
-export const definitions = castHookDefinitions({
-  initialize: {
-    hook: SyncHook as SyncHookClass,
-    args: castTuple(
-      {
-        name: castStrLit('instance'),
-        type: {} as MiniExtractPlugin,
-      },
-      {
-        name: castStrLit('options'),
-        type: {} as object,
-      },
-    ),
-    return: { name: null, type: undefined as void },
-  },
+export function getDefinitions<
+  MEP extends AbstractMiniExtractPlugin = AbstractMiniExtractPlugin
+>() {
+  type Mod = GetModule<MEP>;
+  type DepOpts = GetDependencyOptions<MEP>;
 
-  compiler: {
-    hook: SyncHook as SyncHookClass,
-    args: castTuple({
-      name: castStrLit('compilerContext'),
-      type: {} as CompilerContext,
-    }),
-    return: { name: null, type: undefined as void },
-  },
-
-  compilation: {
-    hook: SyncHook as SyncHookClass,
-    args: castTuple({
-      name: castStrLit('compilationContext'),
-      type: {} as CompilationContext,
-    }),
-    return: { name: null, type: undefined as void },
-  },
-
-  beforeRenderMain: {
-    hook: SyncWaterfallHook as SyncWaterfallHookClass,
-    args: castTuple(
-      {
-        name: castStrLit('renderContext'),
-        type: {} as RenderContext,
-      },
-      {
-        name: castStrLit('modules'),
-        type: [] as Module[] | webpack.compilation.Module[],
-      },
-    ),
-    return: {
-      name: null,
-      type: [] as
-        | Module[]
-        | Module[][]
-        | webpack.compilation.Module[]
-        | webpack.compilation.Module[][],
+  return castHookDefinitions({
+    initialize: {
+      hook: SyncHook as SyncHookClass,
+      args: castTuple(
+        {
+          name: castStrLit('instance'),
+          type: {} as MEP,
+        },
+        {
+          name: castStrLit('options'),
+          type: {} as MEP['options'],
+        },
+      ),
+      return: { name: null, type: undefined as void },
     },
-  },
 
-  renderMain: {
-    hook: SyncWaterfallHook as SyncWaterfallHookClass,
-    args: castTuple(
-      {
-        name: castStrLit('renderContext'),
-        type: {} as RenderContext,
-      },
-      { name: castStrLit('moduleGroups'), type: [] as Module[][] },
-    ),
-    return: { name: null, type: [] as RenderManifestEntry[] },
-  },
-
-  afterRenderMain: {
-    hook: SyncHook as SyncHookClass,
-    args: castTuple(
-      {
-        name: castStrLit('renderContext'),
-        type: {} as RenderContext,
-      },
-      {
-        name: castStrLit('renderManifestEntries'),
-        type: [] as RenderManifestEntry[],
-      },
-    ),
-    return: { name: null, type: undefined as void },
-  },
-
-  beforeRenderChunk: {
-    hook: SyncWaterfallHook as SyncWaterfallHookClass,
-    args: castTuple(
-      {
-        name: castStrLit('renderContext'),
-        type: {} as RenderContext,
-      },
-      {
-        name: castStrLit('modules'),
-        type: [] as Module[] | webpack.compilation.Module[],
-      },
-    ),
-    return: {
-      name: null,
-      type: [] as
-        | Module[]
-        | Module[][]
-        | webpack.compilation.Module[]
-        | webpack.compilation.Module[][],
+    compiler: {
+      hook: SyncHook as SyncHookClass,
+      args: castTuple({
+        name: castStrLit('compilerContext'),
+        type: {} as CompilerContext<MEP>,
+      }),
+      return: { name: null, type: undefined as void },
     },
-  },
 
-  renderChunk: {
-    hook: SyncWaterfallHook as SyncWaterfallHookClass,
-    args: castTuple(
-      {
-        name: castStrLit('renderContext'),
-        type: {} as RenderContext,
-      },
-      {
-        name: castStrLit('moduleGroups'),
-        type: [] as Module[][],
-      },
-    ),
-    return: { name: null, type: [] as RenderManifestEntry[] },
-  },
+    compilation: {
+      hook: SyncHook as SyncHookClass,
+      args: castTuple({
+        name: castStrLit('compilationContext'),
+        type: {} as CompilationContext<MEP>,
+      }),
+      return: { name: null, type: undefined as void },
+    },
 
-  afterRenderChunk: {
-    hook: SyncHook as SyncHookClass,
-    args: castTuple(
-      {
-        name: castStrLit('renderContext'),
-        type: {} as RenderContext,
+    beforeRenderMain: {
+      hook: SyncWaterfallHook as SyncWaterfallHookClass,
+      args: castTuple(
+        {
+          name: castStrLit('renderContext'),
+          type: {} as RenderContext<MEP>,
+        },
+        {
+          name: castStrLit('modules'),
+          type: [] as Mod[],
+        },
+      ),
+      return: {
+        name: null,
+        type: [] as Mod[] | Mod[][],
       },
-      {
-        name: castStrLit('renderManifestEntries'),
-        type: [] as RenderManifestEntry[],
+    },
+
+    renderMain: {
+      hook: SyncWaterfallHook as SyncWaterfallHookClass,
+      args: castTuple(
+        {
+          name: castStrLit('renderContext'),
+          type: {} as RenderContext<MEP>,
+        },
+        { name: castStrLit('moduleGroups'), type: [] as Mod[][] },
+      ),
+      return: { name: null, type: [] as RenderManifestEntry[] },
+    },
+
+    afterRenderMain: {
+      hook: SyncHook as SyncHookClass,
+      args: castTuple(
+        {
+          name: castStrLit('renderContext'),
+          type: {} as RenderContext<MEP>,
+        },
+        {
+          name: castStrLit('renderManifestEntries'),
+          type: [] as RenderManifestEntry[],
+        },
+      ),
+      return: { name: null, type: undefined as void },
+    },
+
+    beforeRenderChunk: {
+      hook: SyncWaterfallHook as SyncWaterfallHookClass,
+      args: castTuple(
+        {
+          name: castStrLit('renderContext'),
+          type: {} as RenderContext<MEP>,
+        },
+        {
+          name: castStrLit('modules'),
+          type: [] as Mod[],
+        },
+      ),
+      return: {
+        name: null,
+        type: [] as Mod[] | Mod[][],
       },
-    ),
-    return: { name: null, type: undefined as void },
-  },
+    },
 
-  beforeMerge: {
-    hook: SyncWaterfallHook as SyncWaterfallHookClass,
-    args: castTuple(
-      {
-        name: castStrLit('renderContext'),
-        type: {} as RenderContext,
-      },
-      {
-        name: castStrLit('modules'),
-        type: [] as Module[],
-      },
-    ),
-    return: { name: null, type: [] as Module[] },
-  },
+    renderChunk: {
+      hook: SyncWaterfallHook as SyncWaterfallHookClass,
+      args: castTuple(
+        {
+          name: castStrLit('renderContext'),
+          type: {} as RenderContext<MEP>,
+        },
+        {
+          name: castStrLit('moduleGroups'),
+          type: [] as Mod[][],
+        },
+      ),
+      return: { name: null, type: [] as RenderManifestEntry[] },
+    },
 
-  merge: {
-    hook: SyncWaterfallHook as SyncWaterfallHookClass,
-    args: castTuple(
-      {
-        name: castStrLit('renderContext'),
-        type: {} as RenderContext,
-      },
-      {
-        name: castStrLit('modules'),
-        type: [] as Module[],
-      },
-    ),
-    return: { name: null, type: {} as Source },
-  },
+    afterRenderChunk: {
+      hook: SyncHook as SyncHookClass,
+      args: castTuple(
+        {
+          name: castStrLit('renderContext'),
+          type: {} as RenderContext<MEP>,
+        },
+        {
+          name: castStrLit('renderManifestEntries'),
+          type: [] as RenderManifestEntry[],
+        },
+      ),
+      return: { name: null, type: undefined as void },
+    },
 
-  afterMerge: {
-    hook: SyncHook as SyncHookClass,
-    args: castTuple(
-      {
-        name: castStrLit('renderContext'),
-        type: {} as RenderContext,
-      },
-      {
-        name: castStrLit('resultSource'),
-        type: {} as Source,
-      },
-    ),
-    return: { name: null, type: undefined as void },
-  },
+    beforeMerge: {
+      hook: SyncWaterfallHook as SyncWaterfallHookClass,
+      args: castTuple(
+        {
+          name: castStrLit('renderContext'),
+          type: {} as RenderContext<MEP>,
+        },
+        {
+          name: castStrLit('modules'),
+          type: [] as Mod[],
+        },
+      ),
+      return: { name: null, type: [] as Mod[] },
+    },
 
-  pitch: {
-    hook: AsyncParallelHook as AsyncParallelHookClass,
-    args: castTuple({
-      name: castStrLit('pitchContext'),
-      type: {} as PitchContext,
-    }),
-    return: { name: null, type: undefined as void },
-  },
+    merge: {
+      hook: SyncWaterfallHook as SyncWaterfallHookClass,
+      args: castTuple(
+        {
+          name: castStrLit('renderContext'),
+          type: {} as RenderContext<MEP>,
+        },
+        {
+          name: castStrLit('modules'),
+          type: [] as Mod[],
+        },
+      ),
+      return: { name: null, type: {} as Source },
+    },
 
-  childCompiler: {
-    hook: AsyncParallelHook as AsyncParallelHookClass,
-    args: castTuple({
-      name: castStrLit('pitchCompilerContext'),
-      type: {} as PitchCompilerContext,
-    }),
-    return: { name: null, type: undefined as void },
-  },
+    afterMerge: {
+      hook: SyncHook as SyncHookClass,
+      args: castTuple(
+        {
+          name: castStrLit('renderContext'),
+          type: {} as RenderContext<MEP>,
+        },
+        {
+          name: castStrLit('resultSource'),
+          type: {} as Source,
+        },
+      ),
+      return: { name: null, type: undefined as void },
+    },
 
-  source: {
-    hook: AsyncSeriesWaterfallHook as AsyncSeriesWaterfallHookClass,
-    args: castTuple({
-      name: castStrLit('pitchCompilationContext'),
-      type: {} as PitchCompilationContext,
-    }),
-    return: { name: null, type: '' as string },
-  },
+    pitch: {
+      hook: AsyncParallelHook as AsyncParallelHookClass,
+      args: castTuple({
+        name: castStrLit('pitchContext'),
+        type: {} as PitchContext<MEP>,
+      }),
+      return: { name: null, type: undefined as void },
+    },
 
-  childCompilation: {
-    hook: SyncHook as SyncHookClass,
-    args: castTuple({
-      name: castStrLit('pitchCompilationContext'),
-      type: {} as PitchCompilationContext,
-    }),
-    return: { name: null, type: undefined as void },
-  },
+    childCompiler: {
+      hook: AsyncParallelHook as AsyncParallelHookClass,
+      args: castTuple({
+        name: castStrLit('pitchCompilerContext'),
+        type: {} as PitchCompilerContext<MEP>,
+      }),
+      return: { name: null, type: undefined as void },
+    },
 
-  dependency: {
-    hook: SyncWaterfallHook as SyncWaterfallHookClass,
-    args: castTuple(
-      {
+    source: {
+      hook: AsyncSeriesWaterfallHook as AsyncSeriesWaterfallHookClass,
+      args: castTuple({
         name: castStrLit('pitchCompilationContext'),
-        type: {} as PitchCompilationContext,
-      },
-      {
-        name: castStrLit('loaderModuleContext'),
-        type: {} as LoaderModuleContext,
-      },
-    ),
-    return: { name: null, type: [] as DependencyOptions[] },
-  },
+        type: {} as PitchCompilationContext<MEP>,
+      }),
+      return: { name: null, type: '' as string },
+    },
 
-  extracted: {
-    hook: SyncWaterfallHook as SyncWaterfallHookClass,
-    args: castTuple(
-      {
+    childCompilation: {
+      hook: SyncHook as SyncHookClass,
+      args: castTuple({
         name: castStrLit('pitchCompilationContext'),
-        type: {} as PitchCompilationContext,
-      },
-      {
-        name: castStrLit('remainingSource'),
-        type: {} as string,
-      },
-    ),
-    return: { name: null, type: '' as string },
-  },
-});
+        type: {} as PitchCompilationContext<MEP>,
+      }),
+      return: { name: null, type: undefined as void },
+    },
+
+    dependency: {
+      hook: SyncWaterfallHook as SyncWaterfallHookClass,
+      args: castTuple(
+        {
+          name: castStrLit('pitchCompilationContext'),
+          type: {} as PitchCompilationContext<MEP>,
+        },
+        {
+          name: castStrLit('loaderModuleContext'),
+          type: {} as LoaderModuleContext,
+        },
+      ),
+      return: { name: null, type: [] as DepOpts[] },
+    },
+
+    extracted: {
+      hook: SyncWaterfallHook as SyncWaterfallHookClass,
+      args: castTuple(
+        {
+          name: castStrLit('pitchCompilationContext'),
+          type: {} as PitchCompilationContext<MEP>,
+        },
+        {
+          name: castStrLit('remainingSource'),
+          type: {} as string,
+        },
+      ),
+      return: { name: null, type: '' as string },
+    },
+  });
+}
 
 /**
  * Since the dependecy graph looks like this:
@@ -294,7 +295,10 @@ export const definitions = castHookDefinitions({
  * here, so it can be used in types/hooks and lib/hooks without circular
  * dependency.
  */
-export function hooksFromDefinitions() {
+export function hooksFromDefinitions<
+  MEP extends AbstractMiniExtractPlugin = AbstractMiniExtractPlugin
+>() {
+  const definitions = getDefinitions<MEP>();
   return Object.entries(definitions).reduce((hooksObj, [key, hookDef]) => {
     // @ts-ignore
     const hookArgs = hookDef.args.map((arg) => arg.name);

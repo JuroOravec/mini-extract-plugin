@@ -1,7 +1,12 @@
 import type tapable from 'tapable';
 
-import { definitions, hooksFromDefinitions } from '../lib/hook-definition';
-import type { FirstNRequiredVariadicTuple, AnyFunc, OmitType } from './util';
+import type {
+  FirstNRequiredVariadicTuple,
+  AnyFunc,
+  OmitType,
+  FixateArgs,
+} from './util';
+import type { AbstractMiniExtractPlugin } from './subclassing-abstract';
 import type {
   HookDefinitions,
   HookDefinition,
@@ -24,6 +29,7 @@ import type {
   SyncWaterfallHook,
   SyncHook,
 } from './hook-definition';
+import { hooksFromDefinitions, getDefinitions } from '../lib/hook-definition';
 
 export * from './hook-definition';
 
@@ -80,34 +86,78 @@ export type Hooks<T extends HookDefinitions, K extends keyof T = keyof T> = {
   >;
 };
 
-export type ActiveHookDefinitions = typeof definitions;
-
-const hooks = hooksFromDefinitions() as Hooks<ActiveHookDefinitions>;
-
 /**
- * Hooks type that infers to the defined hooks.
+ * Helper class to get types from generic function `getDefinitions`
+ *
+ * See https://stackoverflow.com/a/60846777/9788634
  */
-export type ActiveHooks = typeof hooks;
+class ActiveHookDefinitionsHelper<
+  MEP extends AbstractMiniExtractPlugin = AbstractMiniExtractPlugin
+> {
+  fixate = (
+    ...args: FixateArgs<typeof getDefinitions, AbstractMiniExtractPlugin, MEP>
+  ) => getDefinitions<MEP>(...args);
+}
+
 /**
- * Union of the names of the defined hooks.
+ * Existing hook definitions as type.
+ */
+export type ActiveHookDefinitions<
+  MEP extends AbstractMiniExtractPlugin = AbstractMiniExtractPlugin
+> = ReturnType<ActiveHookDefinitionsHelper<MEP>['fixate']>;
+
+/**
+ * Helper class to get types from generic function `hooksFromDefinitions`
+ *
+ * See https://stackoverflow.com/a/60846777/9788634
+ */
+class ActiveHooksHelper<
+  MEP extends AbstractMiniExtractPlugin = AbstractMiniExtractPlugin
+> {
+  fixate = (
+    ...args: FixateArgs<
+      typeof hooksFromDefinitions,
+      AbstractMiniExtractPlugin,
+      MEP
+    >
+  ) => hooksFromDefinitions<MEP>(...args) as Hooks<ActiveHookDefinitions<MEP>>;
+}
+
+/**
+ * Tapable's Hooks by name of existing hook definitions.
+ */
+export type ActiveHooks<
+  MEP extends AbstractMiniExtractPlugin = AbstractMiniExtractPlugin
+> = ReturnType<ActiveHooksHelper<MEP>['fixate']>;
+
+/**
+ * Union of the names of the existing hook definitions.
  */
 export type ActiveHookNames = keyof ActiveHooks;
 
 /**
- * Async hooks of ActiveHooks
+ * Tapable's Hooks by name of the async subset of the existing hook
+ * definitions.
  */
-export type ActiveAsyncHooks = OmitType<ActiveHooks, SyncHookType>;
+export type ActiveAsyncHooks<
+  MEP extends AbstractMiniExtractPlugin = AbstractMiniExtractPlugin
+> = OmitType<ActiveHooks<MEP>, SyncHookType>;
+
 /**
- * Union of the names of the defined async hooks.
+ * Union of the names of the async subset of the defined async hooks.
  */
 export type ActiveAsyncHookNames = keyof ActiveAsyncHooks;
 
 /**
- * Sync hooks of ActiveHooks
+ * Tapable's Hooks by name of the sync subset of the existing hook
+ * definitions.
  */
-export type ActiveSyncHooks = OmitType<ActiveHooks, AsyncHookType>;
+export type ActiveSyncHooks<
+  MEP extends AbstractMiniExtractPlugin = AbstractMiniExtractPlugin
+> = OmitType<ActiveHooks<MEP>, AsyncHookType>;
+
 /**
- * Union of the names of the defined sync hooks.
+ * Union of the names of the sync subset of the defined async hooks.
  */
 export type ActiveSyncHookNames = keyof ActiveSyncHooks;
 
@@ -115,8 +165,9 @@ export type ActiveSyncHookNames = keyof ActiveSyncHooks;
  * Mapping of hook name to its function signature
  */
 export type Taps<
-  D extends ActiveHookDefinitions = ActiveHookDefinitions,
-  H extends ActiveHooks = ActiveHooks,
+  MEP extends AbstractMiniExtractPlugin = AbstractMiniExtractPlugin,
+  D extends ActiveHookDefinitions<MEP> = ActiveHookDefinitions<MEP>,
+  H extends ActiveHooks<MEP> = ActiveHooks<MEP>,
   DK extends keyof D & keyof H = keyof D & keyof H
 > = {
   [K in DK]: H[K] extends tapable.Hook
@@ -135,7 +186,9 @@ export type Taps<
 /**
  * Partial mapping of hook name to its function signature
  */
-export type PartialTaps = Partial<Taps>;
+export type PartialTaps<
+  MEP extends AbstractMiniExtractPlugin = AbstractMiniExtractPlugin
+> = Partial<Taps<MEP>>;
 
 /**
  * Permitted keys to be used in `type` property of Hook Overrides.
