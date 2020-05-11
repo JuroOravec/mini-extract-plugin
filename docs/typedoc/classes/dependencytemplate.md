@@ -69,7 +69,7 @@ ___
 
 ▸ **apply**(): *void*
 
-*Defined in [src/models/dependency-template.ts:13](https://github.com/JuroOravec/mini-extract-plugin/blob/87f855a/src/models/dependency-template.ts#L13)*
+*Defined in [src/models/dependency-template.ts:13](https://github.com/JuroOravec/mini-extract-plugin/blob/a152a2a/src/models/dependency-template.ts#L13)*
 
 **Returns:** *void*
 

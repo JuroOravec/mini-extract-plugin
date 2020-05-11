@@ -1,3 +1,10 @@
+## [1.4.1](https://github.com/JuroOravec/mini-extract-plugin/compare/v1.4.0...v1.4.1) (2020-05-11)
+
+
+### Bug Fixes
+
+* fix modules not being passed to moduleFilename function ([25bc438](https://github.com/JuroOravec/mini-extract-plugin/commit/25bc43835e8160ac038ed8cd547ce5f0439c1bb8))
+
 # [1.4.0](https://github.com/JuroOravec/mini-extract-plugin/compare/v1.3.0...v1.4.0) (2020-05-11)
 
 

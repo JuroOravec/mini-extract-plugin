@@ -22,7 +22,7 @@ TemplateOptions object passed to moduleFilename if it's a function
 
 • **chunk**: *[Chunk](chunk.md)*
 
-*Defined in [src/types/module-filename.ts:9](https://github.com/JuroOravec/mini-extract-plugin/blob/87f855a/src/types/module-filename.ts#L9)*
+*Defined in [src/types/module-filename.ts:10](https://github.com/JuroOravec/mini-extract-plugin/blob/a152a2a/src/types/module-filename.ts#L10)*
 
 ___
 
@@ -30,7 +30,7 @@ ___
 
 • **contentHashType**: *string*
 
-*Defined in [src/types/module-filename.ts:11](https://github.com/JuroOravec/mini-extract-plugin/blob/87f855a/src/types/module-filename.ts#L11)*
+*Defined in [src/types/module-filename.ts:12](https://github.com/JuroOravec/mini-extract-plugin/blob/a152a2a/src/types/module-filename.ts#L12)*
 
 ___
 
@@ -38,4 +38,4 @@ ___
 
 • **hash**: *string*
 
-*Defined in [src/types/module-filename.ts:10](https://github.com/JuroOravec/mini-extract-plugin/blob/87f855a/src/types/module-filename.ts#L10)*
+*Defined in [src/types/module-filename.ts:11](https://github.com/JuroOravec/mini-extract-plugin/blob/a152a2a/src/types/module-filename.ts#L11)*

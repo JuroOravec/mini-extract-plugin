@@ -26,7 +26,7 @@ See https://stackoverflow.com/a/60846777/9788634
 
 ▸ **fixate**(...`args`: [FixateArgs](../README.md#fixateargs)‹typeof getDefinitions, [AbstractMiniExtractPlugin](../interfaces/abstractminiextractplugin.md), MEP›): *object*
 
-*Defined in [src/types/hook.ts:97](https://github.com/JuroOravec/mini-extract-plugin/blob/87f855a/src/types/hook.ts#L97)*
+*Defined in [src/types/hook.ts:97](https://github.com/JuroOravec/mini-extract-plugin/blob/a152a2a/src/types/hook.ts#L97)*
 
 **Parameters:**
 

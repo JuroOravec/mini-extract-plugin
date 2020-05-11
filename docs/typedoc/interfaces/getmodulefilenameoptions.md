@@ -28,7 +28,7 @@ moduleFilename
 
 • **context**: *[RenderContext](rendercontext.md)‹MEP›*
 
-*Defined in [src/lib/get-module-filename.ts:14](https://github.com/JuroOravec/mini-extract-plugin/blob/87f855a/src/lib/get-module-filename.ts#L14)*
+*Defined in [src/lib/get-module-filename.ts:14](https://github.com/JuroOravec/mini-extract-plugin/blob/a152a2a/src/lib/get-module-filename.ts#L14)*
 
 ___
 
@@ -36,7 +36,7 @@ ___
 
 • **default**: *string*
 
-*Defined in [src/lib/get-module-filename.ts:13](https://github.com/JuroOravec/mini-extract-plugin/blob/87f855a/src/lib/get-module-filename.ts#L13)*
+*Defined in [src/lib/get-module-filename.ts:13](https://github.com/JuroOravec/mini-extract-plugin/blob/a152a2a/src/lib/get-module-filename.ts#L13)*
 
 ___
 
@@ -44,7 +44,7 @@ ___
 
 • **modules**: *[GetModule](../README.md#getmodule)‹MEP›[]*
 
-*Defined in [src/lib/get-module-filename.ts:15](https://github.com/JuroOravec/mini-extract-plugin/blob/87f855a/src/lib/get-module-filename.ts#L15)*
+*Defined in [src/lib/get-module-filename.ts:15](https://github.com/JuroOravec/mini-extract-plugin/blob/a152a2a/src/lib/get-module-filename.ts#L15)*
 
 ___
 
@@ -52,4 +52,4 @@ ___
 
 • **templateOptions**: *[TemplateOptions](templateoptions.md)*
 
-*Defined in [src/lib/get-module-filename.ts:16](https://github.com/JuroOravec/mini-extract-plugin/blob/87f855a/src/lib/get-module-filename.ts#L16)*
+*Defined in [src/lib/get-module-filename.ts:16](https://github.com/JuroOravec/mini-extract-plugin/blob/a152a2a/src/lib/get-module-filename.ts#L16)*

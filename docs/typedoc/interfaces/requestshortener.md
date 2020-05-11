@@ -20,7 +20,7 @@ Interface for the RequestShortener object used in Webpack.
 
 • **shorten**: *function*
 
-*Defined in [src/types/webpack.ts:37](https://github.com/JuroOravec/mini-extract-plugin/blob/87f855a/src/types/webpack.ts#L37)*
+*Defined in [src/types/webpack.ts:37](https://github.com/JuroOravec/mini-extract-plugin/blob/a152a2a/src/types/webpack.ts#L37)*
 
 #### Type declaration:
 

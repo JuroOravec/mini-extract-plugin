@@ -134,7 +134,7 @@ ___
 
 *Overrides void*
 
-*Defined in [src/types/webpack.ts:54](https://github.com/JuroOravec/mini-extract-plugin/blob/87f855a/src/types/webpack.ts#L54)*
+*Defined in [src/types/webpack.ts:54](https://github.com/JuroOravec/mini-extract-plugin/blob/a152a2a/src/types/webpack.ts#L54)*
 
 #### Type declaration:
 
@@ -198,7 +198,7 @@ ___
 
 *Overrides void*
 
-*Defined in [src/types/webpack.ts:55](https://github.com/JuroOravec/mini-extract-plugin/blob/87f855a/src/types/webpack.ts#L55)*
+*Defined in [src/types/webpack.ts:55](https://github.com/JuroOravec/mini-extract-plugin/blob/a152a2a/src/types/webpack.ts#L55)*
 
 ___
 
