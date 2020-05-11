@@ -1,3 +1,13 @@
+# [1.4.0](https://github.com/JuroOravec/mini-extract-plugin/compare/v1.3.0...v1.4.0) (2020-05-11)
+
+
+### Features
+
+* **typing:** allow to pass MEP class to ModuleFilename types ([c82e845](https://github.com/JuroOravec/mini-extract-plugin/commit/c82e845f2be569854a18908acf58203e411873d7))
+* **typing:** allow to pass MiniExtractPlugin class to Taps type ([9185e72](https://github.com/JuroOravec/mini-extract-plugin/commit/9185e72d704afb7d79fbcf6509e46f5c711c2509))
+* **typing:** pass MiniExtractPlugin type to context types ([ac05685](https://github.com/JuroOravec/mini-extract-plugin/commit/ac05685dc547ec2dc3614c43ef68704ecf217847))
+* **typing:** pass types to class factory, classes and helpers ([cbbf8eb](https://github.com/JuroOravec/mini-extract-plugin/commit/cbbf8eb351dc2092fba718fd21483533c2e94697))
+
 # [1.3.0](https://github.com/JuroOravec/mini-extract-plugin/compare/v1.2.0...v1.3.0) (2020-05-09)
 
 
