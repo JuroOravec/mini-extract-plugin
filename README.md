@@ -31,8 +31,18 @@ Extract any format, process it your way.
 - [🧰 Features](#-features)
 - [👶 Install](#-install)
 - [🚀 Usage](#-usage)
+  - [Minimal setup](#minimal-setup)
+  - [Subclassing](#subclassing)
+  - [Instance options](#instance-options)
+  - [Helpers](#helpers)
+  - [Typing](#typing)
+  - [Debugging](#debugging)
 - [🔮 Background](#-background)
 - [🤖 API](#-api)
+  - [Options](#options)
+  - [Hooks order](#hooks-order)
+  - [Hooks](#hooks)
+  - [Contexts](#contexts)
 - [⏳ Changelog](#-changelog)
 - [🛠 Developing](#-developing)
 - [🏗 Roadmap](#-roadmap)
@@ -96,7 +106,7 @@ npm install mini-extract-plugin
 
 <!-- Clear, _runnable_ example of usage -->
 
-### Creating new MiniExtractPlugin classes
+### Minimal setup
 
 For a minimal setup, just import the plugin and give it a unique type name by
 which the plugin will be known. The instances of the created class can be used
@@ -407,6 +417,28 @@ const ModuleFactorySubclass = subclassModuleFactory<{
 
 See how classes are extended in the
 [re-implementation of mini-css-extract-plugin](https://github.com/JuroOravec/mini-extract-plugin/tree/master/test/fixtures/mini-css-extract-plugin).
+
+### Instance options
+
+By default, instances of the subclassed MiniExtractPlugin accept an options object with the same options as [mini-css-extract-plugin v.0.9.0](https://github.com/webpack-contrib/mini-css-extract-plugin/tree/v0.9.0).
+
+> :warning: Some options, while having same name and fulfilling same task,
+> accept different values than those of
+> [mini-css-extract-plugin](https://github.com/webpack-contrib/mini-css-extract-plugin/tree/v0.9.0). These are:
+
+#### moduleFilename
+
+The function signature is changed to:
+
+`(`[`RenderContext`](#RenderContext)`, TemplateOptions,`
+[`Module[]`](https://github.com/webpack/webpack/blob/96142f829f7df4bfe6aa5095b1aed647de50edfe/lib/Module.js)`)`
+`=> string;`
+
+| Argument                                                                                                   | Description                                                                                                                                                                                                              |
+| ---------------------------------------------------------------------------------------------------------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ |
+| [`RenderContext`](#RenderContext)                                                                          | Context available on Compilation's [`renderManifest`](https://github.com/webpack/webpack/blob/f3ad9752234d416c64330d3b50d6d6bd5abdd0e4/lib/MainTemplate.js#L44) hook. See [`RenderContext`](#RenderContext) for details. |
+| `TemplateOptions`                                                                                          | Object with info on the chunk that is being rendered:<br>`{` <br> &nbsp;&nbsp;`chunk: Chunk,` <br> &nbsp; &nbsp;`hash: string,` <br> &nbsp;&nbsp; `contentHashType: string` <br> `}`                                     |
+| [`Module`](https://github.com/webpack/webpack/blob/96142f829f7df4bfe6aa5095b1aed647de50edfe/lib/Module.js) | [Module](https://github.com/webpack/webpack/blob/96142f829f7df4bfe6aa5095b1aed647de50edfe/lib/Module.js) that are being rendered. Modules are of the class as specified in the [plugin's class options](#options).       |
 
 ### Helpers
 
