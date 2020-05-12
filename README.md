@@ -115,6 +115,7 @@ in Webpack.
 ```ts
 // Default import is a class factory
 import mep from 'mini-extract-plugin';
+// or const mep = require('mini-extract-plugin').default
 
 // Minimal config
 const MyMiniExtractPlugin =  mep({
@@ -166,6 +167,7 @@ than just the type.
 
 ```ts
 import mep from 'mini-extract-plugin';
+// const mep = require('mini-extract-plugin').default
 
 const MyMiniExtractPlugin = mep({
   type: 'my-custom-type',
