@@ -1,3 +1,5 @@
+## [1.4.3](https://github.com/JuroOravec/mini-extract-plugin/compare/v1.4.2...v1.4.3) (2020-05-12)
+
 ## [1.4.2](https://github.com/JuroOravec/mini-extract-plugin/compare/v1.4.1...v1.4.2) (2020-05-12)
 
 ## [1.4.1](https://github.com/JuroOravec/mini-extract-plugin/compare/v1.4.0...v1.4.1) (2020-05-11)
