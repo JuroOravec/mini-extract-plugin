@@ -71,7 +71,7 @@
     "@semantic-release/github": "^7.0.5",
     "@semantic-release/npm": "^7.0.5",
     "@semantic-release/release-notes-generator": "^9.0.1",
-    "@types/jest": "^25.2.1",
+    "@types/jest": "^26.0.8",
     "@types/lodash.partition": "^4.6.6",
     "@types/lodash.pick": "^4.4.6",
     "@types/mini-css-extract-plugin": "^0.9.1",
